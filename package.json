@@ -1,11 +1,11 @@
 {
   "name": "personal-site",
   "version": "4.0.0",
-  "homepage": "https://mldangelo.com/",
+  "homepage": "https://ianrandman.com/",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mldangelo/personal-site.git"
+    "url": "https://github.com/ianrandman/personal-site.git"
   },
   "engines": {
     "node": ">=14.x"
@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "0.1.18",
+    "@react-pdf/renderer": "^2.2.0",
     "dayjs": "^1.11.3",
     "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
@@ -34,10 +35,12 @@
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.3.0",
     "react-markdown": "^5.0.3",
+    "react-pdf": "^5.7.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
     "react-snap": "^1.23.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "stream": "npm:stream-browserify@^3.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

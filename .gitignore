@@ -1,3 +1,6 @@
+.idea/
+test/
+
 # prefer npm over yarn
 yarn.lock
 
