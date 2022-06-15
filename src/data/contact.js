@@ -3,6 +3,7 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope';
+import { faStrava } from '@fortawesome/free-brands-svg-icons/faStrava';
 // See https://fontawesome.com/icons?d=gallery&s=brands,regular&m=free
 // to add other icons.
 
@@ -31,6 +32,11 @@ const data = [
     link: 'mailto:ianrandman@gmail.com',
     label: 'Email',
     icon: faEnvelope,
+  },
+  {
+    link: 'https://www.strava.com/athletes/ianrandman',
+    label: 'Strava',
+    icon: faStrava,
   },
 ];
 

@@ -31,8 +31,13 @@ import Main from '../layouts/Main';
 const Resume = () => (
   <Main
     title="Resume"
-    // description="Michael D'Angelo's Resume. Arthena, Matroid, YC, Skeptical Investments, Stanford ICME, Planet Labs, and Facebook."
+    // description="Ian Randman's Resume. Arthena, Matroid, YC, Skeptical Investments, Stanford ICME, Planet Labs, and Facebook."
   >
+    <header>
+      <div className="title">
+        <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
+      </div>
+    </header>
     {/*<embed src={{Pdf}} type="application/pdf"/>*/}
     {/*<Page pageNumber={1} />*/}
     <Document file="./Ian Randman Resume.pdf">
