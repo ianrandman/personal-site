@@ -35,7 +35,7 @@ const Resume = () => (
   >
     {/*<embed src={{Pdf}} type="application/pdf"/>*/}
     {/*<Page pageNumber={1} />*/}
-    <Document file="/Ian Randman Resume.pdf">
+    <Document file="./Ian Randman Resume.pdf">
       <Page pageNumber={1} />
     </Document>
     {/*<ReactPDF*/}
