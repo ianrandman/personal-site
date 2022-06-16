@@ -1,0 +1,3100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>waypoints</name>
+</Folder>
+<Folder><name>routes</name>
+  <Placemark>
+	<name>Florida to Alaska</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <LineString><coordinates>-81.75588,24.5535 -81.75608,24.55295 -81.75323,24.55299 -81.75301,24.55235 -81.75337,24.55224 -81.75334,24.55215 -81.75255,24.57027 -81.69111,24.58786 -81.69058,24.58793 -81.65028,24.59992 -81.65033,24.60001 -81.64807,24.60106 -81.64802,24.60102 -81.58101,24.63638 -81.543,24.65408 -81.53932,24.65516 -81.52273,24.65989 -81.52271,24.65976 -81.49784,24.66662 -81.49726,24.6665 -81.45813,24.66277 -81.44322,24.66193 -81.44322,24.6615 -81.44007,24.66126 -81.43986,24.66112 -81.41529,24.66036 -81.4153,24.66102 -81.40886,24.66238 -81.40869,24.66176 -81.40735,24.66205 -81.4073,24.66192 -81.40369,24.66288 -81.40177,24.6633 -81.39759,24.66418 -81.39522,24.66468 -81.37414,24.66913 -81.36834,24.66985 -81.36834,24.66992 -81.35147,24.66971 -81.33998,24.66953 -81.33856,24.6654 -81.34031,24.66508 -81.29948,24.65518 -81.29871,24.65543 -81.25189,24.66954 -81.24753,24.67162 -81.24659,24.67203 -81.23355,24.6798 -81.12293,24.70715 -81.12298,24.70728 -80.9541,24.76038 -80.95395,24.76021 -80.94175,24.76927 -80.9419,24.76946 -80.94095,24.77015 -80.94006,24.77079 -80.9399,24.77063 -80.92521,24.77654 -80.92356,24.77699 -80.91857,24.77878 -80.91862,24.77889 -80.9116,24.78142 -80.90539,24.78349 -80.90545,24.78361 -80.88813,24.78968 -80.88809,24.7896 -80.84879,24.80363 -80.81301,24.82646 -80.81302,24.82655 -80.76574,24.83629 -80.76567,24.83647 -80.72473,24.85887 -80.70584,24.8705 -80.70268,24.87334 -80.69461,24.88041 -80.69261,24.88143 -80.69253,24.88129 -80.66535,24.89503 -80.66015,24.89767 -80.65855,24.8984 -80.6586,24.89847 -80.63037,24.92251 -80.63025,24.92235 -80.61435,24.93605 -80.60591,24.94347 -80.59132,24.95076 -80.59138,24.95091 -80.57261,24.95837 -80.57251,24.95806 -80.56974,24.95931 -80.56984,24.95957 -80.54468,24.98544 -80.53616,25.00164 -80.53351,25.00287 -80.53345,25.00254 -80.53314,25.00255 -80.51688,25.00932 -80.49268,25.04248 -80.4457,25.08997 -80.43798,25.09664 -80.38973,25.15238 -80.37401,25.17118 -80.37381,25.17144 -80.37273,25.1727 -80.38035,25.17929 -80.38322,25.18141 -80.44423,25.28686 -80.44224,25.28722 -80.44139,25.28739 -80.52357,25.40814 -80.50134,25.41846 -80.49326,25.41844 -80.49326,25.42945 -80.49331,25.43682 -80.48534,25.44779 -80.47929,25.44777 -80.47472,25.47206 -80.47739,25.47349 -80.47743,25.47714 -80.47758,25.49177 -80.47772,25.49177 -80.48108,25.76013 -80.4812,25.76014 -80.48124,25.76106 -80.50239,25.76102 -80.50238,25.76166 -80.44139,25.94199 -80.44022,25.94263 -80.44365,26.06075 -80.43362,26.05964 -80.43366,26.06266 -80.4334,26.06266 -80.43446,26.06328 -80.43445,26.06179 -80.44352,26.06211 -80.43861,26.13029 -80.44261,26.14865 -80.44219,26.14985 -80.44803,26.1765 -80.29852,26.22924 -80.29851,26.22996 -80.29688,26.23317 -80.29296,26.23329 -80.29298,26.23308 -80.28507,26.23494 -80.28465,26.23453 -80.28259,26.23481 -80.28212,26.23529 -80.28023,26.23403 -80.28029,26.23392 -80.28018,26.23389 -80.28221,26.22589 -80.27929,26.2243 -80.28102,26.21993 -80.28102,26.21993 -80.27929,26.22429 -80.26048,26.22399 -80.25922,26.22274 -80.25273,26.22501 -80.25285,26.2295 -80.25254,26.22955 -80.23687,26.22988 -80.23682,26.22989 -80.222,26.22996 -80.22195,26.22995 -80.22152,26.2299 -80.22097,26.2281 -80.22085,26.2281 -80.2214,26.25302 -80.21012,26.25398 -80.21043,26.25841 -80.20147,26.25861 -80.20402,26.63588 -80.20224,26.68023 -80.19496,26.68008 -80.14901,26.67869 -80.14536,26.67853 -80.14134,26.67847 -80.125,26.67814 -80.1212,26.67799 -80.12025,26.67798 -80.11944,26.70328 -80.11335,26.70317 -80.11338,26.70575 -80.11206,26.70576 -80.11204,26.70654 -80.1119,26.70654 -80.1119,26.70678 -80.11099,26.70676 -80.10511,26.83817 -80.09314,26.84412 -80.09444,26.84143 -80.09338,26.93408 -80.08072,26.93386 -80.10004,27.00374 -80.10288,27.00352 -80.10778,26.99921 -80.11586,27.01852 -80.1127,27.0182 -80.11105,27.02257 -80.11037,27.02322 -80.10875,27.02455 -80.32579,27.345 -80.32586,27.42521 -80.32549,27.42529 -80.32549,27.42536 -80.32587,27.42602 -80.38344,27.60829 -80.38346,27.65137 -80.36749,27.65329 -80.36046,27.6533 -80.55716,28.06838 -80.56571,28.0684 -80.5985,28.13849 -80.6261,28.13084 -80.64071,28.15768 -80.68821,28.15725 -80.68838,28.16468 -80.71416,28.22211 -80.72194,28.32412 -80.71726,28.32458 -80.80761,28.60803 -80.80914,28.60799 -80.80909,28.61259 -80.81208,28.61259 -80.84356,28.6592 -80.84335,28.65921 -80.84929,28.66842 -80.86105,28.68816 -80.87952,28.71712 -81.13598,28.84565 -81.13598,28.84579 -81.15974,28.84645 -81.15972,28.84546 -81.1607,28.84561 -81.25599,28.86954 -81.25596,28.8696 -81.27795,28.87192 -81.27799,28.87203 -81.28516,28.87164 -81.29413,28.8694 -81.29412,28.86927 -81.31147,28.86708 -81.31471,28.86645 -81.31714,28.86591 -81.31705,28.86609 -81.32305,28.84114 -81.32288,28.84109 -81.32357,28.83383 -81.32348,28.8339 -81.31979,28.83219 -81.32294,28.82824 -81.32293,28.8119 -81.32689,28.8119 -81.32691,28.81172 -81.34158,28.81139 -81.34807,28.80825 -81.3557,28.7936 -81.35826,28.79368 -81.40561,28.7926 -81.40567,28.80748 -81.40548,28.81467 -81.41285,28.81523 -81.42621,28.81504 -81.42624,28.81579 -81.46559,28.81354 -81.46907,28.81445 -81.4863,28.81519 -81.49246,28.81508 -81.51094,28.81216 -81.52022,28.81407 -81.62276,28.79716 -81.62514,28.79845 -81.62549,28.80774 -81.64478,28.80785 -81.64483,28.81516 -81.6577,28.82219 -81.65768,28.82389 -81.87336,28.81555 -81.87349,28.81318 -81.8875,28.81653 -81.88817,28.81675 -81.91641,28.82019 -81.91646,28.81223 -81.96811,28.82332 -81.96774,28.82524 -81.9679,28.82524 -81.97135,28.82913 -81.96762,28.83047 -81.96483,28.83447 -81.96511,28.83638 -81.96553,28.83655 -81.96556,28.83872 -81.96575,28.84578 -81.96505,28.84857 -81.96328,28.86319 -81.95973,28.8651 -81.9642,28.87097 -81.9647,28.8707 -81.96472,28.87055 -81.96615,28.87077 -81.96735,28.88409 -81.96885,28.89511 -81.96778,28.90262 -81.96883,28.90727 -81.96935,28.90714 -81.98082,28.91985 -81.98818,28.91981 -81.99603,28.92366 -81.99946,28.92627 -82.00069,28.92668 -82.00044,28.93103 -82.00067,28.93246 -82.00098,28.93282 -82.0009,28.95074 -82.00155,28.9551 -82.00256,28.95725 -82.00468,28.96266 -82.00515,28.9634 -82.01581,28.96989 -82.01798,28.97621 -82.01821,28.97653 -82.01662,28.98108 -82.01654,28.98115 -82.01692,28.98207 -82.02051,28.98203 -82.02055,29.00757 -82.00988,29.00754 -82.00867,29.01125 -82.01192,29.01568 -82.0113,29.01599 -82.01195,29.01767 -82.01196,29.01787 -82.00772,29.02051 -82.00799,29.02099 -82.00419,29.02499 -82.00876,29.02761 -82.01,29.02762</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>tracks</name>
+</Folder>
+<Folder><name>route_points</name>
+  <Placemark>
+	<name>Start</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">0</SimpleData>
+		<SimpleData name="cmt">Start of route</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75588,24.5535</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">1</SimpleData>
+		<SimpleData name="cmt">Turn left onto Nancy Cherry Lane</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75608,24.55295</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">2</SimpleData>
+		<SimpleData name="cmt">Turn right onto Stickney Lane</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75323,24.55299</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">3</SimpleData>
+		<SimpleData name="cmt">Turn right onto South Roosevelt Boulevard, FL A1A</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75301,24.55235</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">4</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75337,24.55224</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">5</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75334,24.55215</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Sharp Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">6</SimpleData>
+		<SimpleData name="cmt">Turn sharp right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.75255,24.57027</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">7</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.69111,24.58786</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">8</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.69058,24.58793</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">9</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.65028,24.59992</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">10</SimpleData>
+		<SimpleData name="cmt">Turn right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.65033,24.60001</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">11</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.64807,24.60106</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">12</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.64802,24.60102</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">13</SimpleData>
+		<SimpleData name="cmt">Continue onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.58101,24.63638</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">14</SimpleData>
+		<SimpleData name="cmt">Keep right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.543,24.65408</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">15</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.53932,24.65516</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">16</SimpleData>
+		<SimpleData name="cmt">Turn right onto Johnson Road</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.52273,24.65989</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">17</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.52271,24.65976</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">18</SimpleData>
+		<SimpleData name="cmt">Continue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.49784,24.66662</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">19</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.49726,24.6665</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">20</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.45813,24.66277</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">21</SimpleData>
+		<SimpleData name="cmt">Turn right onto Horace Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.44322,24.66193</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">22</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.44322,24.6615</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">23</SimpleData>
+		<SimpleData name="cmt">Keep right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.44007,24.66126</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">24</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.43986,24.66112</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">25</SimpleData>
+		<SimpleData name="cmt">Turn left onto Mako Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.41529,24.66036</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">26</SimpleData>
+		<SimpleData name="cmt">Turn right onto Old State Road 4A</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.4153,24.66102</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">27</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40886,24.66238</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">28</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40869,24.66176</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">29</SimpleData>
+		<SimpleData name="cmt">Turn right onto Indies Road</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40735,24.66205</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">30</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.4073,24.66192</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">31</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40369,24.66288</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">32</SimpleData>
+		<SimpleData name="cmt">Keep right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40177,24.6633</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">33</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.39759,24.66418</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">34</SimpleData>
+		<SimpleData name="cmt">Keep right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.39522,24.66468</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">35</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.37414,24.66913</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">36</SimpleData>
+		<SimpleData name="cmt">Turn left onto Ships Way</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.36834,24.66985</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">37</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.36834,24.66992</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">38</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Avenue A</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.35147,24.66971</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">39</SimpleData>
+		<SimpleData name="cmt">Turn right onto Warner Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.33998,24.66953</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Sharp Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">40</SimpleData>
+		<SimpleData name="cmt">Turn sharp right onto Beach Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.33856,24.6654</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">41</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.34031,24.66508</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">42</SimpleData>
+		<SimpleData name="cmt">Keep right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.29948,24.65518</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">43</SimpleData>
+		<SimpleData name="cmt">Keep left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.29871,24.65543</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">44</SimpleData>
+		<SimpleData name="cmt">Keep left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.25189,24.66954</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">45</SimpleData>
+		<SimpleData name="cmt">Continue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.24753,24.67162</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">46</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.24659,24.67203</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">47</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.23355,24.6798</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">48</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.12293,24.70715</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">49</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.12298,24.70728</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">50</SimpleData>
+		<SimpleData name="cmt">Turn right onto Guava Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.9541,24.76038</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">51</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.95395,24.76021</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">52</SimpleData>
+		<SimpleData name="cmt">Turn left onto County Road</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.94175,24.76927</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">53</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.9419,24.76946</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">54</SimpleData>
+		<SimpleData name="cmt">Continue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.94095,24.77015</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">55</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.94006,24.77079</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">56</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.9399,24.77063</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">57</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.92521,24.77654</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">58</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.92356,24.77699</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">59</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.91857,24.77878</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">60</SimpleData>
+		<SimpleData name="cmt">Turn right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.91862,24.77889</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">61</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.9116,24.78142</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">62</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.90539,24.78349</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">63</SimpleData>
+		<SimpleData name="cmt">Turn right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.90545,24.78361</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">64</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.88813,24.78968</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">65</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.88809,24.7896</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">66</SimpleData>
+		<SimpleData name="cmt">Keep right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.84879,24.80363</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">67</SimpleData>
+		<SimpleData name="cmt">Turn left onto South Layton Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.81301,24.82646</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">68</SimpleData>
+		<SimpleData name="cmt">Turn right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.81302,24.82655</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">69</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.76574,24.83629</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">70</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.76567,24.83647</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">71</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Old US Hwy 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.72473,24.85887</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">72</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.70584,24.8705</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">73</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.70268,24.87334</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">74</SimpleData>
+		<SimpleData name="cmt">Continue onto Old US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.69461,24.88041</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">75</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.69261,24.88143</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">76</SimpleData>
+		<SimpleData name="cmt">Turn left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.69253,24.88129</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">77</SimpleData>
+		<SimpleData name="cmt">Keep left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.66535,24.89503</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">78</SimpleData>
+		<SimpleData name="cmt">Turn slight left onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.66015,24.89767</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">79</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.65855,24.8984</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">80</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.6586,24.89847</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">81</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.63037,24.92251</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">82</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.63025,24.92235</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">83</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.61435,24.93605</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">84</SimpleData>
+		<SimpleData name="cmt">Turn right onto Old Highway</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.60591,24.94347</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">85</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.59132,24.95076</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">86</SimpleData>
+		<SimpleData name="cmt">Turn right onto Overseas Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.59138,24.95091</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">87</SimpleData>
+		<SimpleData name="cmt">Turn right onto Old Overseas Highway</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.57261,24.95837</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">88</SimpleData>
+		<SimpleData name="cmt">Turn left onto Old Overseas Highway</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.57251,24.95806</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">89</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.56974,24.95931</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">90</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.56984,24.95957</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">91</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.54468,24.98544</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">92</SimpleData>
+		<SimpleData name="cmt">Keep right onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.53616,25.00164</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">93</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.53351,25.00287</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">94</SimpleData>
+		<SimpleData name="cmt">Turn left onto Old Highway</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.53345,25.00254</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">95</SimpleData>
+		<SimpleData name="cmt">Keep left onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.53314,25.00255</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">96</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.51688,25.00932</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">97</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.49268,25.04248</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">98</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.4457,25.08997</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">99</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43798,25.09664</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">100</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Keys Overseas Heritage Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.38973,25.15238</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">101</SimpleData>
+		<SimpleData name="cmt">Keep right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.37401,25.17118</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">102</SimpleData>
+		<SimpleData name="cmt">Turn slight right onto CR 905</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.37381,25.17144</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">103</SimpleData>
+		<SimpleData name="cmt">Turn left onto Coral Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.37273,25.1727</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">104</SimpleData>
+		<SimpleData name="cmt">Keep right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.38035,25.17929</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">105</SimpleData>
+		<SimpleData name="cmt">At roundabout, take exit 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.38322,25.18141</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">106</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44423,25.28686</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">107</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44224,25.28722</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">108</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southern Glades Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44139,25.28739</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">109</SimpleData>
+		<SimpleData name="cmt">Turn right onto Ingraham Highway, FL 9336</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.52357,25.40814</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">110</SimpleData>
+		<SimpleData name="cmt">Continue onto Southwest 376th Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.50134,25.41846</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">111</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southwest 187th Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.49326,25.41844</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">112</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southwest 187th Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.49326,25.42945</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">113</SimpleData>
+		<SimpleData name="cmt">Turn right onto Southwest 356th Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.49331,25.43682</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Sharp Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">114</SimpleData>
+		<SimpleData name="cmt">Turn sharp right onto Southwest 344th Street, FL 9336</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.48534,25.44779</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">115</SimpleData>
+		<SimpleData name="cmt">Turn left onto South Dade Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47929,25.44777</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">116</SimpleData>
+		<SimpleData name="cmt">Turn left onto Northeast Civic Court</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47472,25.47206</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">117</SimpleData>
+		<SimpleData name="cmt">Turn right onto Southwest 177th Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47739,25.47349</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">118</SimpleData>
+		<SimpleData name="cmt">Continue onto Southwest 177th Avenue, FL 997</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47743,25.47714</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">119</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southwest 296th Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47758,25.49177</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">120</SimpleData>
+		<SimpleData name="cmt">Turn right onto Krome Path</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.47772,25.49177</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">121</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.48108,25.76013</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">122</SimpleData>
+		<SimpleData name="cmt">Turn right onto Southwest 177th Avenue, FL 997</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.4812,25.76014</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">123</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southwest 8th Street, US 41</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.48124,25.76106</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">124</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.50239,25.76102</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">125</SimpleData>
+		<SimpleData name="cmt">Turn right onto L-29, L-29</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.50238,25.76166</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">126</SimpleData>
+		<SimpleData name="cmt">Turn right onto L-30, L-30</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44139,25.94199</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">127</SimpleData>
+		<SimpleData name="cmt">Turn left onto L-33, L-33</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44022,25.94263</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">128</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44365,26.06075</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">129</SimpleData>
+		<SimpleData name="cmt">Turn left onto US 27</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43362,26.05964</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">130</SimpleData>
+		<SimpleData name="cmt">Turn right onto Southwest 45th Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43366,26.06266</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">131</SimpleData>
+		<SimpleData name="cmt">Continue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.4334,26.06266</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">132</SimpleData>
+		<SimpleData name="cmt">Turn left onto US 27</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43446,26.06328</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">133</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43445,26.06179</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">134</SimpleData>
+		<SimpleData name="cmt">Turn right onto L-37, L-37</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44352,26.06211</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">135</SimpleData>
+		<SimpleData name="cmt">Turn left onto US 27</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.43861,26.13029</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">136</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44261,26.14865</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">137</SimpleData>
+		<SimpleData name="cmt">Turn left onto L-38E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44219,26.14985</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">138</SimpleData>
+		<SimpleData name="cmt">Turn right onto L-35B, L-35B</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.44803,26.1765</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">139</SimpleData>
+		<SimpleData name="cmt">Turn left onto Conservation Levee Greenway L-36, L-36</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.29852,26.22924</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">140</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.29851,26.22996</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">141</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.29688,26.23317</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">142</SimpleData>
+		<SimpleData name="cmt">Turn right onto Lakeview Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.29296,26.23329</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">143</SimpleData>
+		<SimpleData name="cmt">Turn left onto West Atlantic Boulevard, CR 814</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.29298,26.23308</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">144</SimpleData>
+		<SimpleData name="cmt">Turn right onto Northwest 119th Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28507,26.23494</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">145</SimpleData>
+		<SimpleData name="cmt">Turn left onto Northwest 2nd Manor</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28465,26.23453</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">146</SimpleData>
+		<SimpleData name="cmt">Turn left onto Northwest 2nd Court</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28259,26.23481</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">147</SimpleData>
+		<SimpleData name="cmt">Turn right onto Riverside Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28212,26.23529</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">148</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28023,26.23403</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Sharp Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">149</SimpleData>
+		<SimpleData name="cmt">Turn sharp left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28029,26.23392</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">150</SimpleData>
+		<SimpleData name="cmt">Turn right onto Coral Ridge Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28018,26.23389</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">151</SimpleData>
+		<SimpleData name="cmt">Turn left onto Northwest 81st Street</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28221,26.22589</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">152</SimpleData>
+		<SimpleData name="cmt">Turn right onto Northwest 96th Avenue</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.27929,26.2243</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">153</SimpleData>
+		<SimpleData name="cmt">Turn right onto Yardley Drive</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28102,26.21993</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">154</SimpleData>
+		<SimpleData name="cmt">Turn left onto NW 96th Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.28102,26.21993</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">155</SimpleData>
+		<SimpleData name="cmt">Turn right onto NW 81st St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.27929,26.22429</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">156</SimpleData>
+		<SimpleData name="cmt">Continue onto NW 80th Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.26048,26.22399</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">157</SimpleData>
+		<SimpleData name="cmt">Turn left onto NW 82nd St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.25922,26.22274</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">158</SimpleData>
+		<SimpleData name="cmt">Turn left onto N University Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.25273,26.22501</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">159</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.25285,26.2295</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">160</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.25254,26.22955</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">161</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.23687,26.22988</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">162</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.23682,26.22989</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">163</SimpleData>
+		<SimpleData name="cmt">Slight left toward Rock Island Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.222,26.22996</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">164</SimpleData>
+		<SimpleData name="cmt">Slight left toward Rock Island Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.22195,26.22995</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">165</SimpleData>
+		<SimpleData name="cmt">Turn right onto Rock Island Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.22152,26.2299</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">166</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southgate Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.22097,26.2281</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">167</SimpleData>
+		<SimpleData name="cmt">Turn left onto Rock Island Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.22085,26.2281</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">168</SimpleData>
+		<SimpleData name="cmt">Turn right onto Royal Palm Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.2214,26.25302</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">169</SimpleData>
+		<SimpleData name="cmt">Turn left onto NW 63rd Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.21012,26.25398</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">170</SimpleData>
+		<SimpleData name="cmt">Turn right onto Winfield Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.21043,26.25841</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">171</SimpleData>
+		<SimpleData name="cmt">Turn left onto US-441 N/​N State Rd 7</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.20147,26.25861</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">172</SimpleData>
+		<SimpleData name="cmt">Continue onto US-441 N/​S State Rd 7</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.20402,26.63588</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">173</SimpleData>
+		<SimpleData name="cmt">Turn right onto the ramp to US-98</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.20224,26.68023</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">174</SimpleData>
+		<SimpleData name="cmt">Merge onto US-98</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.19496,26.68008</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">175</SimpleData>
+		<SimpleData name="cmt">Take the Jog Road ramp</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.14901,26.67869</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">176</SimpleData>
+		<SimpleData name="cmt">Take the FL-80 E/​US-98 E/​South Blvd ramp to I-95</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.14536,26.67853</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">177</SimpleData>
+		<SimpleData name="cmt">Merge onto FL-80 E/​US-98/​Southern Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.14134,26.67847</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">178</SimpleData>
+		<SimpleData name="cmt">Take the Haverhill Rd exit toward Military Trail/​FL-809</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.125,26.67814</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">179</SimpleData>
+		<SimpleData name="cmt">Merge onto Southern Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.1212,26.67799</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">180</SimpleData>
+		<SimpleData name="cmt">Turn left onto Haverhill Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.12025,26.67798</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">181</SimpleData>
+		<SimpleData name="cmt">Turn right onto Elmhurst Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11944,26.70328</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">182</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11335,26.70317</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">183</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11338,26.70575</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">184</SimpleData>
+		<SimpleData name="cmt">Turn left toward FL-704 E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11206,26.70576</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">185</SimpleData>
+		<SimpleData name="cmt">Turn right toward FL-704 E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11204,26.70654</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">186</SimpleData>
+		<SimpleData name="cmt">Turn left toward FL-704 E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.1119,26.70654</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">187</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-704 E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.1119,26.70678</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">188</SimpleData>
+		<SimpleData name="cmt">Turn left onto FL-809 N/​N Military Trl</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11099,26.70676</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">189</SimpleData>
+		<SimpleData name="cmt">Turn right onto PGA Boulevard</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.10511,26.83817</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">190</SimpleData>
+		<SimpleData name="cmt">Slight right onto Lake Victoria Gardens Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.09314,26.84412</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">191</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-811 N/​FL A1AAlt N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.09444,26.84143</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">192</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-706 E/​E Indiantown Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.09338,26.93408</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">193</SimpleData>
+		<SimpleData name="cmt">Turn left onto US-1 N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.08072,26.93386</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">194</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE Jonathan Dickinson Way/​Park Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.10004,27.00374</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">195</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.10288,27.00352</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">196</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.10778,26.99921</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">197</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11586,27.01852</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">198</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.1127,27.0182</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">199</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11105,27.02257</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Slight Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">200</SimpleData>
+		<SimpleData name="cmt">Keep left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.11037,27.02322</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">201</SimpleData>
+		<SimpleData name="cmt">Turn left onto Southeast Federal Highway, US 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.10875,27.02455</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">202</SimpleData>
+		<SimpleData name="cmt">Continue onto US-1 N/​S US Hwy 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.32579,27.345</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">203</SimpleData>
+		<SimpleData name="cmt">Turn right onto Virginia Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.32586,27.42521</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">204</SimpleData>
+		<SimpleData name="cmt">Turn left toward US-1 N/​S US Hwy 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.32549,27.42529</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">205</SimpleData>
+		<SimpleData name="cmt">Turn left toward US-1 N/​S US Hwy 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.32549,27.42536</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">206</SimpleData>
+		<SimpleData name="cmt">Turn right onto US-1 N/​S US Hwy 1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.32587,27.42602</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">207</SimpleData>
+		<SimpleData name="cmt">Turn right onto Indian River Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.38344,27.60829</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">208</SimpleData>
+		<SimpleData name="cmt">Turn right onto Merrill P Barber Bridge</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.38346,27.65137</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">209</SimpleData>
+		<SimpleData name="cmt">Continue onto Beachland Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.36749,27.65329</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">210</SimpleData>
+		<SimpleData name="cmt">Turn left onto Florida A1A N/​S Hwy A1A</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.36046,27.6533</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">211</SimpleData>
+		<SimpleData name="cmt">Turn left onto S Hwy A1A/​Ocean Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.55716,28.06838</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">212</SimpleData>
+		<SimpleData name="cmt">Ocean Ave turns right and becomes Riverside Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.56571,28.0684</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">213</SimpleData>
+		<SimpleData name="cmt">Turn left onto FL-518 W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.5985,28.13849</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">214</SimpleData>
+		<SimpleData name="cmt">Turn right onto Pineapple Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.6261,28.13084</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">215</SimpleData>
+		<SimpleData name="cmt">Turn left onto Parkway Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.64071,28.15768</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">216</SimpleData>
+		<SimpleData name="cmt">Turn right onto Turtle Mound Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.68821,28.15725</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">217</SimpleData>
+		<SimpleData name="cmt">Slight left to stay on Turtle Mound Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.68838,28.16468</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">218</SimpleData>
+		<SimpleData name="cmt">Turn right onto Murrell Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.71416,28.22211</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">219</SimpleData>
+		<SimpleData name="cmt">Turn right onto Eyster Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.72194,28.32412</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">220</SimpleData>
+		<SimpleData name="cmt">Turn left onto US-1 N/​Rockledge Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.71726,28.32458</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">221</SimpleData>
+		<SimpleData name="cmt">Turn left onto South St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.80761,28.60803</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">222</SimpleData>
+		<SimpleData name="cmt">Turn right onto S Palm Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.80914,28.60799</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">223</SimpleData>
+		<SimpleData name="cmt">Turn left onto Main St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.80909,28.61259</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">224</SimpleData>
+		<SimpleData name="cmt">Turn right onto Canaveral Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.81208,28.61259</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">225</SimpleData>
+		<SimpleData name="cmt">Turn right onto Parker St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.84356,28.6592</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">226</SimpleData>
+		<SimpleData name="cmt">Turn left onto Broadway Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.84335,28.65921</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">227</SimpleData>
+		<SimpleData name="cmt">Turn right onto Folsom Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.84929,28.66842</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">228</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.86105,28.68816</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">229</SimpleData>
+		<SimpleData name="cmt">Continue onto Florida Coast to Coast Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-80.87952,28.71712</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">230</SimpleData>
+		<SimpleData name="cmt">Turn right onto Saturn Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.13598,28.84565</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">231</SimpleData>
+		<SimpleData name="cmt">Turn left onto Maytown Rd/​Osteen Maytown Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.13598,28.84579</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">232</SimpleData>
+		<SimpleData name="cmt">Turn left onto Oak St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.15974,28.84645</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">233</SimpleData>
+		<SimpleData name="cmt">Turn right onto E Central Regional Rail Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.15972,28.84546</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">234</SimpleData>
+		<SimpleData name="cmt">Continue straight to stay on E Central Regional Rail Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.1607,28.84561</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">235</SimpleData>
+		<SimpleData name="cmt">Turn right onto Jacob Brock Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.25599,28.86954</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">236</SimpleData>
+		<SimpleData name="cmt">Turn left onto E Central Regional Rail Trail/​Debary Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.25596,28.8696</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">237</SimpleData>
+		<SimpleData name="cmt">Turn right onto Maple Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.27795,28.87192</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">238</SimpleData>
+		<SimpleData name="cmt">Turn left onto Debary Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.27799,28.87203</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">239</SimpleData>
+		<SimpleData name="cmt">Continue onto Dirksen Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.28516,28.87164</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">240</SimpleData>
+		<SimpleData name="cmt">Turn left onto Spring-To-Spring Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.29413,28.8694</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">241</SimpleData>
+		<SimpleData name="cmt">Turn right to stay on Spring-To-Spring Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.29412,28.86927</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">242</SimpleData>
+		<SimpleData name="cmt">Turn left to stay on Spring-To-Spring Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.31147,28.86708</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">243</SimpleData>
+		<SimpleData name="cmt">Slight right to stay on Spring-To-Spring Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.31471,28.86645</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">244</SimpleData>
+		<SimpleData name="cmt">Turn right onto S Charles Richard Beall Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.31714,28.86591</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">245</SimpleData>
+		<SimpleData name="cmt">Make a U-turn at Dirksen Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.31705,28.86609</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">246</SimpleData>
+		<SimpleData name="cmt">Turn left onto Lake Monroe Park Cir</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32305,28.84114</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">247</SimpleData>
+		<SimpleData name="cmt">Turn right onto US-17 N/​US-92 E/​S Charles Richard Beall Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32288,28.84109</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">248</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32357,28.83383</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">249</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32348,28.8339</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">250</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.31979,28.83219</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">251</SimpleData>
+		<SimpleData name="cmt">Slight left at US-17/​US-92</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32294,28.82824</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">252</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32293,28.8119</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">253</SimpleData>
+		<SimpleData name="cmt">Turn left onto N Elder Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32689,28.8119</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">254</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-46/​W Florida 46</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.32691,28.81172</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">255</SimpleData>
+		<SimpleData name="cmt">Turn left onto Wayside Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.34158,28.81139</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">256</SimpleData>
+		<SimpleData name="cmt">Turn left onto International Pkwy</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.34807,28.80825</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">257</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.3557,28.7936</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">258</SimpleData>
+		<SimpleData name="cmt">Turn right onto Florida Trail/​Seminole Wekiva Trail</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.35826,28.79368</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">259</SimpleData>
+		<SimpleData name="cmt">Turn right onto Longwood Markham Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40561,28.7926</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">260</SimpleData>
+		<SimpleData name="cmt">Slight left to stay on Longwood Markham Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40567,28.80748</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">261</SimpleData>
+		<SimpleData name="cmt">At the traffic circle, take the 2nd exit onto W Florida 46</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.40548,28.81467</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">262</SimpleData>
+		<SimpleData name="cmt">At the traffic circle, continue straight onto FL-46 W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.41285,28.81523</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">263</SimpleData>
+		<SimpleData name="cmt">Turn right onto Wekiva River Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.42621,28.81504</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">264</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.42624,28.81579</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">265</SimpleData>
+		<SimpleData name="cmt">Continue straight onto Sleepy Bear Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.46559,28.81354</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">266</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.46907,28.81445</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">267</SimpleData>
+		<SimpleData name="cmt">Continue straight onto Cypress Mill Access Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.4863,28.81519</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">268</SimpleData>
+		<SimpleData name="cmt">Continue onto Cypress Mill Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.49246,28.81508</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">269</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-46 W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.51094,28.81216</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">270</SimpleData>
+		<SimpleData name="cmt">Turn left to stay on FL-46 W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.52022,28.81407</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">271</SimpleData>
+		<SimpleData name="cmt">Take the 441 N N ramp to Eustis/​Tavares</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.62276,28.79716</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">272</SimpleData>
+		<SimpleData name="cmt">Merge onto US-441 N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.62514,28.79845</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">273</SimpleData>
+		<SimpleData name="cmt">Turn left onto Lincoln Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.62549,28.80774</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">274</SimpleData>
+		<SimpleData name="cmt">Turn right onto N Donnelly St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.64478,28.80785</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">275</SimpleData>
+		<SimpleData name="cmt">Turn left onto Old Eustis Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.64483,28.81516</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">276</SimpleData>
+		<SimpleData name="cmt">Turn right onto E Crooked Lake Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.6577,28.82219</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">277</SimpleData>
+		<SimpleData name="cmt">Turn left onto US-441 N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.65768,28.82389</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">278</SimpleData>
+		<SimpleData name="cmt">Turn left onto N Canal St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.87336,28.81555</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">279</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.87349,28.81318</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">280</SimpleData>
+		<SimpleData name="cmt">Continue onto Benton St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.8875,28.81653</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">281</SimpleData>
+		<SimpleData name="cmt">Slight right to stay on Benton St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.88817,28.81675</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">282</SimpleData>
+		<SimpleData name="cmt">Turn left onto Co Rd 468</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.91641,28.82019</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">283</SimpleData>
+		<SimpleData name="cmt">Turn right onto FL-44 W/​W Main St</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.91646,28.81223</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">284</SimpleData>
+		<SimpleData name="cmt">Turn right onto John Michael Ct</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96811,28.82332</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">285</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96774,28.82524</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">286</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.9679,28.82524</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">287</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.97135,28.82913</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">288</SimpleData>
+		<SimpleData name="cmt">Turn left at Deskin Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96762,28.83047</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">289</SimpleData>
+		<SimpleData name="cmt">Turn left at Deskin Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96483,28.83447</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">290</SimpleData>
+		<SimpleData name="cmt">Take the pedestrian tunnel</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96511,28.83638</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">291</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96553,28.83655</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">292</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96556,28.83872</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">293</SimpleData>
+		<SimpleData name="cmt">Keep left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96575,28.84578</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">294</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96505,28.84857</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">295</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96328,28.86319</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">296</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.95973,28.8651</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">297</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.9642,28.87097</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">298</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.9647,28.8707</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">299</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96472,28.87055</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">300</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96615,28.87077</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">301</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96735,28.88409</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">302</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96885,28.89511</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">303</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96778,28.90262</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">304</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96883,28.90727</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">305</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.96935,28.90714</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">306</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.98082,28.91985</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">307</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.98818,28.91981</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">308</SimpleData>
+		<SimpleData name="cmt">Slight left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.99603,28.92366</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">309</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-81.99946,28.92627</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">310</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00069,28.92668</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">311</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00044,28.93103</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">312</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00067,28.93246</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">313</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00098,28.93282</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">314</SimpleData>
+		<SimpleData name="cmt">Continue straight</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.0009,28.95074</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">315</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00155,28.9551</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">316</SimpleData>
+		<SimpleData name="cmt">Turn right at Talley Ridge Dr</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00256,28.95725</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">317</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00468,28.96266</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">318</SimpleData>
+		<SimpleData name="cmt">Slight right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00515,28.9634</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">319</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01581,28.96989</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">320</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01798,28.97621</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">321</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01821,28.97653</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">322</SimpleData>
+		<SimpleData name="cmt">Turn right toward SE 165th Mulberry Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01662,28.98108</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">323</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 165th Mulberry Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01654,28.98115</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">324</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 165th St/​SE Hwy 42</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01692,28.98207</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">325</SimpleData>
+		<SimpleData name="cmt">Turn right onto SE 80th Ave</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.02051,28.98203</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">326</SimpleData>
+		<SimpleData name="cmt">Turn right onto SE 147th Pl/​SE Sunset Harbor Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.02055,29.00757</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">327</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 86th Ct</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00988,29.00754</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">328</SimpleData>
+		<SimpleData name="cmt">Turn left onto US-27 N/​US-441 N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00867,29.01125</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">329</SimpleData>
+		<SimpleData name="cmt">Turn right</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01192,29.01568</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">330</SimpleData>
+		<SimpleData name="cmt">Turn left</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.0113,29.01599</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">331</SimpleData>
+		<SimpleData name="cmt">Turn right toward Del Webb Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01195,29.01767</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Straight</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">332</SimpleData>
+		<SimpleData name="cmt">At the traffic circle, take the 1st exit onto Del Webb Blvd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01196,29.01787</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">333</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 87th Terrace</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00772,29.02051</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Right</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">334</SimpleData>
+		<SimpleData name="cmt">Turn right onto SE 140th Place Rd</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00799,29.02099</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">335</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 130th Loop</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00419,29.02499</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Left</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">336</SimpleData>
+		<SimpleData name="cmt">Turn left onto SE 133rd Ln</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.00876,29.02761</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>End</name>
+	<ExtendedData><SchemaData schemaUrl="#route_points">
+		<SimpleData name="route_fid">0</SimpleData>
+		<SimpleData name="route_point_id">337</SimpleData>
+		<SimpleData name="cmt">End of route</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-82.01,29.02762</coordinates></Point>
+  </Placemark>
+</Folder>
+<Folder><name>track_points</name>
+</Folder>
+<Schema name="routes" id="routes">
+	<SimpleField name="cmt" type="string"></SimpleField>
+	<SimpleField name="desc" type="string"></SimpleField>
+	<SimpleField name="src" type="string"></SimpleField>
+	<SimpleField name="link1_href" type="string"></SimpleField>
+	<SimpleField name="link1_text" type="string"></SimpleField>
+	<SimpleField name="link1_type" type="string"></SimpleField>
+	<SimpleField name="link2_href" type="string"></SimpleField>
+	<SimpleField name="link2_text" type="string"></SimpleField>
+	<SimpleField name="link2_type" type="string"></SimpleField>
+	<SimpleField name="number" type="int"></SimpleField>
+	<SimpleField name="type" type="string"></SimpleField>
+</Schema>
+<Schema name="route_points" id="route_points">
+	<SimpleField name="route_fid" type="int"></SimpleField>
+	<SimpleField name="route_point_id" type="int"></SimpleField>
+	<SimpleField name="ele" type="float"></SimpleField>
+	<SimpleField name="time" type="string"></SimpleField>
+	<SimpleField name="magvar" type="float"></SimpleField>
+	<SimpleField name="geoidheight" type="float"></SimpleField>
+	<SimpleField name="cmt" type="string"></SimpleField>
+	<SimpleField name="desc" type="string"></SimpleField>
+	<SimpleField name="src" type="string"></SimpleField>
+	<SimpleField name="link1_href" type="string"></SimpleField>
+	<SimpleField name="link1_text" type="string"></SimpleField>
+	<SimpleField name="link1_type" type="string"></SimpleField>
+	<SimpleField name="link2_href" type="string"></SimpleField>
+	<SimpleField name="link2_text" type="string"></SimpleField>
+	<SimpleField name="link2_type" type="string"></SimpleField>
+	<SimpleField name="sym" type="string"></SimpleField>
+	<SimpleField name="type" type="string"></SimpleField>
+	<SimpleField name="fix" type="string"></SimpleField>
+	<SimpleField name="sat" type="int"></SimpleField>
+	<SimpleField name="hdop" type="float"></SimpleField>
+	<SimpleField name="vdop" type="float"></SimpleField>
+	<SimpleField name="pdop" type="float"></SimpleField>
+	<SimpleField name="ageofdgpsdata" type="float"></SimpleField>
+	<SimpleField name="dgpsid" type="int"></SimpleField>
+</Schema>
+</Document></kml>

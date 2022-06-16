@@ -9,6 +9,10 @@ const routes = [
     path: '/about',
   },
   {
+    label: 'Route Map',
+    path: '/routeMap',
+  },
+  {
     label: 'Resume',
     path: '/resume',
   },

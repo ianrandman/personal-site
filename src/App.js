@@ -15,7 +15,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 // const Projects = lazy(() => import('./pages/Projects'));
-// const RouteMap = lazy(() => import('./pages/RouteMap'));
+const RouteMap = lazy(() => import('./pages/RouteMap'));
 const Resume = lazy(() => import('./pages/Resume'));
 // const Stats = lazy(() => import('./pages/Stats'));
 
@@ -25,7 +25,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Index} />
         <Route path="/about" component={About} />
-        {/*<Route path="/routeMap" component={RouteMap} />*/}
+        <Route path="/routeMap" component={RouteMap} />
         {/* <Route path="/stats" component={Stats} /> */}
         <Route path="/contact" component={Contact} />
         <Route path="/resume" component={Resume} />
