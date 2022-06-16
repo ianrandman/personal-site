@@ -1,7 +1,8 @@
 {
   "name": "personal-site",
   "version": "4.0.0",
-  "homepage": "https://ianrandman.com/",
+  "homepage": "https://ianrandman.com",
+  "proxy": "http://localhost:5000",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js"
   },
   "dependencies": {
+    "ol": "6.14.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -43,6 +45,7 @@
     "stream": "npm:stream-browserify@^3.0.0"
   },
   "devDependencies": {
+    "parcel": "^2.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.3",
     "babel-eslint": "^10.1.0",

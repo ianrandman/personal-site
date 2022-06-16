@@ -28,6 +28,8 @@ import Main from '../layouts/Main';
 //   'References',
 // ];
 
+const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
+
 const Resume = () => (
   <Main
     title="Resume"
@@ -40,7 +42,7 @@ const Resume = () => (
     </header>
     {/*<embed src={{Pdf}} type="application/pdf"/>*/}
     {/*<Page pageNumber={1} />*/}
-    <Document file="./Ian Randman Resume.pdf">
+    <Document file={`${PUBLIC_URL}/resume.pdf`}>
       <Page pageNumber={1} />
     </Document>
     {/*<ReactPDF*/}
