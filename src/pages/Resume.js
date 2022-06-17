@@ -40,36 +40,9 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    {/*<embed src={{Pdf}} type="application/pdf"/>*/}
-    {/*<Page pageNumber={1} />*/}
     <Document file={`${PUBLIC_URL}/resume.pdf`}>
       <Page pageNumber={1} />
     </Document>
-    {/*<ReactPDF*/}
-    {/*  file={{*/}
-    {/*    data: Pdf*/}
-    {/*  }}*/}
-    {/*/>*/}
-    {/*<article className="post" id="resume">*/}
-    {/*  <header>*/}
-    {/*    <div className="title">*/}
-    {/*      <h2 data-testid="heading"><Link to="resume">Resume</Link></h2>*/}
-    {/*      <div className="link-container">*/}
-    {/*        {sections.map((sec) => (*/}
-    {/*          <h4 key={sec}>*/}
-    {/*            <a href={`#${sec.toLowerCase()}`}>{sec}</a>*/}
-    {/*          </h4>))}*/}
-    {/*      </div>*/}
-
-    {/*    </div>*/}
-    {/*  </header>*/}
-    {/*  <Education data={degrees} />*/}
-    {/*  <Experience data={positions} />*/}
-    {/*  <Skills skills={skills} categories={categories} />*/}
-    {/*  <Courses data={courses} />*/}
-    {/*  <References />*/}
-
-    {/*</article>*/}
   </Main>
 );
 
