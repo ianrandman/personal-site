@@ -3,30 +3,23 @@ import json
 import os
 
 from api import config
+from util.selenium_utils import get_driver
 
 from seleniumwire import webdriver
 from seleniumwire.utils import decode
 
-
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-driver = webdriver.Chrome(executable_path=os.path.join(os.path.dirname(__file__), '..', 'chromedriver.exe'),
-                          chrome_options=options)
-
+count = 0
 
 def update_location():
     print('Updating location')
 
+    driver = get_driver()
     location_share_url = config['google_location_share_link']
     driver.get(location_share_url)
 
-    # site needs to redirect to have the location in the URL, but that takes time
-    # wait = WebDriverWait(driver, 10)
     try:
-        # wait.until(lambda d: len(d.current_url.split('/')[4]) > 1)
-
-        # need the inner request
-        request = [request for request in driver.requests if 'maps/rpc/locationsharing' in request.url][0]
+        # need the inner request that contains coordinates and timestamp
+        request = [request for request in driver.requests if 'maps/rpc/locationsharing' in request.url][-1]
         response = decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
         response = response.decode('utf-8')[5:]
         response = response.replace('null', '"null"')
@@ -44,7 +37,10 @@ def update_location():
 
         with open(os.path.join(os.path.dirname(__file__), '..', 'resources', 'location.json'), 'w') as fp:
             json.dump(lat_lon, fp)
+            print('Location Updated')
 
     except Exception:
         print('Could not get coordinates from URL. Current URL is:')
         print(driver.current_url)
+
+    driver.quit()
