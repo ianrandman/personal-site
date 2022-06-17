@@ -69,25 +69,6 @@ function getTimedelta(recordedTime) {
   return [hh, mm, ss, msec]
 }
 
-var map = new Map({
-  layers: [
-    new TileLayer({
-      source: new XYZ({
-        url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-      })
-    }),
-    route,
-    currentLocation
-  ],
-  view: new View({
-    center: [0, 0],
-    zoom: 2
-  }),
-  controls: [
-    new Zoom()
-    ]
-});
-
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
@@ -95,6 +76,25 @@ class RouteMap extends React.Component {
     this.state = {
       locationUrl: null
     };
+
+    this.map = new Map({
+      layers: [
+        new TileLayer({
+          source: new XYZ({
+            url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          })
+        }),
+        route,
+        currentLocation
+      ],
+      view: new View({
+        center: [0, 0],
+        zoom: 2
+      }),
+      controls: [
+        new Zoom()
+      ],
+    });
     // map.addLayer(route);
   }
 
@@ -127,11 +127,17 @@ class RouteMap extends React.Component {
         );
 
         this.setState({"locationUrl": jsonOutput.url});
+        this.map.setView(
+          new View({
+            center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
+            zoom: 10
+          })
+        )
       })
   }
 
   componentDidMount() {
-    map.setTarget("map");  // todo does not work after redirect
+    this.map.setTarget("map");
     this.getLocationFeature();
   }
 
@@ -145,7 +151,7 @@ class RouteMap extends React.Component {
             <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
           </div>
         </header>
-        {this.state.locationUrl && <a href={this.state.locationUrl}>Link to Location Share</a>}
+        {this.state.locationUrl && <a href={this.state.locationUrl} target="_blank">Link to Location Share</a>}
         <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
         <div id="map" style={{width: "100%", height: "500px"}}/>
       </Main>
