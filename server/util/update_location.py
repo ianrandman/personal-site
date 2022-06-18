@@ -2,7 +2,7 @@ import ast
 import json
 from time import sleep
 
-from selenium_utils import get_driver
+from .selenium_utils import get_driver
 
 from seleniumwire.utils import decode
 
@@ -43,9 +43,9 @@ def update_location():
             json.dump(lat_lon, fp)
             print('Location Updated')
 
-    except Exception:
-        print('Could not get coordinates from URL. Current URL is:')
-        print(driver.current_url)
+    except Exception as e:
+        print('Could not get location')
+        print(e)
 
     driver.quit()
 
