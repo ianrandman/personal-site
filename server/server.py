@@ -13,7 +13,12 @@ api = Api(app)  # api router
 
 # api.add_resource(StravaResource, '/strava')
 api.add_resource(LocationResource, '/location')
-api.add_resource(RouteResource, '/route')
+# api.add_resource(RouteResource, '/route')
+
+print("Starting location update job")
+scheduler = BackgroundScheduler()
+job = scheduler.add_job(update_location, 'interval', minutes=1, next_run_time=datetime.datetime.now())
+scheduler.start()
 
 
 @app.after_request
@@ -26,10 +31,5 @@ def after_request(response):
 
 
 if __name__ == '__main__':
-    print("Starting location update job")
-    scheduler = BackgroundScheduler()
-    job = scheduler.add_job(update_location, 'interval', minutes=1, next_run_time=datetime.datetime.now())
-    scheduler.start()
-
     print("Starting flask")
     app.run(debug=True, use_reloader=False),  # starts Flask
