@@ -1,14 +1,18 @@
 import ast
 import json
-import os
+from time import sleep
 
-from api import config
-from util.selenium_utils import get_driver
+from selenium_utils import get_driver
 
-from seleniumwire import webdriver
 from seleniumwire.utils import decode
 
-count = 0
+import os
+import yaml
+
+CONFIG_YAML_NAME = os.path.join(os.path.dirname(__file__), 'config.yml')
+with open(CONFIG_YAML_NAME, 'r') as file:
+    config = yaml.load(file, Loader=yaml.FullLoader)
+
 
 def update_location():
     print('Updating location')
@@ -44,3 +48,9 @@ def update_location():
         print(driver.current_url)
 
     driver.quit()
+
+
+if __name__ == '__main__':
+    while True:
+        update_location()
+        sleep(10)
