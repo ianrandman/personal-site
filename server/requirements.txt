@@ -1,5 +1,5 @@
 flask-restful==0.3.9
 flask==2.1.2
-selenium-wire==4.6.4
+selenium-wire==4.6.2
 APScheduler
 pyyaml

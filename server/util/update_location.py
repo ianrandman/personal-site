@@ -2,7 +2,7 @@ import ast
 import json
 from time import sleep
 
-from .selenium_utils import get_driver
+from util.selenium_utils import get_driver
 
 from seleniumwire.utils import decode
 
