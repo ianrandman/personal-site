@@ -1,5 +1,5 @@
 .idea/
-test/
+server/sensitive_info.yml
 
 # prefer npm over yarn
 yarn.lock

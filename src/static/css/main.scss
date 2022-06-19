@@ -5,6 +5,14 @@
 @import 'libs/mixins';
 @import 'libs/skel';
 
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
+.react-pdf__Page__canvas {
+	margin: auto;
+	//width: 100% !important;
+	//height: 100% !important;
+}
+
 // NOTE: This import was moved into index.html template
 // @import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900');
 

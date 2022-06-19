@@ -13,6 +13,10 @@ const routes = [
     path: '/routeMap',
   },
   {
+    label: 'Blog',
+    path: '/blog',
+  },
+  {
     label: 'Resume',
     path: '/resume',
   },
