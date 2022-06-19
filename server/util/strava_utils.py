@@ -8,7 +8,9 @@ import json
 import yaml
 from stravalib import Client
 
+from init_db import db
 from util import SENSITIVE_INFO_YAML_NAME
+from util.model import Activity, Media
 
 
 def load_sensitive_info():
@@ -18,88 +20,38 @@ def load_sensitive_info():
     return sensitive_info
 
 
-def test_api():
-    strava_access_token = load_sensitive_info()['strava_access_token']
-
-    response = requests.get(
-        url='https://www.strava.com/api/v3/athlete/activities?per_page=30',
-        headers={
-            'accept': 'application/json',
-            'authorization': f'Bearer {strava_access_token}'
-        }
-    )
-
-    if response.status_code == 401:
-        code = response.json()['errors'][0]['code']
-        authenticate(code)
-
-    x=1
-
-
-def get_access_token():
-    sensitive_info = load_sensitive_info()
-
-    strava_client_id = sensitive_info['strava_client_id']
-    strava_client_secret = sensitive_info['strava_client_secret']
-    strava_access_token = sensitive_info['strava_access_token']
-    strava_refresh_token = sensitive_info['strava_refresh_token']
-
-    r = requests.post(
-        url='https://www.strava.com/api/v3/oauth/token',
-        params={
-            'scope': 'activity:read_all'
-        },
-        data={
-            'client_id': strava_client_id,
-            'client_secret': strava_client_secret,
-            'refresh_token': strava_refresh_token,
-            'grant_type': 'refresh_token',
-            'f': 'json'
-        },
-        verify=False
-    )
-
-    access_token = r.json()['access_token']
-    return access_token
-
-
-def authenticate_old():
-    sensitive_info = load_sensitive_info()
-
-    # Make Strava auth API call with your
-    # client_code, client_secret and code
-    strava_client_id = sensitive_info['strava_client_id']
-    strava_client_secret = sensitive_info['strava_client_secret']
-    strava_access_token = sensitive_info['strava_access_token']
-    strava_refresh_token = sensitive_info['strava_refresh_token']
-
-    response = requests.post(
-        url='https://www.strava.com/api/v3/oauth/token',
-        data={
-            'client_id': strava_client_id,
-            'client_secret': strava_client_secret,
-            'code': 'cebb5969d4ed80862225399f927388f1cded6995',
-            'grant_type': 'authorization_code'
-        }
-    )
-
-    x=1
 ########################################
 client = Client()
 
 
-def test_client():
+def load_existing_strava_data():
     authenticate()
-    activities = client.get_activities(after=datetime(year=2022, month=6, day=6))  # June 1, 2022 todo
-    for activity in activities:
-        activity_dict = activity.to_dict()
-        activity_photos_list = get_activity_photos(activity_id=activity.id)
-        break
+    activities = client.get_activities(after=datetime(year=2022, month=6, day=1))  # June 1, 2022 todo
+    for activity_summary in activities:
+        activity = client.get_activity(activity_id=activity_summary.id)
 
-    x=1
+        activity_obj = Activity(
+            id=activity.id,
+            name=activity.name,
+            description=activity.description,
+            distance=activity.distance.num,
+            moving_time=str(activity.moving_time),
+            elapsed_time=str(activity.elapsed_time),
+            start_latlng=str(list(activity.end_latlng)),
+            end_latlng=str(list(activity.end_latlng)),
+            polyline=activity.map.polyline,
+            summary_polyline=activity.map.summary_polyline
+        )
+
+        media = get_activity_media(activity_id=activity.id)
+        activity_obj.media.extend(media)
+
+        db.session.add(activity_obj)
 
 
-def get_activity_photos(activity_id):
+def get_activity_media(activity_id):
+    media_list = list()
+
     response = requests.get(
         url=f'https://www.strava.com/api/v3/activities/{activity_id}/photos',
         params={
@@ -112,11 +64,34 @@ def get_activity_photos(activity_id):
         }
     )
 
-    response = response.json()
+    for media in response.json():
+        media_obj = Media(
+            id=media['unique_id'],
+            activity_id=media['activity_id'],
+            is_video=bool('video_url' in media),
+            video_url=media.get('video_url'),
+            small_image_url=media['urls']['100'],
+            location=str(media.get('location'))
+        )
+        media_list.append(media_obj)
 
-    photo_dict = dict()
+    response = requests.get(
+        url=f'https://www.strava.com/api/v3/activities/{activity_id}/photos',
+        params={
+            'photo_sources': True,
+            'size': 3000
+        },
+        headers={
+            'accept': 'application/json',
+            'authorization': f'Bearer {client.access_token}'
+        }
+    )
 
-    return {}
+    for media in response.json():
+        media_obj = next(item for item in media_list if item.id == media['unique_id'])
+        media_obj.large_image_url = media['urls']['3000']
+
+    return media_list
 
 
 def authenticate():
@@ -152,6 +127,7 @@ def authenticate():
         client.refresh_token = sensitive_info['strava_refresh_token']
         client.token_expires_at = strava_expires_at
 
+
 def one_time():
     sensitive_info = load_sensitive_info()
 
@@ -182,4 +158,4 @@ def second_time():
 
 
 if __name__ == '__main__':
-    test_client()
+    load_existing_strava_data()

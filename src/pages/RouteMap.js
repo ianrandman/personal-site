@@ -42,7 +42,7 @@ var currentLocation = new Vector({
   source: new SourceVector({
     features: [
       new Feature({
-        geometry: new Point(fromLonLat([-82.0192964, 29.0274272]))
+        geometry: new Point(fromLonLat([-81.797505, 24.546543]))
       })
     ]
   })

@@ -1,26 +1,20 @@
 import ast
-import json
 from time import sleep
 
 from selenium.webdriver.support.wait import WebDriverWait
 
+from init_db import db
+from util.model import LocationURL, Location
 from util.selenium_utils import get_driver
 
 from seleniumwire.utils import decode
-
-import os
-import yaml
-
-CONFIG_YAML_NAME = os.path.join(os.path.dirname(__file__), 'config.yml')
-with open(CONFIG_YAML_NAME, 'r') as file:
-    config = yaml.load(file, Loader=yaml.FullLoader)
 
 
 def update_location():
     print('Updating location')
 
     driver = get_driver()
-    location_share_url = config['google_location_share_link']
+    location_share_url = LocationURL.query.limit(1).all()[0].google_location_share_link
     driver.get(location_share_url)
     wait = WebDriverWait(driver, 10)
 
@@ -35,17 +29,27 @@ def update_location():
         lat_lon = response[0][0][1][1][1:][::-1]
         recorded_time = response[0][0][1][2]
 
-        # lat_lon = driver.current_url.split('/')[4][1:].split(',')[:2]
-        lat_lon = {
-            'lat': lat_lon[0],
-            'lon': lat_lon[1],
-            'recorded_time': recorded_time,
-            'url': location_share_url
-        }
+        current_location_obj = Location.query.limit(1).all()[0]
+        current_location_obj.lat = lat_lon[0]
+        current_location_obj.lon = lat_lon[1]
+        current_location_obj.recorded_time = recorded_time
+        current_location_obj.url = location_share_url
 
-        with open(os.path.join(os.path.dirname(__file__), '..', 'resources', 'location.json'), 'w') as fp:
-            json.dump(lat_lon, fp)
-            print('Location Updated')
+        db.session.commit()
+
+        print('Location updated')
+
+        # # lat_lon = driver.current_url.split('/')[4][1:].split(',')[:2]
+        # lat_lon = {
+        #     'lat': lat_lon[0],
+        #     'lon': lat_lon[1],
+        #     'recorded_time': recorded_time,
+        #     'url': location_share_url
+        # }
+        #
+        # with open(os.path.join(os.path.dirname(__file__), '..', 'resources', 'location.json'), 'w') as fp:
+        #     json.dump(lat_lon, fp)
+        #     print('Location Updated')
 
     except Exception as e:
         print('Could not get location')

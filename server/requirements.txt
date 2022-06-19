@@ -3,3 +3,4 @@ flask==2.1.2
 selenium-wire==4.6.2
 APScheduler
 pyyaml
+Flask-SQLAlchemy
