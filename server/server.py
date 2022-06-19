@@ -17,7 +17,7 @@ api.add_resource(LocationResource, '/location')
 
 print("Starting location update job")
 scheduler = BackgroundScheduler()
-job = scheduler.add_job(update_location, 'interval', minutes=1, next_run_time=datetime.datetime.now())
+job = scheduler.add_job(update_location, 'interval', seconds=15, next_run_time=datetime.datetime.now())  # todo reduce
 scheduler.start()
 
 

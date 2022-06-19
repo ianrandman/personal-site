@@ -26,7 +26,7 @@ def update_location():
 
     try:
         # need the inner request that contains coordinates and timestamp
-        wait.until(lambda d: any('maps/rpc/locationsharing' in request.url for request in d.requests))
+        wait.until(lambda d: len(d.current_url.split('/')[4]) > 1)
         request = [request for request in driver.requests if 'maps/rpc/locationsharing' in request.url][-1]
         response = decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
         response = response.decode('utf-8')[5:]
