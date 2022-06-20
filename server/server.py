@@ -18,6 +18,7 @@ api = Api(app)  # api router
 # db = SQLAlchemy(app)
 
 from api.maps import LocationResource
+from api.strava import StravaResource
 from util.update_location import update_location
 
 from init_db import db
@@ -34,8 +35,8 @@ def config_db():
     db.init_app(app)
 
 
-# api.add_resource(StravaResource, '/strava')
 api.add_resource(LocationResource, '/location')
+api.add_resource(StravaResource, '/strava')
 
 
 @app.after_request

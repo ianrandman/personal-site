@@ -19,7 +19,6 @@ def load_sensitive_info():
 
     return sensitive_info
 
-
 ########################################
 client = Client()
 
@@ -39,6 +38,7 @@ def load_existing_strava_data():
             elapsed_time=str(activity.elapsed_time),
             start_latlng=str(list(activity.end_latlng)),
             end_latlng=str(list(activity.end_latlng)),
+            start_date=int(activity.start_date.timestamp()),
             polyline=activity.map.polyline,
             summary_polyline=activity.map.summary_polyline
         )

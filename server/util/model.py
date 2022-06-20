@@ -10,6 +10,7 @@ class Activity(db.Model):
     elapsed_time = db.Column(db.Integer, nullable=False)
     start_latlng = db.Column(db.String(100), nullable=False)
     end_latlng = db.Column(db.String(100), nullable=False)
+    start_date = db.Column(db.Integer, nullable=False)
 
     polyline = db.Column(db.String(20000), nullable=False)
     summary_polyline = db.Column(db.String(20000), nullable=False)
@@ -27,6 +28,7 @@ class Activity(db.Model):
             elapsed_time=self.elapsed_time,
             start_latlng=self.start_latlng,
             end_latlng=self.end_latlng,
+            start_date=self.start_date,
             polyline=self.polyline,
             summary_polyline=self.summary_polyline,
             media=[m.json for m in self.media]

@@ -1,7 +1,6 @@
 from init_db import db
-from server import config_db
 from util.strava_utils import load_existing_strava_data
-from util.model import LocationURL, Activity, Location
+from util.model import LocationURL, Activity, Location, Media
 
 
 def populate_db():
@@ -27,12 +26,27 @@ def populate_db():
     db.session.commit()
 
 
+# def get_most_recent_activity():
+#     return Activity.query.order_by(Activity.start_date.desc()).limit(1)[0]
+def get_current_location():
+    return Location.query.limit(1)[0]
+
+
+def get_activity_by_num(num):
+    return Activity.query.order_by(Activity.start_date.asc())[num - 1]
+
+
+def get_activity_count():
+    return Activity.query.count()
+
+
 def test_db():
     activities = Activity.query.all()
     x=1
 
 
 if __name__ == '__main__':
-    # populate_db()
+    from server import config_db
     config_db()
+    # populate_db()
     test_db()

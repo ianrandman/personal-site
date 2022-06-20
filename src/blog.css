@@ -17,6 +17,16 @@
     max-width: 750px;
 }
 
+.Dropdown-root {
+    max-width: 100px;
+}
+
+.strava-iframe {
+    -o-object-fit: contain;
+    object-fit: contain;
+    height: 700px;
+}
+
 .carousel .control-prev.control-arrow:before,
 .carousel .control-next.control-arrow:before {
     display: none;
