@@ -2,7 +2,6 @@
   "name": "personal-site",
   "version": "4.0.0",
   "homepage": "https://ianrandman.com",
-  "proxy": "http://localhost:5000",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,7 +17,10 @@
     "start": "react-scripts start",
     "lint": "eslint $(git ls-files '*.js')",
     "test": "react-scripts test --watchAll=false",
-    "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js"
+    "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js",
+    "start:development": "env-cmd -f .env.development react-scripts start",
+    "start:production": "env-cmd -f .env.production react-scripts start",
+    "build:production": "env-cmd -f .env.production rimraf ./build && react-scripts build"
   },
   "dependencies": {
     "@bayer/ol-kit": "^1.20.0",
@@ -34,6 +36,7 @@
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
     "dayjs": "^1.11.3",
+    "env-cmd": "^10.1.0",
     "gh-pages": "^4.0.0",
     "ol": "^6.14.1",
     "prop-types": "^15.8.1",

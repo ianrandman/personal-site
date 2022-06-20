@@ -4,3 +4,5 @@ selenium-wire==4.6.2
 APScheduler
 pyyaml
 Flask-SQLAlchemy
+requests
+stravalib
