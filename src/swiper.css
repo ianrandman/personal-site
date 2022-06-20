@@ -1,0 +1,36 @@
+/*.carousel .thumb img {*/
+/*    width: 100% !important;*/
+/*    height: 100% !important;*/
+/*}*/
+
+.carousel .slide img {
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 300px;  /* change this to whatever you want */
+    max-width: 600px;  /* change this to whatever you want */
+    width: auto;
+    position: center;
+    margin: auto;
+}
+
+.carousel-root {
+    max-width: 750px;
+}
+
+.carousel .control-prev.control-arrow:before,
+.carousel .control-next.control-arrow:before {
+    display: none;
+}
+
+.hls {
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 300px;  /* change this to whatever you want */
+    /*width: auto;*/
+}
+
+/*.strava-embed-root {*/
+/*    -o-object-fit: contain;*/
+/*    object-fit: contain;*/
+/*    max-height: 300px;  !* change this to whatever you want *!*/
+/*}*/
