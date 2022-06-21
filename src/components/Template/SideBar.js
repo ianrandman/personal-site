@@ -20,17 +20,18 @@ const SideBar = () => (
     <section className="blurb">
       <h2>About</h2>
       <p>Hi, I&apos;m Ian.
-        I am a recent graduate of Rochester Institute of Technology with my bachelor&apos;s
-        in Software Engineering and my master&apos;s in Computer Science. I am interested in
+        I am a recent graduate of Rochester Institute of Technology with my
+        master&apos;s in Computer Science and bachelor&apos;s
+        in Software Engineering. I am interested in
         all things AI, computer vision, and autonomous vehicles.
         I am currently on a bike ride from Key West, FL to Prudhoe Bay, AK.
       </p>
       <ul className="actions">
         <li>
-          {!window.location.pathname.includes('/routeMap') ? <Link to="/routeMap" className="button">See the route</Link> : <Link to="/routeMap" className="button">About Me</Link>}
+          <Link to="/routeMap" className="button">See the route</Link>
         </li>
         <li>
-          {!window.location.pathname.includes('/blog') ? <Link to="/blog" className="button">See the ride</Link> : <Link to="/blog" className="button">About Me</Link>}
+          <Link to="/blog" className="button">See the ride</Link>
         </li>
       </ul>
     </section>

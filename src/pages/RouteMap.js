@@ -145,12 +145,17 @@ class RouteMap extends React.Component {
         console.log('Location got');
         fetchBackend('/location?do_refresh=True')
           .then(
-            response => response.json()
+            response => [response.json(), response.code]
           )
-          .then(jsonOutput => {
-            this.updateLocation(jsonOutput, false);
-            console.log('Location refreshed');
-          })
+          .then((jsonOutput1, code) => {
+            if (code === 200) {
+              this.updateLocation(jsonOutput1, false);
+              console.log('Location refreshed');
+            } else {
+              this.updateLocation(jsonOutput, false);
+              console.log('Location kept same');
+            }
+          });
       })
   }
 
