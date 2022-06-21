@@ -6,3 +6,4 @@ pyyaml
 Flask-SQLAlchemy
 requests
 stravalib
+Flask-Limiter

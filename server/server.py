@@ -3,6 +3,8 @@ import os
 
 from flask import Flask
 from flask_restful import Api
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 # from apscheduler.schedulers.background import BackgroundScheduler
 from api.admin import AdminResource
 
@@ -38,6 +40,12 @@ def config_db():
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
 api.add_resource(AdminResource, '/admin')
+
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["1 per second", "20 per minute"]
+)
 
 
 @app.after_request
