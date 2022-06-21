@@ -40,6 +40,12 @@ def get_activity_count():
     return Activity.query.count()
 
 
+def update_location_url(google_location_share_link):
+    location_url_obj = LocationURL.query.limit(1).all()[0]
+    location_url_obj.google_location_share_link = google_location_share_link
+    db.session.commit()
+
+
 def test_db():
     activities = Activity.query.all()
     x=1

@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from flask_restful import Api
 # from apscheduler.schedulers.background import BackgroundScheduler
+from api.admin import AdminResource
 
 app = Flask(__name__)  # create Flask instance
 
@@ -36,6 +37,7 @@ def config_db():
 
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
+api.add_resource(AdminResource, '/admin')
 
 
 @app.after_request
