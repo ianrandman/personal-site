@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 import Main from '../layouts/Main';
 import ReactHlsPlayer from 'react-hls-player';
 
-import '../main.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
+
+
+import '../blog.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactIcons from '../components/Contact/ContactIcons';

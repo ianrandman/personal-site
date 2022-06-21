@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 import React from 'react';
-import '../main.css';
+// import ReactPDF from '@react-pdf/renderer';
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 
 import { Link } from 'react-router-dom';
 
@@ -10,7 +11,6 @@ import Main from '../layouts/Main';
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
 
 import file from '../data/resume/resume.pdf'
-
 
 const Resume = () => (
   <Main
@@ -22,7 +22,9 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <iframe id="resume" src={file} width="825" allowTransparency="true" frameBorder="0" />
+    <Document file={file}>
+      <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
+    </Document>
   </Main>
 );
 

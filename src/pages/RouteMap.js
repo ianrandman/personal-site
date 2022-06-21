@@ -34,7 +34,7 @@ import { fetchBackend } from '../FetchConfig';
 
 var route = new VectorLayer({
   source: new VectorSource({
-    url: '/images/Florida_to_Alaska.kml',
+    url: '/Florida_to_Alaska.kml',
     format: new KML(),
   }),
 });
