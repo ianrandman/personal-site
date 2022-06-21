@@ -2,20 +2,12 @@ import datetime
 import os
 
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Api
 from apscheduler.schedulers.background import BackgroundScheduler
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)  # create Flask instance
 
 api = Api(app)  # api router
-
-# basedir = os.path.abspath(os.path.dirname(__file__))
-# app.config['SQLALCHEMY_DATABASE_URI'] =\
-#         'sqlite:///' + os.path.join(basedir, 'database.db')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# print('Connecting to db')
-# db = SQLAlchemy(app)
 
 from api.maps import LocationResource
 from api.strava import StravaResource
@@ -24,13 +16,14 @@ from util.update_location import update_location
 from init_db import db
 
 
+@app.before_first_request
 def config_db():
     basedir = os.path.abspath(os.path.dirname(__file__))
     app.config['SQLALCHEMY_DATABASE_URI'] =\
             'sqlite:///' + os.path.join(basedir, 'database.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     print('Connecting to db')
-    app.app_context().push()
+    # app.app_context().push()
     db.app = app
     db.init_app(app)
 
