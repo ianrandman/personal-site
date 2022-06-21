@@ -4,10 +4,10 @@ const routes = [
     label: 'Ian Randman',
     path: '/',
   },
-  {
-    label: 'About',
-    path: '/about',
-  },
+  // {
+  //   label: 'About',
+  //   path: '/about',
+  // },
   {
     label: 'Route Map',
     path: '/routeMap',

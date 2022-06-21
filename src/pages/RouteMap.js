@@ -59,7 +59,7 @@ const iconStyle = new Style({
 });
 
 function getTimedelta(recordedTime) {
-  var msec = new Date() - recordedTime;
+  var msec = (new Date().getTime()) - recordedTime;
   var hh = Math.floor(msec / 1000 / 60 / 60);
   msec -= hh * 1000 * 60 * 60;
   var mm = Math.floor(msec / 1000 / 60);

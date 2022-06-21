@@ -36,7 +36,7 @@ class Blog extends React.Component {
 
     this.state = {
       activity: null,
-      activity_num: -1,
+      activity_num: 0,
       activity_count: null,
     };
 
@@ -44,6 +44,24 @@ class Blog extends React.Component {
     this.getMedia = this.getMedia.bind(this);
     this.getActivity = this.getActivity.bind(this);
     this.updatePage = this.updatePage.bind(this);
+    this.getPreviousActivity = this.getPreviousActivity.bind(this);
+    this.getNextActivity = this.getNextActivity.bind(this);
+  }
+
+  getNextActivity() {
+    if (this.state.activity_num === (this.state.activity_count - 1)) {
+      this.getActivity(0);
+    } else {
+      this.getActivity(this.state.activity_num + 1);
+    }
+  }
+
+  getPreviousActivity() {
+    if (this.state.activity_num === 0) {
+      this.getActivity(this.state.activity_count - 1);
+    } else {
+      this.getActivity(this.state.activity_num - 1);
+    }
   }
 
   getActivity(activityNum) {
@@ -52,7 +70,8 @@ class Blog extends React.Component {
         response => response.json()
       )
       .then(jsonOutput => {
-          this.setState({activity: jsonOutput})
+          this.setState({activity: jsonOutput, activity_num: activityNum});
+          window.scrollTo(0, 0);
         }
       )
   }
@@ -143,6 +162,17 @@ class Blog extends React.Component {
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
             </div>
           </header>
+          <ul className="actions">
+            <li>
+              {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+              <button type="button" onClick={this.getPreviousActivity}>Previous</button>}
+            </li>
+            <li>
+              {(this.state.activity_num !== 0 &&
+                this.state.activity_num < this.state.activity_count) &&
+              <button type="button" onClick={this.getNextActivity}>Next</button>}
+            </li>
+          </ul>
           {this.state.activity &&
             <>
               <h3 data-testid="heading">{this.state.activity.name} ({(this.state.activity.distance / 1609).toFixed(1)} miles)</h3>
@@ -161,10 +191,22 @@ class Blog extends React.Component {
               {getStravaCode(this.state.activity.id)}
             </>
           }
+          <ul className="actions">
+            <li>
+              {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+              <button type="button" onClick={this.getPreviousActivity}>Previous</button>}
+            </li>
+            <li>
+              {(this.state.activity_num !== 0 &&
+                this.state.activity_num < this.state.activity_count) &&
+              <button type="button" onClick={this.getNextActivity}>Next</button>}
+            </li>
+          </ul>
           {this.state.activity_count &&
             <>
               <p>Select a day to view:</p>
-              <select id="mySelect" onChange={this.updatePage} defaultValue={this.state.activity_count}>
+              <select id="mySelect" onChange={this.updatePage}
+                      value={this.state.activity_num === 0 ? this.state.activity_count : this.state.activity_num}>
                 {Array.from({length: this.state.activity_count}, (_, i) => i + 1).map(
                   (value => <option value={value}>{value}</option>)
                 )}
