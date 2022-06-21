@@ -3,7 +3,7 @@ import os
 
 from flask import Flask
 from flask_restful import Api
-from apscheduler.schedulers.background import BackgroundScheduler
+# from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)  # create Flask instance
 
@@ -27,11 +27,11 @@ def config_db():
     db.app = app
     db.init_app(app)
 
-    print("Starting location update job")
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(update_location, 'interval', seconds=15,
-                      next_run_time=datetime.datetime.now())  # todo maybe reduce
-    scheduler.start()
+    # print("Starting location update job")
+    # scheduler = BackgroundScheduler()
+    # scheduler.add_job(update_location, 'interval', seconds=15,
+    #                   next_run_time=datetime.datetime.now())  # todo maybe reduce
+    # scheduler.start()
 
 
 api.add_resource(LocationResource, '/location')

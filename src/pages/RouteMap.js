@@ -75,7 +75,7 @@ class RouteMap extends React.Component {
     super(props);
     console.log("hi");
     this.state = {
-      locationUrl: null
+      locationUrl: null,
     };
 
     this.map = new Map({
@@ -99,41 +99,58 @@ class RouteMap extends React.Component {
     // map.addLayer(route);
   }
 
+  updateLocation(jsonOutput, refreshingLocation) {
+    console.log(jsonOutput.lat);
+    console.log(jsonOutput.lon);
+    console.log(jsonOutput.recorded_time);
+    this.setState(
+      {
+        "locationUrl": jsonOutput.url,
+      });
+    const refreshingLocationStr = refreshingLocation ? '\nAttempting to refresh location...' : '';
+
+    var timedelta = getTimedelta(jsonOutput.recorded_time);
+    iconStyle.setText(
+      new Text({
+        backgroundFill: new Fill({ color: "white" }),
+        offsetY: 20,
+        // padding: [0, 0, 0, 1000],
+        text: `${timedelta[0]}h, ${timedelta[1]}m, ${timedelta[2]}s ago${refreshingLocationStr}`}));
+
+    var pointFeature = new Feature({
+      geometry: new Point(fromLonLat([jsonOutput.lon, jsonOutput.lat]))
+    })
+    pointFeature.setStyle(iconStyle);
+
+    currentLocation.getSource().clear();
+    currentLocation.getSource().addFeature(
+      pointFeature
+    );
+
+    this.map.setView(
+      new View({
+        center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
+        zoom: 10
+      })
+    )
+  }
+
   getLocationFeature() {
-    fetchBackend('/location')
+    fetchBackend('/location?do_refresh=False')
       .then(
         response => response.json()
       )
       .then(jsonOutput => {
-        console.log(jsonOutput.lat);
-        console.log(jsonOutput.lon);
-        console.log(jsonOutput.recorded_time);
-
-        var timedelta = getTimedelta(jsonOutput.recorded_time);
-        iconStyle.setText(
-          new Text({
-            backgroundFill: new Fill({ color: "white" }),
-            offsetY: 20,
-            // padding: [0, 0, 0, 1000],
-            text: `${timedelta[0]}h, ${timedelta[1]}m, ${timedelta[2]}s ago`}));
-
-        var pointFeature = new Feature({
-          geometry: new Point(fromLonLat([jsonOutput.lon, jsonOutput.lat]))
-        })
-        pointFeature.setStyle(iconStyle);
-
-        currentLocation.getSource().clear();
-        currentLocation.getSource().addFeature(
-          pointFeature
-        );
-
-        this.setState({"locationUrl": jsonOutput.url});
-        this.map.setView(
-          new View({
-            center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
-            zoom: 10
+        this.updateLocation(jsonOutput, true);
+        console.log('Location got');
+        fetchBackend('/location?do_refresh=True')
+          .then(
+            response => response.json()
+          )
+          .then(jsonOutput => {
+            this.updateLocation(jsonOutput, false);
+            console.log('Location refreshed');
           })
-        )
       })
   }
 

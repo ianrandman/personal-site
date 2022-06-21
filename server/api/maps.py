@@ -1,12 +1,20 @@
+from flask import request
 from flask_restful import Resource
 
 from util.db_utils import get_current_location
+from util.update_location import update_location
 
 
 class LocationResource(Resource):
 
     def get(self):
+        args = request.args
+        do_refresh = eval(args.get('do_refresh'))
+
         try:
+            if do_refresh:
+                update_location()
+
             current_location_obj = get_current_location()
             lat_lon_time = current_location_obj.json
         except Exception:
