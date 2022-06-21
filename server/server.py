@@ -27,6 +27,12 @@ def config_db():
     db.app = app
     db.init_app(app)
 
+    print("Starting location update job")
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(update_location, 'interval', seconds=15,
+                      next_run_time=datetime.datetime.now())  # todo maybe reduce
+    scheduler.start()
+
 
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
@@ -42,13 +48,7 @@ def after_request(response):
 
 
 if __name__ == '__main__':
-    config_db()
-
-    print("Starting location update job")
-    scheduler = BackgroundScheduler()
-    job = scheduler.add_job(update_location, 'interval', seconds=15,
-                            next_run_time=datetime.datetime.now())  # todo reduce
-    scheduler.start()
+    # config_db()
 
     print("Starting flask")
     app.run(host='0.0.0.0', debug=True, use_reloader=False),  # starts Flask
