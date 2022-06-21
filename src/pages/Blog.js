@@ -14,7 +14,7 @@ import '../blog.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactIcons from '../components/Contact/ContactIcons';
-import fetchBackend from '../index';
+import { fetchBackend } from '../FetchConfig';
 
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
