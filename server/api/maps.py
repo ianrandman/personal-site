@@ -1,12 +1,14 @@
 from flask import request
 from flask_restful import Resource
 
+from init_db import limiter
 from util.db_utils import get_current_location
 from util.update_location import update_location
 
 
 class LocationResource(Resource):
 
+    @limiter.limit("1/second", override_defaults=False)
     def get(self):
         args = request.args
         do_refresh = eval(args.get('do_refresh'))

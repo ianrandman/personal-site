@@ -16,7 +16,7 @@ from api.maps import LocationResource
 from api.strava import StravaResource
 from util.update_location import update_location
 
-from init_db import db
+from init_db import db, limiter
 
 
 @app.before_first_request
@@ -29,6 +29,7 @@ def config_db():
     # app.app_context().push()
     db.app = app
     db.init_app(app)
+    limiter.init_app(app)
 
     # print("Starting location update job")
     # scheduler = BackgroundScheduler()
@@ -40,12 +41,6 @@ def config_db():
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
 api.add_resource(AdminResource, '/admin')
-
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["1 per second", "20 per minute"]
-)
 
 
 @app.after_request
