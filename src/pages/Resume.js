@@ -11,6 +11,8 @@ import Main from '../layouts/Main';
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
 
+import file from '../data/resume/resume.pdf'
+
 const Resume = () => (
   <Main
     title="Resume"
@@ -21,7 +23,7 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <Document file={`${PUBLIC_URL}/resume.pdf`}>
+    <Document file={file}>
       <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
     </Document>
   </Main>
