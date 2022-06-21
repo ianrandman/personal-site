@@ -2,8 +2,7 @@
 
 import React from 'react';
 // import ReactPDF from '@react-pdf/renderer';
-import { Document, pdfjs, Page } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 
 import { Link } from 'react-router-dom';
 
