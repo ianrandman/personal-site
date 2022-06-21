@@ -17,6 +17,7 @@ import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 import { Fill, Icon, Style, Text } from 'ol/style';
 import { Link } from 'react-router-dom';
+import fetchBackend from '../index';
 
 // var mapp = new Map({
 //   view: new View({
@@ -99,7 +100,7 @@ class RouteMap extends React.Component {
   }
 
   getLocationFeature() {
-    fetch('/location')
+    fetchBackend('/location')
       .then(
         response => response.json()
       )

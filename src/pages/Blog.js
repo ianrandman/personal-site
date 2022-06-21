@@ -14,6 +14,7 @@ import '../blog.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactIcons from '../components/Contact/ContactIcons';
+import fetchBackend from '../index';
 
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
@@ -46,7 +47,7 @@ class Blog extends React.Component {
   }
 
   getActivity(activityNum) {
-    fetch(`/strava?request_type=activity_by_num&activity_num=${activityNum}`)
+    fetchBackend(`/strava?request_type=activity_by_num&activity_num=${activityNum}`)
       .then(
         response => response.json()
       )
@@ -57,7 +58,7 @@ class Blog extends React.Component {
   }
 
   getActivityCount() {
-    fetch(`/strava?request_type=activity_count`)
+    fetchBackend(`/strava?request_type=activity_count`)
       .then(
         response => response.json()
       )
