@@ -23,30 +23,41 @@ def load_sensitive_info():
 client = Client()
 
 
-def load_existing_strava_data():
+def load_existing_strava_data(only_new=False):
     authenticate()
     activities = client.get_activities(after=datetime(year=2022, month=6, day=1))  # June 1, 2022 todo
+    if only_new:
+        db_activities = Activity.query.all()
+        db_activity_ids = [activity.id for activity in db_activities]
+        activities = [activity for activity in activities if activity.id not in db_activity_ids]
+
     for activity_summary in activities:
-        activity = client.get_activity(activity_id=activity_summary.id)
+        get_activity_and_insert(activity_summary.id)
 
-        activity_obj = Activity(
-            id=activity.id,
-            name=activity.name,
-            description=activity.description,
-            distance=activity.distance.num,
-            moving_time=str(activity.moving_time),
-            elapsed_time=str(activity.elapsed_time),
-            start_latlng=str(list(activity.end_latlng)),
-            end_latlng=str(list(activity.end_latlng)),
-            start_date=int(activity.start_date.timestamp()),
-            polyline=activity.map.polyline,
-            summary_polyline=activity.map.summary_polyline
-        )
 
-        media = get_activity_media(activity_id=activity.id)
-        activity_obj.media.extend(media)
+def get_activity_and_insert(activity_id, authenticated=True):
+    if not authenticated:
+        authenticate()
+    activity = client.get_activity(activity_id=activity_id)
 
-        db.session.add(activity_obj)
+    activity_obj = Activity(
+        id=activity.id,
+        name=activity.name,
+        description=activity.description,
+        distance=activity.distance.num,
+        moving_time=str(activity.moving_time),
+        elapsed_time=str(activity.elapsed_time),
+        start_latlng=str(list(activity.end_latlng)),
+        end_latlng=str(list(activity.end_latlng)),
+        start_date=int(activity.start_date.timestamp()),
+        polyline=activity.map.polyline,
+        summary_polyline=activity.map.summary_polyline
+    )
+
+    media = get_activity_media(activity_id=activity.id)
+    activity_obj.media.extend(media)
+
+    db.session.add(activity_obj)
 
 
 def get_activity_media(activity_id):

@@ -4,7 +4,7 @@ from init_db import db
 class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(10000), nullable=False)
+    description = db.Column(db.String(10000), nullable=True)
     distance = db.Column(db.Float, nullable=False)
     moving_time = db.Column(db.Integer, nullable=False)
     elapsed_time = db.Column(db.Integer, nullable=False)
@@ -15,7 +15,7 @@ class Activity(db.Model):
     polyline = db.Column(db.String(20000), nullable=False)
     summary_polyline = db.Column(db.String(20000), nullable=False)
 
-    media = db.relationship('Media', backref='media', lazy=False)
+    media = db.relationship('Media', backref='media', lazy=False, cascade="all, delete-orphan")
 
     @property
     def json(self):

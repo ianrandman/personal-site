@@ -1,6 +1,42 @@
 from init_db import db
-from util.strava_utils import load_existing_strava_data
+from util.strava_utils import load_existing_strava_data, get_activity_and_insert
 from util.model import LocationURL, Activity, Location, Media
+
+
+def fetch_new_strava_activities():
+    load_existing_strava_data(only_new=True)
+    db.session.commit()
+
+
+def update_strava_activity(activity_id):
+    activity_obj = Activity.query.filter_by(id=activity_id).first()
+    db.session.delete(activity_obj)
+    get_activity_and_insert(activity_id, authenticated=False)
+    db.session.commit()
+
+
+def delete_strava_activity(activity_id):
+    activity_obj = Activity.query.filter_by(id=activity_id).first()
+    db.session.delete(activity_obj)
+    db.session.commit()
+
+
+def get_current_location():
+    return Location.query.limit(1)[0]
+
+
+def get_activity_by_num(num):
+    return Activity.query.order_by(Activity.start_date.asc())[num - 1]
+
+
+def get_activity_count():
+    return Activity.query.count()
+
+
+def update_location_url(google_location_share_link):
+    location_url_obj = LocationURL.query.limit(1).all()[0]
+    location_url_obj.google_location_share_link = google_location_share_link
+    db.session.commit()
 
 
 def populate_db():
@@ -26,26 +62,6 @@ def populate_db():
     db.session.commit()
 
 
-# def get_most_recent_activity():
-#     return Activity.query.order_by(Activity.start_date.desc()).limit(1)[0]
-def get_current_location():
-    return Location.query.limit(1)[0]
-
-
-def get_activity_by_num(num):
-    return Activity.query.order_by(Activity.start_date.asc())[num - 1]
-
-
-def get_activity_count():
-    return Activity.query.count()
-
-
-def update_location_url(google_location_share_link):
-    location_url_obj = LocationURL.query.limit(1).all()[0]
-    location_url_obj.google_location_share_link = google_location_share_link
-    db.session.commit()
-
-
 def test_db():
     activities = Activity.query.all()
     x=1
@@ -54,5 +70,5 @@ def test_db():
 if __name__ == '__main__':
     from server import config_db
     config_db()
-    # populate_db()
+    populate_db()
     test_db()

@@ -2,9 +2,10 @@ from flask import request
 from flask_restful import Resource
 
 from init_db import db
-from util.db_utils import get_activity_count, get_activity_by_num, get_current_location, update_location_url
+from util.db_utils import get_activity_count, get_activity_by_num, get_current_location, update_location_url, \
+    fetch_new_strava_activities, update_strava_activity, delete_strava_activity
 from util.model import LocationURL
-from util.strava_utils import load_sensitive_info
+from util.strava_utils import load_sensitive_info, load_existing_strava_data
 from util.update_location import update_location
 
 
@@ -29,12 +30,15 @@ class AdminResource(Resource):
                 update_location_url(google_location_share_link)
                 update_location()
             elif request_type == 'fetch_new_strava_activities':
-                pass
+                fetch_new_strava_activities()
             elif request_type == 'update_strava_activity':
-                pass
-        except Exception:
+                update_strava_activity(strava_activity_id)
+            elif request_type == 'delete_strava_activity':
+                delete_strava_activity(strava_activity_id)
+        except Exception as e:
             return {
-                'success': False
+                'success': False,
+                'reason': str(e)
             }
 
         return {
