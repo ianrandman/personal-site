@@ -27,6 +27,13 @@
     height: 700px;
 }
 
+#resume {
+    -o-object-fit: contain;
+    object-fit: contain;
+    height: 1100px;
+    background: #FFFFFF;
+}
+
 .carousel .control-prev.control-arrow:before,
 .carousel .control-next.control-arrow:before {
     display: none;

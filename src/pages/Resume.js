@@ -1,19 +1,14 @@
 /* eslint-disable */
 
 import React from 'react';
-// import ReactPDF from '@react-pdf/renderer';
-import { Document, Page, pdfjs } from "react-pdf";
+import '../main.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
-
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
 
-import file from '../data/resume/resume.pdf'
 
 const Resume = () => (
   <Main
@@ -25,9 +20,7 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <Document file={file}>
-      <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
-    </Document>
+    <iframe id="resume" src="/resume.pdf#toolbar=0" width="825" allowTransparency="true" frameBorder="0" />
   </Main>
 );
 
