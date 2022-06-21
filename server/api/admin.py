@@ -27,13 +27,31 @@ class AdminResource(Resource):
 
         try:
             if request_type == 'update_google_location_share_link':
+                if google_location_share_link is None or google_location_share_link == '':
+                    return {
+                        'success': False,
+                        'reason': 'no google share link supplied'
+                    }
+
                 update_location_url(google_location_share_link)
                 update_location()
             elif request_type == 'fetch_new_strava_activities':
                 fetch_new_strava_activities()
             elif request_type == 'update_strava_activity':
+                if strava_activity_id is None or strava_activity_id == '':
+                    return {
+                        'success': False,
+                        'reason': 'no strava activity id supplied'
+                    }
+
                 update_strava_activity(strava_activity_id)
             elif request_type == 'delete_strava_activity':
+                if strava_activity_id is None or strava_activity_id == '':
+                    return {
+                        'success': False,
+                        'reason': 'no strava activity id supplied'
+                    }
+
                 delete_strava_activity(strava_activity_id)
         except Exception as e:
             return {
