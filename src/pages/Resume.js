@@ -9,6 +9,8 @@ import Main from '../layouts/Main';
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
 
+import file from '../data/resume/resume.pdf'
+
 
 const Resume = () => (
   <Main
@@ -20,7 +22,7 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <iframe id="resume" src="/resume.pdf#toolbar=0" width="825" allowTransparency="true" frameBorder="0" />
+    <iframe id="resume" src={file} width="825" allowTransparency="true" frameBorder="0" />
   </Main>
 );
 
