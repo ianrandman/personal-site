@@ -23,7 +23,8 @@ const Index = () => (
         my <Link to="/routeMap">route and current location</Link>,
         or you can check out my {' '}
         <Link to="/resume">resume</Link>, {' '}
-        or <Link to="/contact">contact</Link> me.
+        or <Link to="/contact">contact</Link> me. You can
+        also read more <Link to="/about">about me</Link>.
       </p>
     </article>
   </Main>

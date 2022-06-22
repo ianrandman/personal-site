@@ -171,6 +171,7 @@ class Blog extends React.Component {
           {this.state.activity &&
             <>
               <h3 data-testid="heading">{this.state.activity.name} ({(this.state.activity.distance / 1609).toFixed(1)} miles)</h3>
+              <h4>{new Date(this.state.activity.start_date * 1000).toDateString()}</h4>
               <div>
                 <Carousel
                   dynamicHeight={true}
