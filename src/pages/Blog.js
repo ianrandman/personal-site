@@ -155,6 +155,7 @@ class Blog extends React.Component {
     return (
       <Main
         title='Blog'
+
       >
         <article className="post" id="blog">
           <header>
@@ -162,17 +163,11 @@ class Blog extends React.Component {
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
             </div>
           </header>
-          <ul className="actions">
-            <li>
-              {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
-              <button type="button" onClick={this.getPreviousActivity}>Previous</button>}
-            </li>
-            <li>
-              {(this.state.activity_num !== 0 &&
-                this.state.activity_num < this.state.activity_count) &&
-              <button type="button" onClick={this.getNextActivity}>Next</button>}
-            </li>
-          </ul>
+          {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>}
+          {(this.state.activity_num !== 0 &&
+            this.state.activity_num < this.state.activity_count) &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>}
           {this.state.activity &&
             <>
               <h3 data-testid="heading">{this.state.activity.name} ({(this.state.activity.distance / 1609).toFixed(1)} miles)</h3>
@@ -191,17 +186,11 @@ class Blog extends React.Component {
               {getStravaCode(this.state.activity.id)}
             </>
           }
-          <ul className="actions">
-            <li>
-              {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
-              <button type="button" onClick={this.getPreviousActivity}>Previous</button>}
-            </li>
-            <li>
-              {(this.state.activity_num !== 0 &&
-                this.state.activity_num < this.state.activity_count) &&
-              <button type="button" onClick={this.getNextActivity}>Next</button>}
-            </li>
-          </ul>
+          {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>}
+          {(this.state.activity_num !== 0 &&
+            this.state.activity_num < this.state.activity_count) &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>}
           {this.state.activity_count &&
             <>
               <p>Select a day to view:</p>

@@ -22,9 +22,10 @@
 }
 
 .strava-iframe {
-    -o-object-fit: contain;
-    object-fit: contain;
-    height: 700px;
+    /*-o-object-fit: contain;*/
+    /*object-fit: contain;*/
+    display: block;
+    height: 550px;
 }
 
 .carousel .control-prev.control-arrow:before,
