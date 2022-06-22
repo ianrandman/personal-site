@@ -14,5 +14,5 @@ def limiter_helper():
 db = SQLAlchemy()
 limiter = Limiter(
     key_func=limiter_helper,
-    default_limits=['20 per minute']
+    default_limits=['100 per minute']
 )
