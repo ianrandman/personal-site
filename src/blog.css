@@ -13,6 +13,24 @@
     margin: auto;
 }
 
+.instagram-image {
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 300px;  /* change this to whatever you want */
+    max-width: 600px;  /* change this to whatever you want */
+    width: auto;
+    position: center;
+    margin: auto;
+}
+
+.dog-image {
+    max-width: inherit;
+    max-height: inherit;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 .carousel-root {
     max-width: 750px;
 }

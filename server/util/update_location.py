@@ -56,9 +56,3 @@ def update_location():
         print(e)
 
     driver.quit()
-
-
-if __name__ == '__main__':
-    while True:
-        update_location()
-        sleep(10)

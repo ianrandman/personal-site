@@ -6,6 +6,7 @@ from util.db_utils import get_activity_count, get_activity_by_num, get_current_l
     fetch_new_strava_activities, update_strava_activity, delete_strava_activity
 from util.model import LocationURL
 from util.strava_utils import load_sensitive_info, load_existing_strava_data
+from util.update_instagram import update_instagram_highlight
 from util.update_location import update_location
 
 
@@ -53,6 +54,15 @@ class AdminResource(Resource):
                     }
 
                 delete_strava_activity(strava_activity_id)
+            elif request_type == 'refresh_instagram_highlight':
+                url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171?externalId' \
+                      '=undefined&username=ianrandman&userId=404288793 '
+                success = update_instagram_highlight(url)
+                if not success:
+                    return {
+                        'success': False,
+                        'reason': url
+                    }
         except Exception as e:
             return {
                 'success': False,

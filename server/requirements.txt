@@ -7,3 +7,4 @@ Flask-SQLAlchemy
 requests
 stravalib
 Flask-Limiter
+fake-headers

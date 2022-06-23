@@ -1,6 +1,7 @@
 from init_db import db
 from util.strava_utils import load_existing_strava_data, get_activity_and_insert
-from util.model import LocationURL, Activity, Location, Media
+from util.model import LocationURL, Activity, Location, Media, InstagramHighlight
+from util.update_instagram import update_instagram_highlight
 
 
 def fetch_new_strava_activities():
@@ -25,6 +26,10 @@ def get_current_location():
     return Location.query.limit(1)[0]
 
 
+def get_instagram_highlight():
+    return InstagramHighlight.query.limit(1).all()[0]
+
+
 def get_activity_by_num(num):
     return Activity.query.order_by(Activity.start_date.asc())[num - 1]
 
@@ -43,7 +48,7 @@ def populate_db():
     db.drop_all()
     db.create_all()
     # db.metadata.create_all(db.engine, tables=[
-    #     Location.__table__
+    #     InstagramHighlight.__table__
     # ])
 
     location_share_obj = LocationURL(google_location_share_link='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9')
@@ -60,6 +65,13 @@ def populate_db():
     load_existing_strava_data()
 
     db.session.commit()
+
+    instagram_highlight_obj = InstagramHighlight(json=dict())
+    db.session.add(instagram_highlight_obj)
+    db.session.commit()
+    url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171?externalId' \
+          '=undefined&username=ianrandman&userId=404288793 '
+    update_instagram_highlight(url)
 
 
 def test_db():

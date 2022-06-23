@@ -17,6 +17,10 @@ const routes = [
     path: '/blog',
   },
   {
+    label: 'Instagram',
+    path: '/instagram',
+  },
+  {
     label: 'Resume',
     path: '/resume',
   },

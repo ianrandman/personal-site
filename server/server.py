@@ -14,7 +14,7 @@ api = Api(app)  # api router
 
 from api.maps import LocationResource
 from api.strava import StravaResource
-from util.update_location import update_location
+from api.instagram import InstagramResource
 
 from init_db import db, limiter
 
@@ -40,6 +40,7 @@ def config_db():
 
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
+api.add_resource(InstagramResource, '/instagram')
 api.add_resource(AdminResource, '/admin')
 
 
