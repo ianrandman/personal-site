@@ -30,12 +30,8 @@ def get_instagram_highlight():
     return InstagramHighlight.query.limit(1).all()[0]
 
 
-def get_activity_by_num(num):
-    return Activity.query.order_by(Activity.start_date.asc())[num - 1]
-
-
-def get_activity_count():
-    return Activity.query.count()
+def get_activities():
+    return Activity.query.order_by(Activity.start_date.asc()).all()
 
 
 def update_location_url(google_location_share_link):

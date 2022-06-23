@@ -35,65 +35,60 @@ class Blog extends React.Component {
     super(props);
 
     this.state = {
-      activity: null,
-      activity_num: 0,
+      activities: null,
+      activity_num: null,
       activity_count: null,
     };
 
+    this._carousel = React.createRef();
+
     this.getThumbs = this.getThumbs.bind(this);
     this.getMedia = this.getMedia.bind(this);
-    this.getActivity = this.getActivity.bind(this);
+    this.getActivities = this.getActivities.bind(this);
     this.updatePage = this.updatePage.bind(this);
     this.getPreviousActivity = this.getPreviousActivity.bind(this);
     this.getNextActivity = this.getNextActivity.bind(this);
+    this.getActivity = this.getActivity.bind(this);
   }
 
   getNextActivity() {
-    if (this.state.activity_num === (this.state.activity_count - 1)) {
-      this.getActivity(0);
-    } else {
-      this.getActivity(this.state.activity_num + 1);
-    }
+    this.getActivity(this.state.activity_num + 1)
+    // this.setState({activity_num: this.state.activity_num + 1});
+    // window.scrollTo(0, 0);
+    // // this._carousel.setSelectedItem(0);
   }
 
   getPreviousActivity() {
-    if (this.state.activity_num === 0) {
-      this.getActivity(this.state.activity_count - 1);
-    } else {
-      this.getActivity(this.state.activity_num - 1);
-    }
+    this.getActivity(this.state.activity_num - 1)
+    // this.setState({activity_num: this.state.activity_num - 1});
+    // window.scrollTo(0, 0);
+    // this._carousel.current.moveTo(0);
   }
 
   getActivity(activityNum) {
-    fetchBackend(`/strava?request_type=activity_by_num&activity_num=${activityNum}`)
-      .then(
-        response => response.json()
-      )
-      .then(jsonOutput => {
-          this.setState({activity: jsonOutput, activity_num: activityNum});
-          window.scrollTo(0, 0);
-        }
-      )
+    this.setState({ activity_num: activityNum });
+    window.scrollTo(0, 0);
+    this._carousel.current.moveTo(0);
   }
 
-  getActivityCount() {
-    fetchBackend(`/strava?request_type=activity_count`)
+  getActivities() {
+    fetchBackend(`/strava`)
       .then(
         response => response.json()
       )
       .then(jsonOutput => {
-          this.setState({activity_count: jsonOutput.activity_count})
+        this.setState({activities: jsonOutput, activity_num: jsonOutput.length - 1});
+        // console.log(this.state.activities);
         }
       )
   }
 
   componentDidMount() {
-    this.getActivity(0);
-    this.getActivityCount();
+    this.getActivities();
   }
 
   getThumbs() {
-    return this.state.activity.media.map((mediaDict) => {
+    return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
         if (mediaDict.is_video) {
           return (
             <div>
@@ -103,7 +98,7 @@ class Blog extends React.Component {
         }
       }
     ).concat(
-      this.state.activity.media.map((mediaDict) => {
+      this.state.activities[this.state.activity_num].media.map((mediaDict) => {
           if (!mediaDict.is_video) {
             return (
               <div>
@@ -117,7 +112,7 @@ class Blog extends React.Component {
   }
 
   getMedia() {
-    return this.state.activity.media.map((mediaDict) => {
+    return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
         if (mediaDict.is_video) {
           return (
             <div>
@@ -134,7 +129,7 @@ class Blog extends React.Component {
       }
     )
       .concat(
-        this.state.activity.media.map((mediaDict) => {
+        this.state.activities[this.state.activity_num].media.map((mediaDict) => {
             if (!mediaDict.is_video) {
               return (
                 <div>
@@ -163,15 +158,14 @@ class Blog extends React.Component {
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
             </div>
           </header>
-          {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+          {this.state.activities && this.state.activity_num > 0 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
-          {(this.state.activity_num !== 0 &&
-            this.state.activity_num < this.state.activity_count) &&
+          {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
-          {this.state.activity &&
+          {this.state.activities &&
             <>
-              <h3 data-testid="heading">{this.state.activity.name} ({(this.state.activity.distance / 1609).toFixed(1)} miles)</h3>
-              <h4>{new Date(this.state.activity.start_date * 1000).toDateString()}</h4>
+              <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609).toFixed(1)} miles)</h3>
+              <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
               <div>
                 <Carousel
                   dynamicHeight={true}
@@ -179,26 +173,26 @@ class Blog extends React.Component {
                   infiniteLoop={true}
                   showArrows={false}
                   showStatus={false}
+                  ref={this._carousel}
                 >
                   {this.getMedia()}
                 </Carousel>
               </div>
-              <p>{this.state.activity.description}</p>
-              {getStravaCode(this.state.activity.id)}
+              <p>{this.state.activities[this.state.activity_num].description}</p>
+              {getStravaCode(this.state.activities[this.state.activity_num].id)}
             </>
           }
-          {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
+          {this.state.activities && this.state.activity_num > 0 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
-          {(this.state.activity_num !== 0 &&
-            this.state.activity_num < this.state.activity_count) &&
+          {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
-          {this.state.activity_count &&
+          {this.state.activities &&
             <>
               <h3>Select a day to view:</h3>
               <select id="mySelect" onChange={this.updatePage}
-                      value={this.state.activity_num === 0 ? this.state.activity_count : this.state.activity_num}>
-                {Array.from({length: this.state.activity_count}, (_, i) => i + 1).map(
-                  (value => <option value={value}>Day {value}</option>)
+                      value={this.state.activity_num}>
+                {Array.from(Array(this.state.activities.length).keys()).reverse().map(
+                  (value => <option value={value}>{this.state.activities[value].name}</option>)
                 )}
               </select>
             </>

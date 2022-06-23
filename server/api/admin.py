@@ -1,11 +1,9 @@
 from flask import request
 from flask_restful import Resource
 
-from init_db import db
-from util.db_utils import get_activity_count, get_activity_by_num, get_current_location, update_location_url, \
+from util.db_utils import update_location_url, \
     fetch_new_strava_activities, update_strava_activity, delete_strava_activity
-from util.model import LocationURL
-from util.strava_utils import load_sensitive_info, load_existing_strava_data
+from util.strava_utils import load_sensitive_info
 from util.update_instagram import update_instagram_highlight
 from util.update_location import update_location
 
