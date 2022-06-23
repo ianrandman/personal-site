@@ -183,7 +183,7 @@ class RouteMap extends React.Component {
             <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
           </div>
         </header>
-        {this.state.locationUrl && <a href={this.state.locationUrl} target="_blank">Link to Location Share</a>}
+        {this.state.locationUrl && <a href={this.state.locationUrl} className="button" target="_blank">Link to Google Location Share</a>}
         <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
         <div id="map" style={{width: "100%", height: "500px"}}/>
       </Main>

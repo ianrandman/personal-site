@@ -164,10 +164,10 @@ class Blog extends React.Component {
             </div>
           </header>
           {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
           {(this.state.activity_num !== 0 &&
             this.state.activity_num < this.state.activity_count) &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
           {this.state.activity &&
             <>
               <h3 data-testid="heading">{this.state.activity.name} ({(this.state.activity.distance / 1609).toFixed(1)} miles)</h3>
@@ -188,17 +188,17 @@ class Blog extends React.Component {
             </>
           }
           {((this.state.activity_num > 1 || this.state.activity_num === 0) && this.state.activity_count > 1) &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
           {(this.state.activity_num !== 0 &&
             this.state.activity_num < this.state.activity_count) &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
           {this.state.activity_count &&
             <>
-              <p>Select a day to view:</p>
+              <h3>Select a day to view:</h3>
               <select id="mySelect" onChange={this.updatePage}
                       value={this.state.activity_num === 0 ? this.state.activity_count : this.state.activity_num}>
                 {Array.from({length: this.state.activity_count}, (_, i) => i + 1).map(
-                  (value => <option value={value}>{value}</option>)
+                  (value => <option value={value}>Day {value}</option>)
                 )}
               </select>
             </>
