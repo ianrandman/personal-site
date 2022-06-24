@@ -20,6 +20,7 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
+    <a href="/resume.pdf" className="button" download="Ian_Randman_Resume.pdf">Download</a>
     <Document file={"/resume.pdf"}>
       <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
     </Document>
