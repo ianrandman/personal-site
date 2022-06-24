@@ -41,3 +41,4 @@ const App = () => (
 );
 
 export default App;
+export const AppContext = React.createContext('default');

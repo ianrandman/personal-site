@@ -33,12 +33,17 @@ function getStravaCode(activityId) {
 class Blog extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
 
     this.state = {
       activities: null,
       activity_num: null,
       activity_count: null,
     };
+
+    if (props.location.state) {
+      this.state.activity_num = props.location.state.activity_num;
+    }
 
     this._carousel = React.createRef();
 
@@ -53,16 +58,10 @@ class Blog extends React.Component {
 
   getNextActivity() {
     this.getActivity(this.state.activity_num + 1)
-    // this.setState({activity_num: this.state.activity_num + 1});
-    // window.scrollTo(0, 0);
-    // // this._carousel.setSelectedItem(0);
   }
 
   getPreviousActivity() {
     this.getActivity(this.state.activity_num - 1)
-    // this.setState({activity_num: this.state.activity_num - 1});
-    // window.scrollTo(0, 0);
-    // this._carousel.current.moveTo(0);
   }
 
   getActivity(activityNum) {
@@ -77,8 +76,9 @@ class Blog extends React.Component {
         response => response.json()
       )
       .then(jsonOutput => {
-        this.setState({activities: jsonOutput, activity_num: jsonOutput.length - 1});
-        // console.log(this.state.activities);
+        this.setState({
+          activities: jsonOutput,
+          activity_num: this.state.activity_num ? this.state.activity_num : jsonOutput.length - 1});
         }
       )
   }
