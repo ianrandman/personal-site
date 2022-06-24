@@ -1,0 +1,11 @@
+{
+    "production": {
+        "app_function": "server.app",
+        "profile_name": "default",
+        "project_name": "server",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-as6lss87e",
+        "aws_region": "us-east-1",
+        "slim_handler": true
+    }
+}

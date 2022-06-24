@@ -1,5 +1,5 @@
 import ast
-from time import sleep
+from time import sleep, time
 
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -13,14 +13,23 @@ from seleniumwire.utils import decode
 def update_location():
     print('Updating location')
 
+    s = time()
     driver = get_driver()
+    print(time() - s)
+    s = time()
     location_share_url = LocationURL.query.limit(1).all()[0].google_location_share_link
+    print(time() - s)
+    s = time()
     driver.get(location_share_url)
+    print(time() - s)
+    s = time()
     wait = WebDriverWait(driver, 10)
 
     try:
         # need the inner request that contains coordinates and timestamp
         wait.until(lambda d: len(d.current_url.split('/')[4]) > 1)
+        print(time() - s)
+        s = time()
         request = [request for request in driver.requests if 'maps/rpc/locationsharing' in request.url][-1]
         response = decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
         response = response.decode('utf-8')[5:]

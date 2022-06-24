@@ -18,5 +18,6 @@ def get_driver():
         driver = webdriver.Chrome(executable_path=os.path.join(os.path.dirname(__file__), '..', 'chromedriver.exe'),
                                   chrome_options=options)
     else:
-        driver = webdriver.Chrome(chrome_options=options)
+        driver = webdriver.Chrome(executable_path=os.path.join(os.path.dirname(__file__), '..', 'chromedriver'),
+                                                               chrome_options=options)
     return driver

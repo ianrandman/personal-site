@@ -7,8 +7,8 @@ from util.update_location import update_location
 
 
 class LocationResource(Resource):
-    decorators = [limiter.limit('4/minute', methods=["GET"], override_defaults=True, exempt_when=lambda: not eval(
-        request.args.get('do_refresh')))]
+    decorators = [limiter.limit('4/minute; 1 per 15 seconds', methods=["GET"], override_defaults=True,
+                                exempt_when=lambda: not eval(request.args.get('do_refresh')))]
 
     def get(self):
         args = request.args

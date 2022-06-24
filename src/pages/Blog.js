@@ -158,6 +158,7 @@ class Blog extends React.Component {
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
             </div>
           </header>
+          {!this.state.activities && <h3>Loading blog...</h3>}
           {this.state.activities && this.state.activity_num > 0 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
           {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&

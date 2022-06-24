@@ -4,7 +4,7 @@ import React from 'react';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import { Zoom } from 'ol/control';
+import { FullScreen, Zoom } from 'ol/control';
 
 import Main from '../layouts/Main';
 import { Vector as SourceVector, XYZ } from 'ol/source';
@@ -149,42 +149,33 @@ class RouteMap extends React.Component {
       ],
       view: new View({
         center: [0, 0],
-        zoom: 2
+        zoom: 2,
+        enableRotation: false
       }),
       controls: [
-        new Zoom()
+        new Zoom(),
+        new FullScreen()
       ],
     });
 
-    console.log(this)
     const p = this.props;
     // const router = this.context.router;
     this.map.addEventListener("click", function(e) {
-      // console.log(this)
       this.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         if (feature.get("activity") === undefined) {
           return;
         }
 
-        // const activity = feature.get("activity");
-        // router.push({
-        //   pathname: '/blog',
-        //   state: {activity_num: 2}
-        // })
         p.history.push({
           pathname: '/blog',
           state: {activity_num: feature.get("activity_num")}
         });
-
-        // console.log(layer);
-        //do something
       });
     });
 
     let selected = null;
     this.map.addEventListener("pointermove", function(e) {
       if (selected !== null) {
-        console.log(selected)
         selected.setStyle(undefined);
         selected = null;
       }
@@ -206,7 +197,6 @@ class RouteMap extends React.Component {
     });
 
     this.map.addEventListener("moveend", function () {
-      console.log(this.getView().getZoom())
       const zoom = this.getView().getZoom();
       if (zoom >= 7) {
         endPointVector.setVisible(true);
@@ -295,8 +285,6 @@ class RouteMap extends React.Component {
     const endPointFeatures = [];
 
     this.state.activities.map((activity, index) => {
-      console.log('gonna decode')
-
       const riddenRoute = new Polyline({
         factor: 1e5,
       }).readGeometry(activity.summary_polyline, {
@@ -310,15 +298,9 @@ class RouteMap extends React.Component {
         activity_num: index
       });
 
-      console.log(JSON.parse(activity.end_latlng))
-
       const endPoint = new Feature({
         geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
       });
-
-      // routeFeature.on('click', function (e) {
-      //   console.log('hello');
-      // });
 
       riddenRouteFeatures.push(routeFeature);
       endPointFeatures.push(endPoint);
@@ -326,11 +308,6 @@ class RouteMap extends React.Component {
 
     riddenRouteVector.getSource().addFeatures(riddenRouteFeatures);
     endPointVector.getSource().addFeatures(endPointFeatures);
-
-    // this.map.addLayer(vectorLayer);
-    // this.map.addLayer(endPointVector);
-
-    // console.log(allPolylines)
   }
 
   getActivities() {
@@ -341,7 +318,6 @@ class RouteMap extends React.Component {
       .then(jsonOutput => {
           this.setState({activities: jsonOutput});
           this.putRiddenRoute()
-          console.log(this.state.activities);
         }
       )
   }
