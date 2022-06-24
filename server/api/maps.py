@@ -1,6 +1,8 @@
 from flask import request
 from flask_restful import Resource
 
+import traceback
+
 from init_db import limiter
 from util.db_utils import get_current_location
 from util.update_location import update_location
@@ -21,6 +23,7 @@ class LocationResource(Resource):
             current_location_obj = get_current_location()
             lat_lon_time = current_location_obj.json
         except Exception:
-            lat_lon_time = dict()
+            print(traceback.print_exc())
+            lat_lon_time = None
 
         return lat_lon_time
