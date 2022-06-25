@@ -35,9 +35,6 @@ const images = [
   "https://lh3.googleusercontent.com/Yz5qxLVS9aGhB04DxcrizEti-1JRsTLGJJL9E1bdZVHTkXaRcE5wBYezVwfpnWHOcquOKjS_oMz9rghPf-oi4Zzpkbl7_UMKy0s_zkAozkGJ9IdivvcmUlw9Y9UkX5d32CyqOjpJpNU"
 ];
 
-const getImages = () => {
-
-}
 
 const About = () => (
   <Main

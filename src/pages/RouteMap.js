@@ -121,6 +121,19 @@ function getTimedelta(recordedTime) {
   return [hh, mm, ss, msec]
 }
 
+const OSMSource = new XYZ({
+  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+});
+
+const satelliteSource = new XYZ({
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  maxZoom: 20
+});
+
+const backgroundLayer = new TileLayer({
+  source: OSMSource,
+  zIndex: 0
+})
 
 class RouteMap extends React.Component {
   constructor(props) {
@@ -128,18 +141,15 @@ class RouteMap extends React.Component {
     console.log("hi");
     this.state = {
       locationUrl: null,
-      activities: null
+      activities: null,
+      isSatellite: false
     };
+
+    this.toggleSatellite = this.toggleSatellite.bind(this);
 
     this.map = new Map({
       layers: [
-        new TileLayer({
-          source: new XYZ({
-            url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          },
-            ),
-          zIndex: 0
-        }),
+        backgroundLayer,
         route,
         currentLocation,
         startLayer,
@@ -198,6 +208,7 @@ class RouteMap extends React.Component {
 
     this.map.addEventListener("moveend", function () {
       const zoom = this.getView().getZoom();
+      console.log(zoom)
       if (zoom >= 7) {
         endPointVector.setVisible(true);
       }
@@ -205,6 +216,16 @@ class RouteMap extends React.Component {
         endPointVector.setVisible(false);
       }
     });
+  }
+
+  toggleSatellite() {
+    this.setState({isSatellite: !this.state.isSatellite});
+
+    if (this.state.isSatellite) {
+      backgroundLayer.setSource(OSMSource);
+    } else {
+      backgroundLayer.setSource(satelliteSource);
+    }
   }
 
   updateLocation(jsonOutput, refreshingLocation) {
@@ -332,6 +353,7 @@ class RouteMap extends React.Component {
             <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
           </div>
         </header>
+        <button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
         {this.state.locationUrl && <a href={this.state.locationUrl} className="button" target="_blank">Link to Google Location Share</a>}
         <p>Red is the planned route. Blue is the ridden route. Click on a blue section to see the blog for that day.</p>
         <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
