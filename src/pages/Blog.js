@@ -1,14 +1,26 @@
 /* eslint-disable */
 
 import React from 'react';
+import Map from 'ol/Map';
+import View from 'ol/View';
+import TileLayer from 'ol/layer/Tile';
+import { FullScreen, Zoom } from 'ol/control';
 
+import { Vector as SourceVector, XYZ } from 'ol/source';
+import { Polyline } from 'ol/format';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+import { Vector } from 'ol/layer';
+import { Feature } from 'ol';
+import { Point } from 'ol/geom';
+import { fromLonLat } from 'ol/proj';
+import { Icon, Stroke, Style } from 'ol/style';
 import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
 import ReactHlsPlayer from 'react-hls-player';
 
 import 'react-image-gallery/styles/css/image-gallery.css';
-
 
 import '../blog.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -30,6 +42,57 @@ function getStravaCode(activityId) {
   )
 }
 
+const startIconStyle = new Style({
+  image: new Icon({
+    src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
+    scale: 0.08,
+  }),
+});
+
+const endIconStyle = new Style({
+  image: new Icon({
+    src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
+    scale: 0.08,
+  }),
+});
+
+const startLayer = new Vector({
+  style: startIconStyle,
+  zIndex: 3
+});
+
+const endLayer = new Vector({
+  style: endIconStyle,
+  zIndex: 3
+});
+
+const riddenRouteVector = new VectorLayer({
+  source: new VectorSource({
+    features: [],
+  }),
+  style: new Style({
+    stroke: new Stroke({
+      width: 4,
+      color: 'blue',
+    }),
+  }),
+  zIndex: 1
+});
+
+const OSMSource = new XYZ({
+  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+});
+
+const satelliteSource = new XYZ({
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  maxZoom: 20
+});
+
+const backgroundLayer = new TileLayer({
+  source: OSMSource,
+  zIndex: 0
+})
+
 class Blog extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +102,7 @@ class Blog extends React.Component {
       activities: null,
       activity_num: null,
       activity_count: null,
+      isSatellite: false
     };
 
     if (props.location.state) {
@@ -54,6 +118,30 @@ class Blog extends React.Component {
     this.getPreviousActivity = this.getPreviousActivity.bind(this);
     this.getNextActivity = this.getNextActivity.bind(this);
     this.getActivity = this.getActivity.bind(this);
+    this.toggleSatellite = this.toggleSatellite.bind(this);
+
+    this.map = new Map({
+      layers: [],
+      view: new View({
+        center: [0, 0],
+        zoom: 2,
+        enableRotation: false
+      }),
+      controls: [
+        new Zoom(),
+        new FullScreen()
+      ],
+    });
+  }
+
+  toggleSatellite() {
+    this.setState({isSatellite: !this.state.isSatellite});
+
+    if (this.state.isSatellite) {
+      backgroundLayer.setSource(OSMSource);
+    } else {
+      backgroundLayer.setSource(satelliteSource);
+    }
   }
 
   getNextActivity() {
@@ -66,7 +154,77 @@ class Blog extends React.Component {
 
   getActivity(activityNum) {
     this.setState({ activity_num: activityNum });
-    window.scrollTo(0, 0);
+
+    const activity = this.state.activities[activityNum];
+    this.map.removeLayer(backgroundLayer);
+    this.map.setLayers([
+      backgroundLayer,
+      riddenRouteVector,
+      startLayer,
+      endLayer
+    ]);
+    startLayer.setSource(
+      new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat(JSON.parse(activity.start_latlng).reverse()))
+          })
+        ]
+      })
+    );
+    endLayer.setSource(
+      new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
+          })
+        ]
+      })
+    );
+    const riddenRoute = new Polyline({
+      factor: 1e5,
+    }).readGeometry(activity.polyline, {
+      dataProjection: 'EPSG:4326',
+      featureProjection: 'EPSG:3857',
+    });
+    riddenRouteVector.setSource(new VectorSource({
+      features: [
+        new Feature({
+          type: 'route',
+          geometry: riddenRoute,
+        })
+      ]
+    }));
+    this.map.getView().fit(riddenRoute.getExtent());
+    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
+    activity.media.map((mediaObj) => {
+      if (mediaObj.location === "None") {
+        return;
+      }
+      console.log(mediaObj)
+      console.log(mediaObj.location)
+
+      this.map.addLayer(
+        new VectorLayer({
+          source: new VectorSource({
+            features: [
+              new Feature({
+                geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
+              })
+            ]
+          }),
+          style: new Style({
+            image: new Icon({
+              src: mediaObj.small_image_url,
+              scale: 0.5,
+            })
+          }),
+          zIndex: 2
+        })
+      )
+    });
+
+    // window.scrollTo(0, 0);
     this._carousel.current.moveTo(0);
   }
 
@@ -79,11 +237,14 @@ class Blog extends React.Component {
         this.setState({
           activities: jsonOutput,
           activity_num: this.state.activity_num ? this.state.activity_num : jsonOutput.length - 1});
+
+          this.getActivity(this.state.activity_num);
         }
       )
   }
 
   componentDidMount() {
+    this.map.setTarget("map");
     this.getActivities();
   }
 
@@ -159,14 +320,18 @@ class Blog extends React.Component {
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}
-          {this.state.activities && this.state.activity_num > 0 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
-          {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+          <p/>
           {this.state.activities &&
             <>
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
+
+              {this.state.activities && this.state.activity_num > 0 &&
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+              {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+
+              <hr/>
               <div>
                 <Carousel
                   dynamicHeight={true}
@@ -180,15 +345,29 @@ class Blog extends React.Component {
                 </Carousel>
               </div>
               <p>{this.state.activities[this.state.activity_num].description}</p>
-              {getStravaCode(this.state.activities[this.state.activity_num].id)}
+              <hr/>
             </>
           }
+
+          {this.state.activities && this.state.activity_num > 0 &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+          {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+          <button style={{marginLeft: "5px"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
+
+          <p/>
+          <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
+          <div id="map" style={{width: "100%", height: "500px"}}/>
+          <hr/>
+          {this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}
+
           {this.state.activities && this.state.activity_num > 0 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
           {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
           <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
           {this.state.activities &&
             <>
+              <hr/>
               <h3>Select a day to view:</h3>
               <select id="mySelect" onChange={this.updatePage}
                       value={this.state.activity_num}>
@@ -196,6 +375,7 @@ class Blog extends React.Component {
                   (value => <option value={value}>{this.state.activities[value].name}</option>)
                 )}
               </select>
+              <p/>
             </>
           }
           <ContactIcons />

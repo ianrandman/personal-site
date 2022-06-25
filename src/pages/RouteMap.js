@@ -18,9 +18,8 @@ import { fromLonLat } from 'ol/proj';
 import { Fill, Icon, Stroke, Style, Text } from 'ol/style';
 import { Link } from 'react-router-dom';
 import { fetchBackend } from '../FetchConfig';
-import { decodeDeltas } from 'ol/format/Polyline';
 
-var route = new VectorLayer({
+const route = new VectorLayer({
   source: new VectorSource({
     url: '/Florida_to_Alaska.kml',
     format: new KML(),
@@ -53,14 +52,14 @@ const campingIconStyle = new Style({
 
 const startIconStyle = new Style({
   image: new Icon({
-    src: 'https://cdn1.iconfinder.com/data/icons/flat-design-basic-set-5/24/flag-green-rally-512.png',
+    src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
     scale: 0.08,
   }),
 });
 
 const endIconStyle = new Style({
   image: new Icon({
-    src: 'https://cdn1.iconfinder.com/data/icons/flat-design-basic-set-5/24/flag-red-rally-512.png',
+    src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
     scale: 0.08,
   }),
 });
@@ -138,7 +137,6 @@ const backgroundLayer = new TileLayer({
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
-    console.log("hi");
     this.state = {
       locationUrl: null,
       activities: null,
@@ -210,10 +208,13 @@ class RouteMap extends React.Component {
       const zoom = this.getView().getZoom();
       console.log(zoom)
       if (zoom >= 7) {
-        endPointVector.setVisible(true);
-      }
-      else {
-        endPointVector.setVisible(false);
+        // endPointVector.setVisible(true);
+        campingIconStyle.getImage().setScale(0.1);
+      } else if (zoom < 5) {
+        campingIconStyle.getImage().setScale(0.01);
+      } else {
+        // endPointVector.setVisible(false);
+        campingIconStyle.getImage().setScale(0.03);
       }
     });
   }
@@ -348,16 +349,19 @@ class RouteMap extends React.Component {
       <Main
         title="RouteMap"
       >
-        <header>
-          <div className="title">
-            <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
-          </div>
-        </header>
-        <button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
-        {this.state.locationUrl && <a href={this.state.locationUrl} className="button" target="_blank">Link to Google Location Share</a>}
-        <p>Red is the planned route. Blue is the ridden route. Click on a blue section to see the blog for that day.</p>
-        <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
-        <div id="map" style={{width: "100%", height: "500px"}}/>
+        <article className="post" id="routeMap">
+          <header>
+            <div className="title">
+              <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
+            </div>
+          </header>
+          <p>Red is the planned route. Blue is the ridden route. Click on a blue section to see the blog for that day.</p>
+          <button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
+          {this.state.locationUrl && <a href={this.state.locationUrl} className="button" target="_blank">Link to Google Location Share</a>}
+          <p/>
+          <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
+          <div id="map" style={{width: "100%", height: "500px"}}/>
+        </article>
       </Main>
     )
   }
