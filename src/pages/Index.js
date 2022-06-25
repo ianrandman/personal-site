@@ -19,12 +19,15 @@ const Index = () => (
         the northernmost point in North America accessible by
         road <a href="https://goo.gl/maps/qmWmRrfzJz28bWv97" target="_blank" rel="noreferrer">(Prudhoe Bay, AK)</a>.
         Please feel free to check out
-        my <Link to="/blog">daily updates</Link>,
+        my <Link to="/blog">daily blog</Link>, <Link to="/instagram">Instagram Story updates</Link>,
         my <Link to="/routeMap">route and current location</Link>,
         or you can check out my {' '}
         <Link to="/resume">resume</Link>, {' '}
         or <Link to="/contact">contact</Link> me. You can
         also read more <Link to="/about">about me</Link>.
+        <p />
+        This site was <em>very</em> quickly put together a week into my trip.
+        Please <Link to="/contact">contact</Link> me if you experience any significant issues.
       </p>
     </article>
   </Main>

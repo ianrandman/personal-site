@@ -1,11 +1,7 @@
-import datetime
 import os
 
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_restful import Api
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
-# from apscheduler.schedulers.background import BackgroundScheduler
 from api.admin import AdminResource
 
 app = Flask(__name__)  # create Flask instance
@@ -51,6 +47,11 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
+
+
+@app.route('/static/<path:path>')
+def send_report(path):
+    return send_from_directory('static', path)
 
 
 if __name__ == '__main__':

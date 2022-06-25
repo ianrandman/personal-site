@@ -7,8 +7,7 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
-
-const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
+import ContactIcons from '../components/Contact/ContactIcons';
 
 const Resume = () => (
   <Main
@@ -20,10 +19,13 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <a href="/resume.pdf" className="button" download="Ian_Randman_Resume.pdf">Download</a>
-    <Document file={"/resume.pdf"}>
+    <Document file={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/resume.pdf"}>
       <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
     </Document>
+    <p/>
+    <a href={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/resume.pdf"} className="button" download="Ian_Randman_Resume.pdf">Download</a>
+    <p/>
+    <ContactIcons/>
   </Main>
 );
 

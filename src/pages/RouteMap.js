@@ -21,7 +21,7 @@ import { fetchBackend } from '../FetchConfig';
 
 const route = new VectorLayer({
   source: new VectorSource({
-    url: '/Florida_to_Alaska.kml',
+    url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
     format: new KML(),
   }),
 });
@@ -39,7 +39,8 @@ const currentLocation = new Vector({
 
 const iconStyle = new Style({
   image: new Icon({
-    src: '/images/me_small.jpg',
+    src: '/images/profile_pin.png',
+    scale: 0.4
   }),
 });
 
@@ -158,7 +159,7 @@ class RouteMap extends React.Component {
       view: new View({
         center: [0, 0],
         zoom: 2,
-        enableRotation: false
+        enableRotation: false,
       }),
       controls: [
         new Zoom(),
@@ -206,16 +207,8 @@ class RouteMap extends React.Component {
 
     this.map.addEventListener("moveend", function () {
       const zoom = this.getView().getZoom();
-      console.log(zoom)
-      if (zoom >= 7) {
-        // endPointVector.setVisible(true);
-        campingIconStyle.getImage().setScale(0.1);
-      } else if (zoom < 5) {
-        campingIconStyle.getImage().setScale(0.01);
-      } else {
-        // endPointVector.setVisible(false);
-        campingIconStyle.getImage().setScale(0.03);
-      }
+      // console.log(zoom)
+      campingIconStyle.getImage().setScale(Math.min(0.1, (zoom / 20) ** 2.5))
     });
   }
 
@@ -243,7 +236,7 @@ class RouteMap extends React.Component {
     iconStyle.setText(
       new Text({
         backgroundFill: new Fill({ color: "white" }),
-        offsetY: 20,
+        offsetY: -70,
         // padding: [0, 0, 0, 1000],
         text: `${timedelta[0]}h, ${timedelta[1]}m, ${timedelta[2]}s ago${refreshingLocationStr}`}));
 
