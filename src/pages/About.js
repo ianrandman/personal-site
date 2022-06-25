@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import raw from 'raw.macro';
 
 import Main from '../layouts/Main';
-import '../blog.css'
+import '../main.css'
 
 
 // uses babel to load contents of file

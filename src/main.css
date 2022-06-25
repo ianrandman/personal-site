@@ -1,7 +1,6 @@
-/*.carousel .thumb img {*/
-/*    width: 100% !important;*/
-/*    height: 100% !important;*/
-/*}*/
+.menu-hover {
+    font-size:25px;
+}
 
 .carousel .slide img {
     -o-object-fit: contain;

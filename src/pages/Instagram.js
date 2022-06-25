@@ -10,7 +10,7 @@ import ReactHlsPlayer from 'react-hls-player';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 
-import '../blog.css'
+import '../main.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
