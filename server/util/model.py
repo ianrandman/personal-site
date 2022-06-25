@@ -63,6 +63,7 @@ class Media(db.Model):
 class LocationURL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     google_location_share_link = db.Column(db.String(100), nullable=False)
+    inner_google_location_share_link = db.Column(db.String(400), nullable=False)
 
     @property
     def json(self):

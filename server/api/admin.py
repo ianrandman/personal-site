@@ -5,7 +5,7 @@ from util.db_utils import update_location_url, \
     fetch_new_strava_activities, update_strava_activity, delete_strava_activity
 from util.strava_utils import load_sensitive_info
 from util.update_instagram import update_instagram_highlight
-from util.update_location import update_location
+from util.update_location import update_location_selenium
 
 
 class AdminResource(Resource):
@@ -33,7 +33,7 @@ class AdminResource(Resource):
                     }
 
                 update_location_url(google_location_share_link)
-                update_location()
+                update_location_selenium()
             elif request_type == 'fetch_new_strava_activities':
                 fetch_new_strava_activities()
             elif request_type == 'update_strava_activity':

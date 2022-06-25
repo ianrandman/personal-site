@@ -5,7 +5,7 @@ import traceback
 
 from init_db import limiter
 from util.db_utils import get_current_location
-from util.update_location import update_location
+from util.update_location import update_location_using_inner
 
 
 class LocationResource(Resource):
@@ -18,7 +18,7 @@ class LocationResource(Resource):
 
         try:
             if do_refresh:
-                update_location()
+                update_location_using_inner()
 
             current_location_obj = get_current_location()
             lat_lon_time = current_location_obj.json

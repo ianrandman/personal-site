@@ -47,14 +47,17 @@ def populate_db():
     #     InstagramHighlight.__table__
     # ])
 
-    location_share_obj = LocationURL(google_location_share_link='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9')
+    location_share_obj = LocationURL(
+        google_location_share_link='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9',
+        inner_google_location_share_link='https://www.google.com/maps/rpc/locationsharing/read?authuser=0&hl=en&gl=us&pb=!1e1!2m2!1sjG-2YvCeGMOIptQPv6GEwAo!7e81!3m2!1s109215517752537741597!2sChZsUHFZNU43N1BYT2VFNnhtVTNFWDVnEggHBeI8OzhB5w%3D%3D'
+    )
     db.session.add(location_share_obj)
 
     current_location_obj = Location(
         lat=24.546543,
         lon=-81.797505,
         recorded_time=1654041600000,
-        url='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9'
+        url='https://maps.app.goo.gl/BDqvKB1CVeCFgJ3z9'
     )
     db.session.add(current_location_obj)
 
