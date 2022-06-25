@@ -349,11 +349,15 @@ class Blog extends React.Component {
             </>
           }
 
-          {this.state.activities && this.state.activity_num > 0 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
-          {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
-          <button style={{marginLeft: "5px"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
+          <div>
+            <div style={{marginRight: "5px", marginBottom: "5px", display: "inline-block"}}>
+              {this.state.activities && this.state.activity_num > 0 &&
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+              {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+            </div>
+            <button style={{display: "inline-block"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
+          </div>
 
           <p/>
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>

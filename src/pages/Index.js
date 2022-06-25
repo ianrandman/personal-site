@@ -25,9 +25,6 @@ const Index = () => (
         <Link to="/resume">resume</Link>, {' '}
         or <Link to="/contact">contact</Link> me. You can
         also read more <Link to="/about">about me</Link>.
-        <p />
-        This site was <em>very</em> quickly put together a week into my trip.
-        Please <Link to="/contact">contact</Link> me if you experience any significant issues.
       </p>
     </article>
   </Main>

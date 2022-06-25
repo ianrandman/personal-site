@@ -22,7 +22,16 @@ import { fetchBackend } from '../FetchConfig';
 const route = new VectorLayer({
   source: new VectorSource({
     url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
-    format: new KML(),
+    format: new KML({
+      extractStyles: false
+    }),
+  }),
+  style: new Style({
+    stroke: new Stroke({
+      width: 3,
+      color: 'red',
+      lineDash: [5, 5]
+    })
   }),
 });
 
@@ -349,8 +358,8 @@ class RouteMap extends React.Component {
             </div>
           </header>
           <p>Red is the planned route. Blue is the ridden route. Click on a blue section to see the blog for that day.</p>
+          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
           <button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
-          {this.state.locationUrl && <a href={this.state.locationUrl} className="button" target="_blank">Link to Google Location Share</a>}
           <p/>
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
           <div id="map" style={{width: "100%", height: "500px"}}/>
