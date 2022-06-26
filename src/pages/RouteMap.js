@@ -18,6 +18,7 @@ import { fromLonLat } from 'ol/proj';
 import { Fill, Icon, Stroke, Style, Text } from 'ol/style';
 import { Link } from 'react-router-dom';
 import { fetchBackend } from '../FetchConfig';
+import { PinchRotate } from 'ol/interaction';
 
 const route = new VectorLayer({
   source: new VectorSource({
@@ -175,6 +176,9 @@ class RouteMap extends React.Component {
         new FullScreen()
       ],
     });
+    this.map.getInteractions().getArray().filter((interaction) => (
+      interaction instanceof PinchRotate
+    ))[0].setActive(false);
 
     const p = this.props;
     // const router = this.context.router;
