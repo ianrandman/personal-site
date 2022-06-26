@@ -27,6 +27,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
+import { PinchRotate } from 'ol/interaction';
 
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
@@ -132,9 +133,13 @@ class Blog extends React.Component {
         new FullScreen()
       ],
     });
+    this.map.getInteractions().getArray().filter((interaction) => (
+      interaction instanceof PinchRotate
+    ))[0].setActive(false);
   }
 
   toggleSatellite() {
+    console.log(this.map.getView())
     this.setState({isSatellite: !this.state.isSatellite});
 
     if (this.state.isSatellite) {
