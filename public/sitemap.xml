@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.ianrandman.com</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/about</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/routeMap</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/blog</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/instagram</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/resume</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.ianrandman.com/contact</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+</urlset>
