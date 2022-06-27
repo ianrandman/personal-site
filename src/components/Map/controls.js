@@ -40,7 +40,7 @@ export class ToggleFullscreenControl extends Control {
     const options = opt_options || {};
 
     const button = document.createElement('button');
-    button.innerHTML = '&#x26F6';
+    button.innerHTML = '&#x2922';
 
     const element = document.createElement('div');
     element.className = 'fullscreen-toggle ol-unselectable ol-control';

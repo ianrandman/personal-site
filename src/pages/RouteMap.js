@@ -387,7 +387,7 @@ class RouteMap extends React.Component {
           {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
           <div>
             <div className="planned-line"/> Planned Route<br/>
-            <div className="ridden-line"/> Ridden Route
+            <div className="ridden-line"/> Ridden Route (click on a section to go to the blog for that day)
           </div>
           {/*<button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>*/}
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
