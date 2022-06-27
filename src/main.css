@@ -23,7 +23,7 @@
 
 .planned-line {
     margin:5px 0;
-    width: 60px;
+    width: 55px;
     display: inline-block;
     height:2px;
     background:
@@ -32,7 +32,7 @@
 }
 .ridden-line {
     margin:5px 0;
-    width: 60px;
+    width: 55px;
     display: inline-block;
     height:2px;
     background:

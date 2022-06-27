@@ -337,7 +337,7 @@ class Blog extends React.Component {
                   showStatus={false}
                   ref={this._carousel}
                   preventMovementUntilSwipeScrollTolerance={true}
-                  swipeScrollTolerance={150}
+                  swipeScrollTolerance={100}
                 >
                   {this.getMedia()}
                 </Carousel>
