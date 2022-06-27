@@ -77,6 +77,7 @@ class Instagram extends React.Component {
             </div>
             <a href="https://www.instagram.com/ianrandman" className="button" target="_blank">Go to my Instagram</a>
           </header>
+          {!this.state.data && <h3>Loading Instagram...</h3>}
           {this.state.data && this.renderHighlight()}
           <ContactIcons />
         </article>

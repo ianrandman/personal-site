@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from init_db import db
 from util.strava_utils import load_existing_strava_data, get_activity_and_insert
 from util.model import LocationURL, Activity, Location, Media, InstagramHighlight
@@ -65,7 +67,7 @@ def populate_db():
 
     db.session.commit()
 
-    instagram_highlight_obj = InstagramHighlight(json=dict())
+    instagram_highlight_obj = InstagramHighlight(json=dict(), time_fetched=datetime.now())
     db.session.add(instagram_highlight_obj)
     db.session.commit()
     url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'

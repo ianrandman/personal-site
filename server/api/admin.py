@@ -36,7 +36,12 @@ class AdminResource(Resource):
                     google_location_share_link = google_location_share_link[google_location_share_link.index('http'):]
 
                 update_location_url(google_location_share_link)
-                update_location_selenium()
+                success, reason = update_location_selenium()
+                if not success:
+                    return {
+                        'success': False,
+                        'reason': reason
+                    }
             elif request_type == 'fetch_new_strava_activities':
                 fetch_new_strava_activities()
             elif request_type == 'update_strava_activity':
@@ -57,11 +62,11 @@ class AdminResource(Resource):
                 delete_strava_activity(strava_activity_id)
             elif request_type == 'refresh_instagram_highlight':
                 url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'
-                success = update_instagram_highlight(url)
+                success, reason = update_instagram_highlight(url)
                 if not success:
                     return {
                         'success': False,
-                        'reason': url
+                        'reason': reason
                     }
         except Exception as e:
             return {

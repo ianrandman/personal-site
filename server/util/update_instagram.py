@@ -1,3 +1,4 @@
+from datetime import datetime
 
 import requests
 
@@ -8,15 +9,27 @@ from util.model import InstagramHighlight
 def update_instagram_highlight(url):
     request = requests.get(url)
 
-    if request.status_code == 200:
-        # remove videos
-        json = request.json()
-        json['data'] = [data for data in json['data'] if data['media_type'] == 'image']
+    try:
+        if request.status_code == 200:
+            # remove videos
+            json = request.json()
+            json['data'] = [data for data in json['data'] if data['media_type'] == 'image']
 
-        instagram_highlight_obj = InstagramHighlight.query.limit(1).all()[0]
-        instagram_highlight_obj.json = json
+            # for media in json['data']:
+            #     media['thumbnail'] = media['thumbnail'][27:]
+            #     media['source'] = media['source'][27:]
 
-        db.session.commit()
-        return True
+            instagram_highlight_obj = InstagramHighlight.query.limit(1).all()[0]
+            instagram_highlight_obj.json = json
+            instagram_highlight_obj.time_fetched = datetime.now()
 
-    return False
+            db.session.commit()
+        else:
+            request.json()['url'] = url
+            return False, request.json()
+    except Exception as e:
+        print(e)
+        request.json()['url'] = url
+        False, request.json()
+
+    return True, None

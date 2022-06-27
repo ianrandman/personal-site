@@ -34,8 +34,11 @@ def update_location_selenium():
     except Exception as e:
         print('Could not get location')
         print(e)
+        return False, e
 
     driver.quit()
+
+    return True, None
 
 
 def update_location_using_inner():

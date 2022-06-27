@@ -77,6 +77,7 @@ class LocationURL(db.Model):
 class InstagramHighlight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     json = db.Column(db.JSON, nullable=False)
+    time_fetched = db.Column(db.DateTime, nullable=False)
 
 
 class Location(db.Model):
