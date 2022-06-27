@@ -42,6 +42,7 @@ class Media(db.Model):
     id = db.Column(db.String(50), primary_key=True)
     activity_id = db.Column(db.Integer, db.ForeignKey('activity.id'), nullable=False)
     is_video = db.Column(db.Boolean, nullable=False)
+    default_photo = db.Column(db.Boolean, nullable=False)
     video_url = db.Column(db.String(200), nullable=True)
     small_image_url = db.Column(db.String(200), nullable=False)
     large_image_url = db.Column(db.String(200), nullable=False)

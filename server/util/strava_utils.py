@@ -61,7 +61,7 @@ def get_activity_and_insert(activity_id, authenticated=True):
 
 
 def get_activity_media(activity_id):
-    media_list = list()
+    temp_media_list = list()
 
     response = requests.get(
         url=f'https://www.strava.com/api/v3/activities/{activity_id}/photos',
@@ -80,11 +80,12 @@ def get_activity_media(activity_id):
             id=media['unique_id'],
             activity_id=media['activity_id'],
             is_video=bool('video_url' in media),
+            default_photo=media['default_photo'],
             video_url=media.get('video_url'),
             small_image_url=media['urls']['100'],
             location=str(media.get('location'))
         )
-        media_list.append(media_obj)
+        temp_media_list.append(media_obj)
 
     response = requests.get(
         url=f'https://www.strava.com/api/v3/activities/{activity_id}/photos',
@@ -99,10 +100,23 @@ def get_activity_media(activity_id):
     )
 
     for media in response.json():
-        media_obj = next(item for item in media_list if item.id == media['unique_id'])
+        media_obj = next(item for item in temp_media_list if item.id == media['unique_id'])
         media_obj.large_image_url = media['urls']['3000']
 
-    return media_list
+    media_list = list()
+    for media_obj in temp_media_list:
+        if media_obj.default_photo:
+            media_list.append(media_obj)
+            temp_media_list.remove(media_obj)
+            break
+    for media_obj in temp_media_list:
+        if media_obj.is_video:
+            media_list.append(media_obj)
+    for media_obj in temp_media_list:
+        if not media_obj.is_video:
+            media_list.append(media_obj)
+
+    return temp_media_list
 
 
 def authenticate():
@@ -110,7 +124,6 @@ def authenticate():
 
     strava_client_id = sensitive_info['strava_client_id']
     strava_client_secret = sensitive_info['strava_client_secret']
-    strava_access_token = sensitive_info['strava_access_token']
     strava_refresh_token = sensitive_info['strava_refresh_token']
     strava_expires_at = sensitive_info['strava_expires_at']
 
