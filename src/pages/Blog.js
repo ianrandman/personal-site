@@ -28,6 +28,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
 import { PinchRotate } from 'ol/interaction';
+import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/Map/controls';
+import { iOS } from '../App';
 
 
 const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
@@ -103,7 +105,8 @@ class Blog extends React.Component {
       activities: null,
       activity_num: null,
       activity_count: null,
-      isSatellite: false
+      isSatellite: false,
+      isFullscreen: false
     };
 
     if (props.location.state) {
@@ -130,23 +133,34 @@ class Blog extends React.Component {
       }),
       controls: [
         new Zoom(),
-        new FullScreen()
+        new ToggleSatelliteControl({"parentFn": this.toggleSatellite})
       ],
     });
+    if (iOS()) {
+      this.map.addControl(
+        new ToggleFullscreenControl({"parentFn": this.toggleFullscreen})
+      );
+    } else {
+      this.map.addControl(new FullScreen());
+    }
     this.map.getInteractions().getArray().filter((interaction) => (
       interaction instanceof PinchRotate
     ))[0].setActive(false);
   }
 
   toggleSatellite() {
-    console.log(this.map.getView())
     this.setState({isSatellite: !this.state.isSatellite});
 
     if (this.state.isSatellite) {
-      backgroundLayer.setSource(OSMSource);
-    } else {
       backgroundLayer.setSource(satelliteSource);
+    } else {
+      backgroundLayer.setSource(OSMSource);
     }
+  }
+
+  toggleFullscreen() {
+    this.setState({isFullscreen: !this.state.isFullscreen});
+    this.map.updateSize();
   }
 
   getNextActivity() {
@@ -345,6 +359,8 @@ class Blog extends React.Component {
                   showArrows={false}
                   showStatus={false}
                   ref={this._carousel}
+                  preventMovementUntilSwipeScrollTolerance={true}
+                  swipeScrollTolerance={150}
                 >
                   {this.getMedia()}
                 </Carousel>
@@ -361,12 +377,17 @@ class Blog extends React.Component {
               {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
               <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
             </div>
-            <button style={{display: "inline-block"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
+            {/*<button style={{display: "inline-block"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>*/}
           </div>
 
           <p/>
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
-          <div id="map" style={{width: "100%", height: "500px"}}/>
+          <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
+            {
+              width: "100%",
+              height: this.state.isFullscreen? "100vh" : "500px"
+            }
+          }/>
           <hr/>
           {this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}
 

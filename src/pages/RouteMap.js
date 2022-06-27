@@ -20,6 +20,14 @@ import { Link } from 'react-router-dom';
 import { fetchBackend } from '../FetchConfig';
 import { PinchRotate } from 'ol/interaction';
 
+import '../main.css';
+import {
+  ToggleFullscreenControl,
+  ToggleSatelliteControl
+} from '../components/Map/controls';
+import ContactIcons from '../components/Contact/ContactIcons';
+import { iOS } from '../App';
+
 const route = new VectorLayer({
   source: new VectorSource({
     url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
@@ -151,10 +159,12 @@ class RouteMap extends React.Component {
     this.state = {
       locationUrl: null,
       activities: null,
-      isSatellite: false
+      isSatellite: false,
+      isFullscreen: false
     };
 
     this.toggleSatellite = this.toggleSatellite.bind(this);
+    this.toggleFullscreen = this.toggleFullscreen.bind(this);
 
     this.map = new Map({
       layers: [
@@ -173,9 +183,16 @@ class RouteMap extends React.Component {
       }),
       controls: [
         new Zoom(),
-        new FullScreen()
+        new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
       ],
     });
+    if (iOS()) {
+      this.map.addControl(
+        new ToggleFullscreenControl({"parentFn": this.toggleFullscreen})
+      );
+    } else {
+      this.map.addControl(new FullScreen());
+    }
     this.map.getInteractions().getArray().filter((interaction) => (
       interaction instanceof PinchRotate
     ))[0].setActive(false);
@@ -229,10 +246,15 @@ class RouteMap extends React.Component {
     this.setState({isSatellite: !this.state.isSatellite});
 
     if (this.state.isSatellite) {
-      backgroundLayer.setSource(OSMSource);
-    } else {
       backgroundLayer.setSource(satelliteSource);
+    } else {
+      backgroundLayer.setSource(OSMSource);
     }
+  }
+
+  toggleFullscreen() {
+    this.setState({isFullscreen: !this.state.isFullscreen});
+    this.map.updateSize();
   }
 
   updateLocation(jsonOutput, refreshingLocation) {
@@ -297,6 +319,7 @@ class RouteMap extends React.Component {
               this.updateLocation(jsonOutput, false);
               console.log('Location kept same');
             }
+            // this.toggleFullscreen();
           });
       })
   }
@@ -361,12 +384,22 @@ class RouteMap extends React.Component {
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
             </div>
           </header>
-          <p>Red is the planned route. Blue is the ridden route. Click on a blue section to see the blog for that day.</p>
           {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
-          <button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>
-          <p/>
+          <div>
+            <div className="planned-line"/> Planned Route<br/>
+            <div className="ridden-line"/> Ridden Route
+          </div>
+          {/*<button onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>*/}
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
-          <div id="map" style={{width: "100%", height: "500px"}}/>
+          <p/>
+          <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
+            {
+              width: "100%",
+              height: this.state.isFullscreen? "100vh" : "500px"
+            }
+          }/>
+          <p/>
+          <ContactIcons/>
         </article>
       </Main>
     )
