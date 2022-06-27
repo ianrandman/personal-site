@@ -16,8 +16,13 @@ import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
 
 
-const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
+async function a() {
+  console.log('test before')
+  const res = await fetch('https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171');
+  console.log(res);
+}
 
+a();
 
 class Instagram extends React.Component {
   constructor(props) {
@@ -38,7 +43,7 @@ class Instagram extends React.Component {
         return <LazyLoadImage className={"instagram-image"} src={media.source} width={168} height={300}/>
         // return <></>
       } else {
-        // return <video src={media.source} type="video/mp4" />
+        return <video src={media.source} type="video/mp4" />
       }
     })
   }
