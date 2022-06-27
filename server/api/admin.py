@@ -32,6 +32,9 @@ class AdminResource(Resource):
                         'reason': 'no google share link supplied'
                     }
 
+                if not google_location_share_link.startswith('https'):
+                    google_location_share_link = google_location_share_link[google_location_share_link.index('http'):]
+
                 update_location_url(google_location_share_link)
                 update_location_selenium()
             elif request_type == 'fetch_new_strava_activities':

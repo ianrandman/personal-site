@@ -54,6 +54,7 @@ class Media(db.Model):
             id=self.id,
             activity_id=self.activity_id,
             is_video=self.is_video,
+            default_photo=self.default_photo,
             video_url=self.video_url,
             small_image_url=self.small_image_url,
             large_image_url=self.large_image_url,

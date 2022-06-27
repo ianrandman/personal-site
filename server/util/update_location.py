@@ -29,7 +29,7 @@ def update_location_selenium():
 
         response = decode(request.response.body, request.response.headers.get('Content-Encoding', 'identity'))
 
-        update_location_given_response(response)
+        update_location_given_response(response, location_share_url)
 
     except Exception as e:
         print('Could not get location')
@@ -50,7 +50,7 @@ def update_location_using_inner():
         print(e)
 
 
-def update_location_given_response(response):
+def update_location_given_response(response, location_share_url=None):
     response = response.decode('utf-8')[5:]
     response = response.replace('null', '"null"')
     response = ast.literal_eval(response)
@@ -61,6 +61,8 @@ def update_location_given_response(response):
     current_location_obj.lat = lat_lon[0]
     current_location_obj.lon = lat_lon[1]
     current_location_obj.recorded_time = recorded_time
+    if location_share_url is not None:
+        current_location_obj.url = location_share_url
 
     db.session.commit()
 

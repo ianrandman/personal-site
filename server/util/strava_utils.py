@@ -116,7 +116,7 @@ def get_activity_media(activity_id):
         if not media_obj.is_video:
             media_list.append(media_obj)
 
-    return temp_media_list
+    return media_list
 
 
 def authenticate():

@@ -220,8 +220,6 @@ class Blog extends React.Component {
       if (mediaObj.location === "None") {
         return;
       }
-      console.log(mediaObj)
-      console.log(mediaObj.location)
 
       this.map.addLayer(
         new VectorLayer({
@@ -269,57 +267,36 @@ class Blog extends React.Component {
 
   getThumbs() {
     return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
-        if (mediaDict.is_video) {
-          return (
-            <div>
-              <img alt="" src={mediaDict.small_image_url}/>
-            </div>
-          )
-        }
-      }
-    ).concat(
-      this.state.activities[this.state.activity_num].media.map((mediaDict) => {
-          if (!mediaDict.is_video) {
-            return (
-              <div>
-                <img alt="" src={mediaDict.small_image_url}/>
-              </div>
-            )
-          }
-        }
-      )
-    ).filter(x => x !== undefined);
+      return (
+        <div>
+          <img alt="" src={mediaDict.small_image_url}/>
+        </div>
+      )}
+    );
   }
 
   getMedia() {
     return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
-        if (mediaDict.is_video) {
-          return (
-            <div>
-              <ReactHlsPlayer
-                src={mediaDict.video_url}
-                autoPlay={false}
-                controls={true}
-                width="100%"
-                height="auto"
-              />
-            </div>
-          )
-        }
+      if (mediaDict.is_video) {
+        return (
+          <div>
+            <ReactHlsPlayer
+              src={mediaDict.video_url}
+              autoPlay={false}
+              controls={true}
+              width="100%"
+              height="auto"
+            />
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <img alt="" src={mediaDict.large_image_url}/>
+          </div>
+        )
       }
-    )
-      .concat(
-        this.state.activities[this.state.activity_num].media.map((mediaDict) => {
-            if (!mediaDict.is_video) {
-              return (
-                <div>
-                  <img alt="" src={mediaDict.large_image_url}/>
-                </div>
-              )
-            }
-          }
-        ))
-      .filter(x => x !== undefined)
+    });
   }
 
   updatePage(e) {
