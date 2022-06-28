@@ -313,6 +313,20 @@ class Blog extends React.Component {
           <header>
             <div className="title">
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
+              {this.state.activities &&
+              <>
+                {/*<h3>Select a day to view:</h3>*/}
+                <div className="dropdown">
+                  <select id="mySelect" onChange={this.updatePage}
+                          value={this.state.activity_num}>
+                    {Array.from(Array(this.state.activities.length).keys()).reverse().map(
+                      (value => <option value={value}>{this.state.activities[value].name}</option>)
+                    )}
+                  </select>
+                </div>
+                <p/>
+              </>
+              }
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}
@@ -322,11 +336,13 @@ class Blog extends React.Component {
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
 
-              {this.state.activities && this.state.activity_num > 0 &&
-              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
-              {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+              <div>
+                {this.state.activities && this.state.activity_num > 0 &&
+                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+                {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
+                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
 
+              </div>
               <hr/>
               <div>
                 <Carousel
@@ -362,7 +378,7 @@ class Blog extends React.Component {
           <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
             {
               width: "100%",
-              height: this.state.isFullscreen? "100vh" : "500px"
+              height: this.state.isFullscreen? "100vh" : "70vh"
             }
           }/>
           <hr/>
@@ -376,12 +392,14 @@ class Blog extends React.Component {
             <>
               <hr/>
               <h3>Select a day to view:</h3>
-              <select id="mySelect" onChange={this.updatePage}
-                      value={this.state.activity_num}>
-                {Array.from(Array(this.state.activities.length).keys()).reverse().map(
-                  (value => <option value={value}>{this.state.activities[value].name}</option>)
-                )}
-              </select>
+              <div className="dropdown">
+                <select id="mySelect" onChange={this.updatePage}
+                        value={this.state.activity_num}>
+                  {Array.from(Array(this.state.activities.length).keys()).reverse().map(
+                    (value => <option value={value}>{this.state.activities[value].name}</option>)
+                  )}
+                </select>
+              </div>
               <p/>
             </>
           }

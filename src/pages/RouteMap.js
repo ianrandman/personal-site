@@ -395,7 +395,7 @@ class RouteMap extends React.Component {
           <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
             {
               width: "100%",
-              height: this.state.isFullscreen? "100vh" : "500px"
+              height: this.state.isFullscreen? "100vh" : "70vh"
             }
           }/>
           <p/>
