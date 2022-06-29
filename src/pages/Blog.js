@@ -253,7 +253,7 @@ class Blog extends React.Component {
       .then(jsonOutput => {
         this.setState({
           activities: jsonOutput,
-          activity_num: this.state.activity_num ? this.state.activity_num : jsonOutput.length - 1});
+          activity_num: this.state.activity_num !== null ? this.state.activity_num : jsonOutput.length - 1});
 
           this.getActivity(this.state.activity_num);
         }
