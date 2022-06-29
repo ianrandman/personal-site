@@ -44,88 +44,102 @@ const route = new VectorLayer({
   }),
 });
 
-const currentLocation = new Vector({
-  source: new SourceVector({
-    features: [
-      new Feature({
-        geometry: new Point(fromLonLat([-81.797505, 24.546543]))
-      })
-    ]
-  }),
-  zIndex: 999
+// const currentLocation = new Vector({
+//   source: new SourceVector({
+//     features: [
+//       new Feature({
+//         geometry: new Point(fromLonLat([-81.797505, 24.546543]))
+//       })
+//     ]
+//   }),
+//   zIndex: 999
+// });
+//
+// const iconStyle = new Style({
+//   image: new Icon({
+//     src: '/images/profile_pin.png',
+//     scale: 0.4
+//   }),
+// });
+//
+// const campingIconStyle = new Style({
+//   image: new Icon({
+//     src: 'https://cdn1.iconfinder.com/data/icons/set-4/76/tent-512.png',
+//     scale: 0.1,
+//   }),
+// });
+//
+// const startIconStyle = new Style({
+//   image: new Icon({
+//     src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
+//     scale: 0.08,
+//   }),
+// });
+//
+// const endIconStyle = new Style({
+//   image: new Icon({
+//     src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
+//     scale: 0.08,
+//   }),
+// });
+//
+// const startLayer = new Vector({
+//   source: new SourceVector({
+//     features: [
+//       new Feature({
+//         geometry: new Point(fromLonLat([-81.75524527287685, 24.553091926438324]))
+//       })
+//     ]
+//   }),
+//   style: startIconStyle,
+//   zIndex: 2
+// })
+//
+// const endLayer = new Vector({
+//   source: new SourceVector({
+//     features: [
+//       new Feature({
+//         geometry: new Point(fromLonLat([-148.392288, 70.242893]))
+//       })
+//     ]
+//   }),
+//   style: endIconStyle,
+//   zIndex: 2
+// })
+//
+// const riddenRouteVector = new VectorLayer({
+//   source: new VectorSource({
+//     features: [],
+//   }),
+//   style: new Style({
+//     stroke: new Stroke({
+//       width: 4,
+//       color: 'blue',
+//     }),
+//   }),
+//   zIndex: 1
+// });
+// const endPointVector = new Vector({
+//   source: new SourceVector({
+//     features: []
+//   }),
+//   style: campingIconStyle,
+//   zIndex: 2
+// });
+//
+const OSMSource = new XYZ({
+  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 });
 
-const iconStyle = new Style({
-  image: new Icon({
-    src: '/images/profile_pin.png',
-    scale: 0.4
-  }),
+const satelliteSource = new XYZ({
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  maxZoom: 20
 });
-
-const campingIconStyle = new Style({
-  image: new Icon({
-    src: 'https://cdn1.iconfinder.com/data/icons/set-4/76/tent-512.png',
-    scale: 0.1,
-  }),
-});
-
-const startIconStyle = new Style({
-  image: new Icon({
-    src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
-    scale: 0.08,
-  }),
-});
-
-const endIconStyle = new Style({
-  image: new Icon({
-    src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
-    scale: 0.08,
-  }),
-});
-
-const startLayer = new Vector({
-  source: new SourceVector({
-    features: [
-      new Feature({
-        geometry: new Point(fromLonLat([-81.75524527287685, 24.553091926438324]))
-      })
-    ]
-  }),
-  style: startIconStyle,
-  zIndex: 2
-})
-
-const endLayer = new Vector({
-  source: new SourceVector({
-    features: [
-      new Feature({
-        geometry: new Point(fromLonLat([-148.392288, 70.242893]))
-      })
-    ]
-  }),
-  style: endIconStyle,
-  zIndex: 2
-})
-
-const riddenRouteVector = new VectorLayer({
-  source: new VectorSource({
-    features: [],
-  }),
-  style: new Style({
-    stroke: new Stroke({
-      width: 4,
-      color: 'blue',
-    }),
-  }),
-  zIndex: 1
-});
-const endPointVector = new Vector({
-  source: new SourceVector({
-    features: []
-  }),
-  style: campingIconStyle,
-  zIndex: 2
-});
+//
+// const backgroundLayer = new TileLayer({
+//   source: OSMSource,
+//   zIndex: 0
+// })
 
 function getTimedelta(recordedTime) {
   var msec = (new Date().getTime()) - recordedTime;
@@ -139,22 +153,11 @@ function getTimedelta(recordedTime) {
   return [hh, mm, ss, msec]
 }
 
-const OSMSource = new XYZ({
-  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-});
-
-const satelliteSource = new XYZ({
-  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  maxZoom: 20
-});
-
-const backgroundLayer = new TileLayer({
-  source: OSMSource,
-  zIndex: 0
-})
 
 class RouteMap extends React.Component {
   constructor(props) {
+    console.log("CONSTRUCTION")
+
     super(props);
     this.state = {
       locationUrl: null,
@@ -163,18 +166,116 @@ class RouteMap extends React.Component {
       isFullscreen: false
     };
 
+    this.currentLocation = new Vector({
+      source: new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat([-81.797505, 24.546543]))
+          })
+        ]
+      }),
+      zIndex: 999
+    });
+
+    this.iconStyle = new Style({
+      image: new Icon({
+        src: '/images/profile_pin.png',
+        scale: 0.4
+      }),
+    });
+
+    this.campingIconStyle = new Style({
+      image: new Icon({
+        src: 'https://cdn1.iconfinder.com/data/icons/set-4/76/tent-512.png',
+        scale: 0.1,
+      }),
+    });
+    const campingIconStyleReference = this.campingIconStyle;
+
+    this.startIconStyle = new Style({
+      image: new Icon({
+        src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
+        scale: 0.08,
+      }),
+    });
+
+    this.endIconStyle = new Style({
+      image: new Icon({
+        src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
+        scale: 0.08,
+      }),
+    });
+
+    this.startLayer = new Vector({
+      source: new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat([-81.75524527287685, 24.553091926438324]))
+          })
+        ]
+      }),
+      style: this.startIconStyle,
+      zIndex: 2
+    })
+
+    this.endLayer = new Vector({
+      source: new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat([-148.392288, 70.242893]))
+          })
+        ]
+      }),
+      style: this.endIconStyle,
+      zIndex: 2
+    })
+
+    this.riddenRouteVector = new VectorLayer({
+      source: new VectorSource({
+        features: [],
+      }),
+      style: new Style({
+        stroke: new Stroke({
+          width: 4,
+          color: 'blue',
+        }),
+      }),
+      zIndex: 1
+    });
+    this.endPointVector = new Vector({
+      source: new SourceVector({
+        features: []
+      }),
+      style: this.campingIconStyle,
+      zIndex: 2
+    });
+
+    this.OSMSource = new XYZ({
+      url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    });
+
+    this.satelliteSource = new XYZ({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      maxZoom: 20
+    });
+
+    this.backgroundLayer = new TileLayer({
+      source: OSMSource,
+      zIndex: 0
+    })
+
     this.toggleSatellite = this.toggleSatellite.bind(this);
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
 
     this.map = new Map({
       layers: [
-        backgroundLayer,
+        this.backgroundLayer,
         route,
-        currentLocation,
-        startLayer,
-        endLayer,
-        riddenRouteVector,
-        endPointVector
+        this.currentLocation,
+        this.startLayer,
+        this.endLayer,
+        this.riddenRouteVector,
+        this.endPointVector
       ],
       view: new View({
         center: [0, 0],
@@ -198,7 +299,6 @@ class RouteMap extends React.Component {
     ))[0].setActive(false);
 
     const p = this.props;
-    // const router = this.context.router;
     this.map.addEventListener("click", function(e) {
       this.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         if (feature.get("activity") === undefined) {
@@ -237,8 +337,7 @@ class RouteMap extends React.Component {
 
     this.map.addEventListener("moveend", function () {
       const zoom = this.getView().getZoom();
-      // console.log(zoom)
-      campingIconStyle.getImage().setScale(Math.min(0.1, (zoom / 20) ** 2.5))
+      campingIconStyleReference.getImage().setScale(Math.min(0.1, (zoom / 20) ** 2.5));
     });
   }
 
@@ -246,9 +345,9 @@ class RouteMap extends React.Component {
     this.setState({isSatellite: !this.state.isSatellite});
 
     if (this.state.isSatellite) {
-      backgroundLayer.setSource(satelliteSource);
+      this.backgroundLayer.setSource(satelliteSource);
     } else {
-      backgroundLayer.setSource(OSMSource);
+      this.backgroundLayer.setSource(OSMSource);
     }
   }
 
@@ -258,9 +357,6 @@ class RouteMap extends React.Component {
   }
 
   updateLocation(jsonOutput, refreshingLocation) {
-    console.log(jsonOutput.lat);
-    console.log(jsonOutput.lon);
-    console.log(jsonOutput.recorded_time);
     this.setState(
       {
         "locationUrl": jsonOutput.url,
@@ -268,7 +364,7 @@ class RouteMap extends React.Component {
     const refreshingLocationStr = refreshingLocation ? '\nAttempting to refresh location...' : '';
 
     var timedelta = getTimedelta(jsonOutput.recorded_time);
-    iconStyle.setText(
+    this.iconStyle.setText(
       new Text({
         backgroundFill: new Fill({ color: "white" }),
         offsetY: -70,
@@ -278,10 +374,10 @@ class RouteMap extends React.Component {
     var pointFeature = new Feature({
       geometry: new Point(fromLonLat([jsonOutput.lon, jsonOutput.lat]))
     })
-    pointFeature.setStyle(iconStyle);
+    pointFeature.setStyle(this.iconStyle);
 
-    currentLocation.getSource().clear();
-    currentLocation.getSource().addFeature(
+    this.currentLocation.getSource().clear();
+    this.currentLocation.getSource().addFeature(
       pointFeature
     );
 
@@ -325,6 +421,7 @@ class RouteMap extends React.Component {
   }
 
   componentDidMount() {
+    console.log("MOUNTING")
     this.map.setTarget("map");
     this.getLocationFeature();
     this.getActivities();
@@ -357,8 +454,8 @@ class RouteMap extends React.Component {
       endPointFeatures.push(endPoint);
     });
 
-    riddenRouteVector.getSource().addFeatures(riddenRouteFeatures);
-    endPointVector.getSource().addFeatures(endPointFeatures);
+    this.riddenRouteVector.getSource().addFeatures(riddenRouteFeatures);
+    this.endPointVector.getSource().addFeatures(endPointFeatures);
   }
 
   getActivities() {

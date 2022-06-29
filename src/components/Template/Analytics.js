@@ -15,12 +15,10 @@ if (REACT_APP_NODE_ENV === 'production') {
 const Analytics = () => {
   const { pathname } = useLocation();
   // eslint-disable-next-line no-console
-  console.log(REACT_APP_NODE_ENV);
 
   useEffect(() => {
     if (REACT_APP_NODE_ENV === 'production') {
       // eslint-disable-next-line no-console
-      console.log('Sending GA');
       ReactGA.send({
         hitType: 'pageview',
         page: pathname,
