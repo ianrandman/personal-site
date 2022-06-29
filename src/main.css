@@ -39,6 +39,7 @@
     height: 100vh!important;
     width: 100vw!important;
     z-index: 999;
+    background-color: black;
 }
 
 .satellite-toggle {
