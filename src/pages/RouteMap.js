@@ -156,8 +156,6 @@ function getTimedelta(recordedTime) {
 
 class RouteMap extends React.Component {
   constructor(props) {
-    console.log("CONSTRUCTION")
-
     super(props);
     this.state = {
       locationUrl: null,
@@ -421,7 +419,6 @@ class RouteMap extends React.Component {
   }
 
   componentDidMount() {
-    console.log("MOUNTING")
     this.map.setTarget("map");
     this.getLocationFeature();
     this.getActivities();

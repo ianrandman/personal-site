@@ -32,11 +32,8 @@ import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/M
 import { iOS } from '../App';
 
 
-const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
-
 function getStravaCode(activityId) {
-  console.log(activityId);
-  var s = `https://strava-embeds.com/activity/${activityId}`
+  const s = `https://strava-embeds.com/activity/${activityId}`
   return (
     <>
       <iframe className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
@@ -45,61 +42,9 @@ function getStravaCode(activityId) {
   )
 }
 
-const startIconStyle = new Style({
-  image: new Icon({
-    src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
-    scale: 0.08,
-  }),
-});
-
-const endIconStyle = new Style({
-  image: new Icon({
-    src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
-    scale: 0.08,
-  }),
-});
-
-const startLayer = new Vector({
-  style: startIconStyle,
-  zIndex: 3
-});
-
-const endLayer = new Vector({
-  style: endIconStyle,
-  zIndex: 3
-});
-
-const riddenRouteVector = new VectorLayer({
-  source: new VectorSource({
-    features: [],
-  }),
-  style: new Style({
-    stroke: new Stroke({
-      width: 4,
-      color: 'blue',
-    }),
-  }),
-  zIndex: 1
-});
-
-const OSMSource = new XYZ({
-  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-});
-
-const satelliteSource = new XYZ({
-  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  maxZoom: 20
-});
-
-const backgroundLayer = new TileLayer({
-  source: OSMSource,
-  zIndex: 0
-})
-
 class Blog extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
 
     this.state = {
       activities: null,
@@ -114,6 +59,57 @@ class Blog extends React.Component {
     }
 
     this._carousel = React.createRef();
+
+    this.startIconStyle = new Style({
+      image: new Icon({
+        src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
+        scale: 0.08,
+      }),
+    });
+
+    this.endIconStyle = new Style({
+      image: new Icon({
+        src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
+        scale: 0.08,
+      }),
+    });
+
+    this.startLayer = new Vector({
+      style: this.startIconStyle,
+      zIndex: 3
+    });
+
+    this.endLayer = new Vector({
+      style: this.endIconStyle,
+      zIndex: 3
+    });
+
+    this.riddenRouteVector = new VectorLayer({
+      source: new VectorSource({
+        features: [],
+      }),
+      style: new Style({
+        stroke: new Stroke({
+          width: 4,
+          color: 'blue',
+        }),
+      }),
+      zIndex: 1
+    });
+
+    this.OSMSource = new XYZ({
+      url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    });
+
+    this.satelliteSource = new XYZ({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      maxZoom: 20
+    });
+
+    this.backgroundLayer = new TileLayer({
+      source: this.OSMSource,
+      zIndex: 0
+    });
 
     this.getThumbs = this.getThumbs.bind(this);
     this.getMedia = this.getMedia.bind(this);
@@ -175,14 +171,14 @@ class Blog extends React.Component {
     this.setState({ activity_num: activityNum });
 
     const activity = this.state.activities[activityNum];
-    this.map.removeLayer(backgroundLayer);
+    this.map.removeLayer(this.backgroundLayer);
     this.map.setLayers([
-      backgroundLayer,
-      riddenRouteVector,
-      startLayer,
-      endLayer
+      this.backgroundLayer,
+      this.riddenRouteVector,
+      this.startLayer,
+      this.endLayer
     ]);
-    startLayer.setSource(
+    this.startLayer.setSource(
       new SourceVector({
         features: [
           new Feature({
@@ -191,7 +187,7 @@ class Blog extends React.Component {
         ]
       })
     );
-    endLayer.setSource(
+    this.endLayer.setSource(
       new SourceVector({
         features: [
           new Feature({
@@ -206,7 +202,7 @@ class Blog extends React.Component {
       dataProjection: 'EPSG:4326',
       featureProjection: 'EPSG:3857',
     });
-    riddenRouteVector.setSource(new VectorSource({
+    this.riddenRouteVector.setSource(new VectorSource({
       features: [
         new Feature({
           type: 'route',
@@ -396,7 +392,7 @@ class Blog extends React.Component {
                 <select id="mySelect" onChange={this.updatePage}
                         value={this.state.activity_num}>
                   {Array.from(Array(this.state.activities.length).keys()).reverse().map(
-                    (value => <option value={value}>{this.state.activities[value].name}</option>)
+                    (value => <option key={value} value={value}>{this.state.activities[value].name}</option>)
                   )}
                 </select>
               </div>
