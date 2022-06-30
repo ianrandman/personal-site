@@ -25,6 +25,10 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
+        <loc>https://www.ianrandman.com/fundraiser</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://www.ianrandman.com/contact</loc>
         <changefreq>monthly</changefreq>
     </url>

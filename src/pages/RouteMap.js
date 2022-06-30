@@ -25,7 +25,6 @@ import {
   ToggleFullscreenControl,
   ToggleSatelliteControl
 } from '../components/Map/controls';
-import ContactIcons from '../components/Contact/ContactIcons';
 import { iOS } from '../App';
 
 const route = new VectorLayer({
@@ -478,6 +477,12 @@ class RouteMap extends React.Component {
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
             </div>
           </header>
+          <Link to="/fundraiser" className="button">See the fundraiser</Link>
+          &nbsp;
+          <Link to="/blog" className="button">See the blog</Link>
+          &nbsp;
+          <Link to="/instagram" className="button">See my Instagram updates</Link>
+
           {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
           <div>
             <div className="planned-line"/> Planned Route<br/>
@@ -492,8 +497,6 @@ class RouteMap extends React.Component {
               height: this.state.isFullscreen? "100vh" : "70vh"
             }
           }/>
-          <p/>
-          <ContactIcons/>
         </article>
       </Main>
     )

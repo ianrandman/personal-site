@@ -11,6 +11,7 @@
 	input[type="button"],
 	button,
 	.button {
+		margin: 5px;
 		@include vendor('appearance', 'none');
 		@include vendor('transition', (
 			'background-color #{_duration(transition)} ease',

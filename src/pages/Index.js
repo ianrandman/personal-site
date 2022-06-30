@@ -19,6 +19,8 @@ const Index = () => (
         US <a href="https://goo.gl/maps/UCVC9NjKZU4DaEcv7" target="_blank" rel="noreferrer">(Key West, FL)</a> to
         the northernmost point in North America accessible by
         road <a href="https://goo.gl/maps/qmWmRrfzJz28bWv97" target="_blank" rel="noreferrer">(Prudhoe Bay, AK)</a>.
+        This ride is a <Link to="/fundraiser">fundraiser</Link> in memory of my cousin, Joshua Randman.
+        <br /><br />
         Please feel free to check out
         my <Link to="/blog">daily blog</Link>, <Link to="/instagram">Instagram Story updates</Link>,
         my <Link to="/routeMap">route and current location</Link>,

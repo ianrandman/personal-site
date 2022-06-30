@@ -94,7 +94,7 @@ p {  margin-top: 0.6em; margin-bottom: 10px!important; }
     max-width: 600px;  /* change this to whatever you want */
     width: auto;
     position: center;
-    margin: auto;
+    margin: 5px;
 }
 
 .dog-image {

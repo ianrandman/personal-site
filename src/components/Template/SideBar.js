@@ -27,10 +27,16 @@ const SideBar = () => (
       </p>
       <ul className="actions">
         <li>
+          <Link to="/fundraiser" className="button">See the fundraiser</Link>
+        </li>
+        <li>
           <Link to="/routeMap" className="button">See the route</Link>
         </li>
         <li>
           <Link to="/blog" className="button">See the blog</Link>
+        </li>
+        <li>
+          <Link to="/instagram" className="button">See my Instagram updates</Link>
         </li>
       </ul>
     </section>

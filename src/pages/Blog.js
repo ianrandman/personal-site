@@ -25,7 +25,6 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import '../main.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
 import { PinchRotate } from 'ol/interaction';
 import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/Map/controls';
@@ -326,7 +325,6 @@ class Blog extends React.Component {
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}
-          <p/>
           {this.state.activities &&
             <>
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609).toFixed(1)} miles)</h3>
@@ -399,7 +397,6 @@ class Blog extends React.Component {
               <p/>
             </>
           }
-          <ContactIcons />
         </article>
       </Main>
     );
