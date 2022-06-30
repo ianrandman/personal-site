@@ -8,10 +8,7 @@ import Main from '../layouts/Main';
 
 class Fundraiser extends React.Component {
   redirect() {
-    window.open("http://give.hackensackmeridianhealth.org/goto/BikeForJosh", "_blank");
-    this.props.history.push({
-      pathname: '/',
-    });
+    window.location.href = "http://give.hackensackmeridianhealth.org/goto/BikeForJosh";
   }
 
   componentDidMount() {
