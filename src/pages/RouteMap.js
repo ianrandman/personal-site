@@ -477,7 +477,7 @@ class RouteMap extends React.Component {
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
             </div>
           </header>
-          <Link to="/fundraiser" className="button"><p style={{ color: '#FF0000' }}>See the fundraiser</p></Link>
+          <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>See the fundraiser</div></Link>
           &nbsp;
           <Link to="/blog" className="button">See the blog</Link>
           &nbsp;

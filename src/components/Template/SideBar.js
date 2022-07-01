@@ -27,7 +27,7 @@ const SideBar = () => (
       </p>
       <ul className="actions">
         <li>
-          <Link to="/fundraiser" className="button"><p style={{ color: '#FF0000' }}>See the fundraiser</p></Link>
+          <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>See the fundraiser</div></Link>
         </li>
         <li>
           <Link to="/routeMap" className="button">See the route</Link>
