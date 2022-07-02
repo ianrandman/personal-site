@@ -29,7 +29,7 @@ class Instagram extends React.Component {
     console.log(this.state.data);
     return this.state.data.reverse().map(media => {
       if (media.type === "photo") {
-        return <LazyLoadImage className={"instagram-image"} src={media.url} width={168} height={300}/>
+        return <LazyLoadImage className={"instagram-image"} src={media.originalUrl} width={168} height={300}/>
         // return <></>
       } else {
         // console.log(media.url)
