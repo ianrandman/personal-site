@@ -64,9 +64,14 @@ const About = () => (
           <h2 data-testid="heading"><Link to="/about">About Me</Link></h2>
         </div>
       </header>
+      Always having an interest in computing and with a catalyst from my cousin, I began to take computer engineering courses online in high school. By the start of college, I decided to pursue an education in software, leading to a major in Software Engineering, with which I can maintain a more business-oriented career outlook, learning how to best integrate software with the lives of consumers. I eventually wanted the ability to make production-ready software while also being qualified to work in more novel areas, which lead to me completing my master's in Computer Science with a focus in intelligent systems.
+      <br /><br />
+      My skills include knowledge of the practical application of software, theoretical  aspects of computing, as well as computer hardware. My software engineering projects have taught me many of the processes used to create software for consumer use. Through computer science classes and projects, I have learned some of the limits of computing, including artificial intelligence, and have gained experience using the tools necessary to bring any software project to life. Finally, my courses and projects in computer engineering have given me a deeper understanding and appreciation of modern computing.
+      <br /><br />
+      Outside of school, I have taken a great interest in the outdoors. Growing up, my father introduced me to scouting. At the end of high school, I finished a large community service project, earning me the rank of Eagle Scout. Cycling has always been a passion of mine from a young age. During my time in Boy Scouts, I started going on longer rides to complete the requirements for the cycling merit badge. I chose to combine my love of camping and cycling, leading to me taking overnight trips on the bike. Always wanting to push myself in the spirit of exploring the world, I decided to embark on my bike trip from Key West, FL to Prudhoe Bay, AK. Beyond cycling, I like to hike (but that's often too slow for me) and go snowboarding (often too expensive).      <br /><br />
+      <hr />
       <div className="title">
-        <h3 data-testid="heading">Maybe I will fill this out some more later.
-          Please enjoy some photos of my dog in the meantime...</h3>
+        <h3 data-testid="heading">Please enjoy some photos of my dog...</h3>
       </div>
       {/*<ReactHlsPlayer src={'https://embed.storiesig.net/aHR0cHM6Ly9zY29udGVudC1pYWQzLTEuY2RuaW5zdGFncmFtLmNvbS92L3Q1MC4xMjQ0MS0xNi8yODY4ODYwODhfNTE0MjQ4ODUyNTg3MTk5N180Nzg4NjM3MzQ5MTUxNjQyNDc3X24ubXA0P2VmZz1leUp4WlY5bmNtOTFjSE1pT2lKYlhDSnBaMTl3Y205bmNtVnpjMmwyWlY5MWNteG5aVzR1Y0hKdlpIVmpkRjkwZVhCbExuTjBiM0o1WENKZEluMCZfbmNfaHQ9c2NvbnRlbnQtaWFkMy0xLmNkbmluc3RhZ3JhbS5jb20mX25jX2NhdD0xMDEmX25jX29oYz1YQ0NzS3doX19OVUFYX19TWG5sJmVkbT1BTm1QN0dRQkFBQUEmY2NiPTctNSZvZT02MkI0QjRCNyZvaD0wMF9BVC1UdjFYdkdBTnRMRjZNNVpMNnZNcnFLcjhkUi1Cbkk1aUw4YmJuTnpVVmtBJl9uY19zaWQ9Mjc2MzYz'} playerRef={''}/>*/}
       {images.map((url) => (
