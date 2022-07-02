@@ -10,8 +10,8 @@ class InstagramResource(Resource):
 
     def get(self):
         instagram_highlight_obj = get_instagram_highlight()
-        if (datetime.now() - instagram_highlight_obj.time_fetched).hours > 15:
-            url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'
+        if (datetime.now() - instagram_highlight_obj.time_fetched).seconds / 3600 > 12:
+            url = 'https://instastories.watch/api/profile/highlight_items?highlightId=highlight%3A17880159521677171'
             success, _ = update_instagram_highlight(url)
             if success:
                 instagram_highlight_obj = get_instagram_highlight()

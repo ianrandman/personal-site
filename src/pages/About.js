@@ -52,6 +52,12 @@ const images = [
   'https://lh3.googleusercontent.com/pw/AM-JKLUXeUZk6Zk2NTKpxgbxACinZLxxsYZ3N0PeAiZQ0Ons1XaYwmn_qtWOpJteOzAj7YhWJxpiS20ivHLoXiWvNh4XG6tma-_MFdwHHWUrfpZ8sSlvzTVPO1P_u3voFnQ_oN37Tse86KJW6k-uqGV4Ldp1KA=s903-no',
 ];
 
+async function a() {
+  const res = await fetch("https://instastories.watch/api/profile/highlight_items?highlightId=highlight%3A17880159521677171");
+  console.log(res)
+}
+
+a();
 
 const About = () => (
   <Main

@@ -61,7 +61,7 @@ class AdminResource(Resource):
 
                 delete_strava_activity(strava_activity_id)
             elif request_type == 'refresh_instagram_highlight':
-                url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'
+                url = 'https://instastories.watch/api/profile/highlight_items?highlightId=highlight%3A17880159521677171'
                 success, reason = update_instagram_highlight(url)
                 if not success:
                     return {

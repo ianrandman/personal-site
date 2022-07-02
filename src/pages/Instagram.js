@@ -28,11 +28,21 @@ class Instagram extends React.Component {
   renderHighlight() {
     console.log(this.state.data);
     return this.state.data.reverse().map(media => {
-      if (media.media_type === "image") {
-        return <LazyLoadImage className={"instagram-image"} src={media.source} width={168} height={300}/>
+      if (media.type === "photo") {
+        return <LazyLoadImage className={"instagram-image"} src={media.url} width={168} height={300}/>
         // return <></>
       } else {
-        return <video src={media.source} type="video/mp4" />
+        console.log(media.url)
+        return (
+          <ReactHlsPlayer
+            src={media.url}
+            autoPlay={false}
+            controls={true}
+            width="100%"
+            height="auto"
+          />
+        )
+        // return <video src={media.url} />
       }
     })
   }
