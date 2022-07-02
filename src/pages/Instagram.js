@@ -32,17 +32,17 @@ class Instagram extends React.Component {
         return <LazyLoadImage className={"instagram-image"} src={media.url} width={168} height={300}/>
         // return <></>
       } else {
-        console.log(media.url)
-        return (
-          <ReactHlsPlayer
-            src={media.url}
-            autoPlay={false}
-            controls={true}
-            width="100%"
-            height="auto"
-          />
-        )
-        // return <video src={media.url} />
+        // console.log(media.url)
+        // return (
+        //   <ReactHlsPlayer
+        //     src={media.url}
+        //     autoPlay={false}
+        //     controls={true}
+        //     width="100%"
+        //     height="auto"
+        //   />
+        // )
+        // // return <video src={media.url} />
       }
     })
   }
