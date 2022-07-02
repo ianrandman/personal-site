@@ -43,89 +43,6 @@ const route = new VectorLayer({
   }),
 });
 
-// const currentLocation = new Vector({
-//   source: new SourceVector({
-//     features: [
-//       new Feature({
-//         geometry: new Point(fromLonLat([-81.797505, 24.546543]))
-//       })
-//     ]
-//   }),
-//   zIndex: 999
-// });
-//
-// const iconStyle = new Style({
-//   image: new Icon({
-//     src: '/images/profile_pin.png',
-//     scale: 0.4
-//   }),
-// });
-//
-// const campingIconStyle = new Style({
-//   image: new Icon({
-//     src: 'https://cdn1.iconfinder.com/data/icons/set-4/76/tent-512.png',
-//     scale: 0.1,
-//   }),
-// });
-//
-// const startIconStyle = new Style({
-//   image: new Icon({
-//     src: 'https://img.icons8.com/emoji/344/green-circle-emoji.png',
-//     scale: 0.08,
-//   }),
-// });
-//
-// const endIconStyle = new Style({
-//   image: new Icon({
-//     src: 'https://img.icons8.com/emoji/344/red-circle-emoji.png',
-//     scale: 0.08,
-//   }),
-// });
-//
-// const startLayer = new Vector({
-//   source: new SourceVector({
-//     features: [
-//       new Feature({
-//         geometry: new Point(fromLonLat([-81.75524527287685, 24.553091926438324]))
-//       })
-//     ]
-//   }),
-//   style: startIconStyle,
-//   zIndex: 2
-// })
-//
-// const endLayer = new Vector({
-//   source: new SourceVector({
-//     features: [
-//       new Feature({
-//         geometry: new Point(fromLonLat([-148.392288, 70.242893]))
-//       })
-//     ]
-//   }),
-//   style: endIconStyle,
-//   zIndex: 2
-// })
-//
-// const riddenRouteVector = new VectorLayer({
-//   source: new VectorSource({
-//     features: [],
-//   }),
-//   style: new Style({
-//     stroke: new Stroke({
-//       width: 4,
-//       color: 'blue',
-//     }),
-//   }),
-//   zIndex: 1
-// });
-// const endPointVector = new Vector({
-//   source: new SourceVector({
-//     features: []
-//   }),
-//   style: campingIconStyle,
-//   zIndex: 2
-// });
-//
 const OSMSource = new XYZ({
   url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 });
@@ -134,11 +51,6 @@ const satelliteSource = new XYZ({
   url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   maxZoom: 20
 });
-//
-// const backgroundLayer = new TileLayer({
-//   source: OSMSource,
-//   zIndex: 0
-// })
 
 function getTimedelta(recordedTime) {
   var msec = (new Date().getTime()) - recordedTime;
@@ -245,15 +157,6 @@ class RouteMap extends React.Component {
       }),
       style: this.campingIconStyle,
       zIndex: 2
-    });
-
-    this.OSMSource = new XYZ({
-      url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    });
-
-    this.satelliteSource = new XYZ({
-      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      maxZoom: 20
     });
 
     this.backgroundLayer = new TileLayer({
@@ -477,13 +380,12 @@ class RouteMap extends React.Component {
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
             </div>
           </header>
-          <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>See the fundraiser</div></Link>
+          <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>fundraiser</div></Link>
           &nbsp;
-          <Link to="/blog" className="button">See the blog</Link>
+          <Link to="/blog" className="button">blog</Link>
           &nbsp;
-          <Link to="/instagram" className="button">See my Instagram updates</Link>
+          <Link to="/instagram" className="button">Instagram updates</Link>
 
-          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
           <div>
             <div className="planned-line"/> Planned Route<br/>
             <div className="ridden-line"/> Ridden Route (click on a section to go to the blog for that day)
@@ -497,6 +399,8 @@ class RouteMap extends React.Component {
               height: this.state.isFullscreen? "100vh" : "70vh"
             }
           }/>
+
+          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
         </article>
       </Main>
     )

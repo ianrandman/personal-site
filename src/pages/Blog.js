@@ -41,6 +41,15 @@ function getStravaCode(activityId) {
   )
 }
 
+const OSMSource = new XYZ({
+  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+});
+
+const satelliteSource = new XYZ({
+  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  maxZoom: 20
+});
+
 class Blog extends React.Component {
   constructor(props) {
     super(props);
@@ -96,17 +105,8 @@ class Blog extends React.Component {
       zIndex: 1
     });
 
-    this.OSMSource = new XYZ({
-      url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    });
-
-    this.satelliteSource = new XYZ({
-      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      maxZoom: 20
-    });
-
     this.backgroundLayer = new TileLayer({
-      source: this.OSMSource,
+      source: OSMSource,
       zIndex: 0
     });
 
@@ -147,9 +147,9 @@ class Blog extends React.Component {
     this.setState({isSatellite: !this.state.isSatellite});
 
     if (this.state.isSatellite) {
-      backgroundLayer.setSource(satelliteSource);
+      this.backgroundLayer.setSource(satelliteSource);
     } else {
-      backgroundLayer.setSource(OSMSource);
+      this.backgroundLayer.setSource(OSMSource);
     }
   }
 
