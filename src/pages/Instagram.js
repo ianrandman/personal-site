@@ -9,20 +9,9 @@ import ReactHlsPlayer from 'react-hls-player';
 
 import 'react-image-gallery/styles/css/image-gallery.css';
 
-
 import '../main.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import ContactIcons from '../components/Contact/ContactIcons';
 import { fetchBackend } from '../FetchConfig';
-
-
-async function a() {
-  console.log('test before')
-  const res = await fetch('https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171');
-  console.log(res);
-}
-
-a();
 
 class Instagram extends React.Component {
   constructor(props) {
