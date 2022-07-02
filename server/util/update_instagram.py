@@ -13,6 +13,9 @@ def update_instagram_highlight(url):
         if request.status_code == 200:
             # remove videos
             json = request.json()
+            if not json['success']:
+                return False, request.json()
+
             json['data'] = [data for data in json['data'] if data['media_type'] == 'image']
 
             # for media in json['data']:
