@@ -8,7 +8,7 @@ import Main from '../layouts/Main';
 
 class Fundraiser extends React.Component {
   redirect() {
-    window.location.href = "http://give.hackensackmeridianhealth.org/goto/BikeForJosh";
+    window.location.replace("http://give.hackensackmeridianhealth.org/goto/BikeForJosh");
   }
 
   componentDidMount() {

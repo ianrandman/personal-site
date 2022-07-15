@@ -364,7 +364,7 @@ class Blog extends React.Component {
                   {this.getMedia()}
                 </Carousel>
               </div>
-              <p>{this.state.activities[this.state.activity_num].description}</p>
+              <p style={{whiteSpace: "pre-wrap"}} >{this.state.activities[this.state.activity_num].description}</p>
               <hr/>
             </>
           }
