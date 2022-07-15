@@ -40,6 +40,7 @@ class Activity(db.Model):
 
 class Media(db.Model):
     id = db.Column(db.String(50), primary_key=True)
+    order_num = db.Column(db.Integer, nullable=False)
     activity_id = db.Column(db.Integer, db.ForeignKey('activity.id'), nullable=False)
     is_video = db.Column(db.Boolean, nullable=False)
     default_photo = db.Column(db.Boolean, nullable=False)
@@ -52,6 +53,7 @@ class Media(db.Model):
     def json(self):
         return dict(
             id=self.id,
+            order_num=self.order_num,
             activity_id=self.activity_id,
             is_video=self.is_video,
             default_photo=self.default_photo,

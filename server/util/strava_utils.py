@@ -75,9 +75,10 @@ def get_activity_media(activity_id):
         }
     )
 
-    for media in response.json():
+    for i, media in enumerate(response.json()):
         media_obj = Media(
             id=media['unique_id'],
+            order_num=i,
             activity_id=media['activity_id'],
             is_video=bool('video_url' in media),
             default_photo=media['default_photo'],
@@ -103,20 +104,20 @@ def get_activity_media(activity_id):
         media_obj = next(item for item in temp_media_list if item.id == media['unique_id'])
         media_obj.large_image_url = media['urls']['3000']
 
-    media_list = list()
-    for media_obj in temp_media_list:
-        if media_obj.default_photo:
-            media_list.append(media_obj)
-            temp_media_list.remove(media_obj)
-            break
-    for media_obj in temp_media_list:
-        if media_obj.is_video:
-            media_list.append(media_obj)
-    for media_obj in temp_media_list:
-        if not media_obj.is_video:
-            media_list.append(media_obj)
+    # media_list = list()
+    # for media_obj in temp_media_list:
+    #     if media_obj.default_photo:
+    #         media_list.append(media_obj)
+    #         temp_media_list.remove(media_obj)
+    #         break
+    # for media_obj in temp_media_list:
+    #     if media_obj.is_video:
+    #         media_list.append(media_obj)
+    # for media_obj in temp_media_list:
+    #     if not media_obj.is_video:
+    #         media_list.append(media_obj)
 
-    return media_list
+    return temp_media_list
 
 
 def authenticate():

@@ -261,6 +261,10 @@ class Blog extends React.Component {
   }
 
   getThumbs() {
+    this.state.activities[this.state.activity_num].media.sort((a, b) => {
+      return a.order_num - b.order_num;
+    });
+
     return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
       return (
         <div>
@@ -271,6 +275,14 @@ class Blog extends React.Component {
   }
 
   getMedia() {
+
+    this.state.activities[this.state.activity_num].media.sort((a, b) => {
+      return a.order_num - b.order_num;
+    });
+
+    console.log(this.state.activities[this.state.activity_num].media)
+
+
     return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
       if (mediaDict.is_video) {
         return (
