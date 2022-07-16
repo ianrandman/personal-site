@@ -401,6 +401,7 @@ class RouteMap extends React.Component {
           }/>
 
           {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
+          <a href="https://www.google.com/maps/d/u/0/edit?mid=1CedznJnm9DqhWFhgzZhqAGDnS25jWjE&usp=sharing" style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Maps Route</a>
         </article>
       </Main>
     )
