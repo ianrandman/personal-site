@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 
 from util.db_utils import update_location_url, \
-    fetch_new_strava_activities, update_strava_activity, delete_strava_activity
+    fetch_new_strava_activities, update_strava_activity, delete_strava_activity, delete_recent_strava_activity
 from util.strava_utils import load_sensitive_info
 from util.update_instagram import update_instagram_highlight
 from util.update_location import update_location_selenium
@@ -60,6 +60,10 @@ class AdminResource(Resource):
                     }
 
                 delete_strava_activity(strava_activity_id)
+
+            elif request_type == 'delete_recent_strava_activity':
+                delete_recent_strava_activity()
+
             elif request_type == 'refresh_instagram_highlight':
                 url = 'https://instastories.watch/api/profile/highlight_items?highlightId=highlight%3A17880159521677171'
                 success, reason = update_instagram_highlight(url)

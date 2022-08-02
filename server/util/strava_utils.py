@@ -25,7 +25,7 @@ client = Client()
 
 def load_existing_strava_data(only_new=False):
     authenticate()
-    activities = client.get_activities(after=datetime(year=2022, month=6, day=1))  # June 1, 2022 todo
+    activities = client.get_activities(after=datetime(year=2022, month=6, day=1))  # June 1, 2022
     if only_new:
         db_activities = Activity.query.all()
         db_activity_ids = [activity.id for activity in db_activities]

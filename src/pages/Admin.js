@@ -47,6 +47,7 @@ const Admin = () => (
           <option value="update_google_location_share_link">Update Google Share Link</option>
           <option value="refresh_instagram_highlight">Refresh Instagram Highlight</option>
           <option value="fetch_new_strava_activities">Fetch New Strava Activities</option>
+          <option value="delete_recent_strava_activity">Delete Recent Strava Activity</option>
           <option value="update_strava_activity">Update Strava Activity (requires Strava activity ID)</option>
           <option value="delete_strava_activity">Delete Strava Activity (requires Strava activity ID)</option>
         </select>

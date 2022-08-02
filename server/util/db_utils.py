@@ -24,6 +24,12 @@ def delete_strava_activity(activity_id):
     db.session.commit()
 
 
+def delete_recent_strava_activity():
+    activity_obj = Activity.query.order_by(Activity.start_date.desc()).first()
+    db.session.delete(activity_obj)
+    db.session.commit()
+
+
 def get_current_location():
     return Location.query.limit(1)[0]
 
