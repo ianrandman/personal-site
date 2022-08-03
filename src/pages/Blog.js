@@ -344,9 +344,9 @@ class Blog extends React.Component {
 
               <div>
                 {this.state.activities && this.state.activity_num > 0 &&
-                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Activity</button>}
                 {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+                <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Activity</button>}
 
               </div>
               <hr/>
@@ -372,9 +372,9 @@ class Blog extends React.Component {
           <div>
             <div style={{marginRight: "5px", marginBottom: "5px", display: "inline-block"}}>
               {this.state.activities && this.state.activity_num > 0 &&
-              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Activity</button>}
               {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+              <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Activity</button>}
             </div>
             {/*<button style={{display: "inline-block"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>*/}
           </div>
@@ -391,9 +391,9 @@ class Blog extends React.Component {
           {this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}
 
           {this.state.activities && this.state.activity_num > 0 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Day</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous Activity</button>}
           {this.state.activities && this.state.activity_num < this.state.activities.length - 1 &&
-          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Day</button>}
+          <button type="button" style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next Activity</button>}
           {this.state.activities &&
             <>
               <hr/>
