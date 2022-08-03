@@ -5,9 +5,10 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import { FullScreen, Zoom } from 'ol/control';
+import {extend} from 'ol/extent';
 
-import { Vector as SourceVector, XYZ } from 'ol/source';
-import { Polyline } from 'ol/format';
+import { OSM, Vector as SourceVector, XYZ } from 'ol/source';
+import { KML, Polyline } from 'ol/format';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { Vector } from 'ol/layer';
@@ -40,6 +41,22 @@ function getStravaCode(activityId) {
     </>
   )
 }
+
+const route = new VectorLayer({
+  source: new VectorSource({
+    url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
+    format: new KML({
+      extractStyles: false
+    }),
+  }),
+  style: new Style({
+    stroke: new Stroke({
+      width: 3,
+      color: 'red',
+      lineDash: [5, 5]
+    })
+  }),
+});
 
 const OSMSource = new XYZ({
   url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -92,7 +109,7 @@ class Blog extends React.Component {
       zIndex: 3
     });
 
-    this.riddenRouteVector = new VectorLayer({
+    this.currentRouteVector = new VectorLayer({
       source: new VectorSource({
         features: [],
       }),
@@ -173,9 +190,10 @@ class Blog extends React.Component {
     this.map.removeLayer(this.backgroundLayer);
     this.map.setLayers([
       this.backgroundLayer,
-      this.riddenRouteVector,
+      this.currentRouteVector,
       this.startLayer,
-      this.endLayer
+      this.endLayer,
+      route
     ]);
     this.startLayer.setSource(
       new SourceVector({
@@ -201,7 +219,7 @@ class Blog extends React.Component {
       dataProjection: 'EPSG:4326',
       featureProjection: 'EPSG:3857',
     });
-    this.riddenRouteVector.setSource(new VectorSource({
+    this.currentRouteVector.setSource(new VectorSource({
       features: [
         new Feature({
           type: 'route',
@@ -209,32 +227,40 @@ class Blog extends React.Component {
         })
       ]
     }));
-    this.map.getView().fit(riddenRoute.getExtent());
-    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
+
+    var extent = riddenRoute.getExtent()
     activity.media.map((mediaObj) => {
       if (mediaObj.location === "None") {
         return;
       }
 
-      this.map.addLayer(
-        new VectorLayer({
-          source: new VectorSource({
-            features: [
-              new Feature({
-                geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
-              })
-            ]
-          }),
-          style: new Style({
-            image: new Icon({
-              src: mediaObj.small_image_url,
-              scale: 0.5,
+      const layerToAdd = new VectorLayer({
+        source: new VectorSource({
+          features: [
+            new Feature({
+              geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
             })
-          }),
-          zIndex: 2
-        })
-      )
+          ]
+        }),
+        style: new Style({
+          image: new Icon({
+            src: mediaObj.small_image_url,
+            scale: 0.5,
+          })
+        }),
+        zIndex: 2
+      })
+
+      this.map.addLayer(
+        layerToAdd
+      );
+
+      extend(extent, layerToAdd.getSource().getExtent());
     });
+
+
+    this.map.getView().fit(extent);
+    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
 
     // window.scrollTo(0, 0);
     this._carousel.current.moveTo(0);
@@ -380,7 +406,14 @@ class Blog extends React.Component {
           </div>
 
           <p/>
+
+          <div>
+            <div className="planned-line"/> Planned Route<br/>
+            <div className="ridden-line"/> Current Activity Route<br/>
+          </div>
+
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
+          <p/>
           <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
             {
               width: "100%",
