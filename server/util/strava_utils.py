@@ -92,7 +92,7 @@ def get_activity_media(activity_id):
         url=f'https://www.strava.com/api/v3/activities/{activity_id}/photos',
         params={
             'photo_sources': True,
-            'size': 3000
+            'size': 10000
         },
         headers={
             'accept': 'application/json',
@@ -102,7 +102,7 @@ def get_activity_media(activity_id):
 
     for media in response.json():
         media_obj = next(item for item in temp_media_list if item.id == media['unique_id'])
-        media_obj.large_image_url = media['urls']['3000']
+        media_obj.large_image_url = media['urls']['10000']
 
     # media_list = list()
     # for media_obj in temp_media_list:
