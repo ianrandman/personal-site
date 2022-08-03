@@ -345,12 +345,15 @@ class RouteMap extends React.Component {
         activity_num: index
       });
 
-      const endPoint = new Feature({
-        geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
-      });
+      if (activity.name.startsWith("Day ")) {
+        const endPoint = new Feature({
+          geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng)
+            .reverse()))
+        });
+        endPointFeatures.push(endPoint);
+      }
 
       riddenRouteFeatures.push(routeFeature);
-      endPointFeatures.push(endPoint);
     });
 
     this.riddenRouteVector.getSource().addFeatures(riddenRouteFeatures);
