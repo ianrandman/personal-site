@@ -1,5 +1,6 @@
 from flask import request
 from flask_restful import Resource
+import traceback
 
 from util.db_utils import update_location_url, \
     fetch_new_strava_activities, update_strava_activity, delete_strava_activity, delete_recent_strava_activity
@@ -73,9 +74,11 @@ class AdminResource(Resource):
                         'reason': reason
                     }
         except Exception as e:
+            traceback.print_exc() 
             return {
                 'success': False,
-                'reason': str(e)
+                'reason': str(e), 
+                'traceback': traceback.format_exc() 
             }
 
         return {
