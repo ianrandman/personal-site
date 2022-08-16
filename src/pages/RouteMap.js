@@ -361,7 +361,7 @@ class RouteMap extends React.Component {
   }
 
   getActivities() {
-    fetchBackend(`/strava`)
+    fetchBackend(`/strava?get_all=True&get_summary_polyline=True`)
       .then(
         response => response.json()
       )

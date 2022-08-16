@@ -76,7 +76,8 @@ class Blog extends React.Component {
       activity_num: null,
       activity_count: null,
       isSatellite: false,
-      isFullscreen: false
+      isFullscreen: false,
+      media: null
     };
 
     if (props.location.state) {
@@ -184,90 +185,109 @@ class Blog extends React.Component {
   }
 
   getActivity(activityNum) {
-    this.setState({ activity_num: activityNum });
+    var activity = undefined;
 
-    const activity = this.state.activities[activityNum];
-    this.map.removeLayer(this.backgroundLayer);
-    this.map.setLayers([
-      this.backgroundLayer,
-      this.currentRouteVector,
-      this.startLayer,
-      this.endLayer,
-      route
-    ]);
-    this.startLayer.setSource(
-      new SourceVector({
-        features: [
-          new Feature({
-            geometry: new Point(fromLonLat(JSON.parse(activity.start_latlng).reverse()))
+    fetchBackend(`/strava?id=${this.state.activities[activityNum].id}&get_polyline=True&get_media=True`)
+      .then(
+        response => response.json()
+      )
+      .then(jsonOutput => {
+          this.state.activities[activityNum] = jsonOutput;
+          activity = jsonOutput;
+          console.log(this.state.activities[activityNum] )
+          this.setState({ activity_num: activityNum });
+          this.setState({media: this.getMedia(activity)})
+
+          /////////////////////////////////////
+
+        this.map.removeLayer(this.backgroundLayer);
+        this.map.setLayers([
+          this.backgroundLayer,
+          this.currentRouteVector,
+          this.startLayer,
+          this.endLayer,
+          route
+        ]);
+        this.startLayer.setSource(
+          new SourceVector({
+            features: [
+              new Feature({
+                geometry: new Point(fromLonLat(JSON.parse(activity.start_latlng).reverse()))
+              })
+            ]
           })
-        ]
-      })
-    );
-    this.endLayer.setSource(
-      new SourceVector({
-        features: [
-          new Feature({
-            geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
+        );
+        this.endLayer.setSource(
+          new SourceVector({
+            features: [
+              new Feature({
+                geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
+              })
+            ]
           })
-        ]
-      })
-    );
-    const riddenRoute = new Polyline({
-      factor: 1e5,
-    }).readGeometry(activity.polyline, {
-      dataProjection: 'EPSG:4326',
-      featureProjection: 'EPSG:3857',
-    });
-    this.currentRouteVector.setSource(new VectorSource({
-      features: [
-        new Feature({
-          type: 'route',
-          geometry: riddenRoute,
-        })
-      ]
-    }));
-
-    var extent = riddenRoute.getExtent()
-    activity.media.map((mediaObj) => {
-      if (mediaObj.location === "None") {
-        return;
-      }
-
-      const layerToAdd = new VectorLayer({
-        source: new VectorSource({
+        );
+        const riddenRoute = new Polyline({
+          factor: 1e5,
+        }).readGeometry(activity.polyline, {
+          dataProjection: 'EPSG:4326',
+          featureProjection: 'EPSG:3857',
+        });
+        this.currentRouteVector.setSource(new VectorSource({
           features: [
             new Feature({
-              geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
+              type: 'route',
+              geometry: riddenRoute,
             })
           ]
-        }),
-        style: new Style({
-          image: new Icon({
-            src: mediaObj.small_image_url,
-            scale: 0.5,
+        }));
+
+        var extent = riddenRoute.getExtent()
+        activity.media.map((mediaObj) => {
+          if (mediaObj.location === "None") {
+            return;
+          }
+
+          const layerToAdd = new VectorLayer({
+            source: new VectorSource({
+              features: [
+                new Feature({
+                  geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
+                })
+              ]
+            }),
+            style: new Style({
+              image: new Icon({
+                src: mediaObj.small_image_url,
+                scale: 0.5,
+              })
+            }),
+            zIndex: 2
           })
-        }),
-        zIndex: 2
-      })
 
-      this.map.addLayer(
-        layerToAdd
-      );
+          this.map.addLayer(
+            layerToAdd
+          );
 
-      extend(extent, layerToAdd.getSource().getExtent());
-    });
+          extend(extent, layerToAdd.getSource().getExtent());
+        });
 
 
-    this.map.getView().fit(extent);
-    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
+        this.map.getView().fit(extent);
+        this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
 
-    // window.scrollTo(0, 0);
-    this._carousel.current.moveTo(0);
+        // window.scrollTo(0, 0);
+        this._carousel.current.moveTo(0);
+        }
+      )
+
+    // console.log(this.state.activities[activityNum] )
+    //
+    // const activity = this.state.activities[activityNum];
+
   }
 
   getActivities() {
-    fetchBackend(`/strava`)
+    fetchBackend(`/strava?get_all=True`)
       .then(
         response => response.json()
       )
@@ -300,16 +320,17 @@ class Blog extends React.Component {
     );
   }
 
-  getMedia() {
+  getMedia(activity) {
+    // while (this.state.activities[this.state.activity_num].media === undefined);
 
-    this.state.activities[this.state.activity_num].media.sort((a, b) => {
+    activity.media.sort((a, b) => {
       return a.order_num - b.order_num;
     });
 
-    console.log(this.state.activities[this.state.activity_num].media)
+    // console.log(this.state.activities[this.state.activity_num].media)
 
 
-    return this.state.activities[this.state.activity_num].media.map((mediaDict) => {
+    return activity.media.map((mediaDict) => {
       if (mediaDict.is_video) {
         return (
           <div>
@@ -387,7 +408,7 @@ class Blog extends React.Component {
                   preventMovementUntilSwipeScrollTolerance={true}
                   swipeScrollTolerance={100}
                 >
-                  {this.getMedia()}
+                  {this.state.media}
                 </Carousel>
               </div>
               <p style={{whiteSpace: "pre-wrap"}} >{this.state.activities[this.state.activity_num].description}</p>

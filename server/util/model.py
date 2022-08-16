@@ -17,9 +17,8 @@ class Activity(db.Model):
 
     media = db.relationship('Media', backref='media', lazy=False, cascade="all, delete-orphan")
 
-    @property
-    def json(self):
-        return dict(
+    def json(self, polyline=False, summary_polyline=False, media=False):
+        json = dict(
             id=self.id,
             name=self.name,
             description=self.description,
@@ -29,10 +28,19 @@ class Activity(db.Model):
             start_latlng=self.start_latlng,
             end_latlng=self.end_latlng,
             start_date=self.start_date,
-            polyline=self.polyline,
-            summary_polyline=self.summary_polyline,
-            media=[m.json for m in self.media]
+            # polyline=self.polyline,
+            # summary_polyline=self.summary_polyline,
+            # media=[m.json for m in self.media]
         )
+
+        if polyline:
+            json['polyline'] = self.polyline
+        if summary_polyline:
+            json['summary_polyline'] = self.summary_polyline
+        if media:
+            json['media'] = [m.json for m in self.media]
+
+        return json
 
     def __repr__(self):
         return self.name

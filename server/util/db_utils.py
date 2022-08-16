@@ -44,6 +44,10 @@ def get_activities():
     return Activity.query.order_by(Activity.start_date.asc()).all()
 
 
+def get_activity(id):
+    return Activity.query.filter_by(id=id).first()
+
+
 def update_location_url(google_location_share_link):
     location_url_obj = LocationURL.query.limit(1).all()[0]
     location_url_obj.google_location_share_link = google_location_share_link
