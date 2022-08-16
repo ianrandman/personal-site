@@ -58,6 +58,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
     "react-snap": "^1.23.0",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^3.0.2",
     "stream": "npm:stream-browserify@^3.0.0",
     "styled-components": "^5.3.5",

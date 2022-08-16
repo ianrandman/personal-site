@@ -31,6 +31,14 @@ import { PinchRotate } from 'ol/interaction';
 import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/Map/controls';
 import { iOS } from '../App';
 
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
+function LinkRenderer(props) {
+  console.log(props.href);
+  return <a href={props.href} target="_blank" rel="noreferrer" >{props.children}</a>
+}
+
 
 function getStravaCode(activityId) {
   const s = `https://strava-embeds.com/activity/${activityId}`
@@ -411,7 +419,11 @@ class Blog extends React.Component {
                   {this.state.media}
                 </Carousel>
               </div>
-              <p style={{whiteSpace: "pre-wrap"}} >{this.state.activities[this.state.activity_num].description}</p>
+              <p style={{whiteSpace: "pre-wrap"}} >
+                {<ReactMarkdown children={this.state.activities[this.state.activity_num].description}
+                                // remarkPlugins={[remarkGfm]}
+                                renderers={{link: LinkRenderer}}
+                />}</p>
               <hr/>
             </>
           }
