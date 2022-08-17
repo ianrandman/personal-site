@@ -142,6 +142,7 @@ class Blog extends React.Component {
     this.updatePage = this.updatePage.bind(this);
     this.getPreviousActivity = this.getPreviousActivity.bind(this);
     this.getNextActivity = this.getNextActivity.bind(this);
+    this.changeActivity = this.changeActivity.bind(this);
     this.getActivity = this.getActivity.bind(this);
     this.toggleSatellite = this.toggleSatellite.bind(this);
 
@@ -192,8 +193,94 @@ class Blog extends React.Component {
     this.getActivity(this.state.activity_num - 1)
   }
 
+  changeActivity(activityNum, activity) {
+    this.setState({ activity_num: activityNum });
+    this.setState({media: this.getMedia(activity)})
+
+    this.map.removeLayer(this.backgroundLayer);
+    this.map.setLayers([
+      this.backgroundLayer,
+      this.currentRouteVector,
+      this.startLayer,
+      this.endLayer,
+      route
+    ]);
+    this.startLayer.setSource(
+      new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat(JSON.parse(activity.start_latlng).reverse()))
+          })
+        ]
+      })
+    );
+    this.endLayer.setSource(
+      new SourceVector({
+        features: [
+          new Feature({
+            geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
+          })
+        ]
+      })
+    );
+    const riddenRoute = new Polyline({
+      factor: 1e5,
+    }).readGeometry(activity.polyline, {
+      dataProjection: 'EPSG:4326',
+      featureProjection: 'EPSG:3857',
+    });
+    this.currentRouteVector.setSource(new VectorSource({
+      features: [
+        new Feature({
+          type: 'route',
+          geometry: riddenRoute,
+        })
+      ]
+    }));
+
+    var extent = riddenRoute.getExtent()
+    activity.media.map((mediaObj) => {
+      if (mediaObj.location === "None") {
+        return;
+      }
+
+      const layerToAdd = new VectorLayer({
+        source: new VectorSource({
+          features: [
+            new Feature({
+              geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
+            })
+          ]
+        }),
+        style: new Style({
+          image: new Icon({
+            src: mediaObj.small_image_url,
+            scale: 0.5,
+          })
+        }),
+        zIndex: 2
+      })
+
+      this.map.addLayer(
+        layerToAdd
+      );
+
+      extend(extent, layerToAdd.getSource().getExtent());
+    });
+
+
+    this.map.getView().fit(extent);
+    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
+
+    // window.scrollTo(0, 0);
+    this._carousel.current.moveTo(0);
+  }
+
   getActivity(activityNum) {
-    var activity = undefined;
+    if (this.state.activities[activityNum].hasOwnProperty('media')) {
+      this.changeActivity(activityNum, this.state.activities[activityNum]);
+      return;
+    }
 
     fetchBackend(`/strava?id=${this.state.activities[activityNum].id}&get_polyline=True&get_media=True`)
       .then(
@@ -201,90 +288,12 @@ class Blog extends React.Component {
       )
       .then(jsonOutput => {
           this.state.activities[activityNum] = jsonOutput;
-          activity = jsonOutput;
           console.log(this.state.activities[activityNum] )
-          this.setState({ activity_num: activityNum });
-          this.setState({media: this.getMedia(activity)})
+
 
           /////////////////////////////////////
 
-        this.map.removeLayer(this.backgroundLayer);
-        this.map.setLayers([
-          this.backgroundLayer,
-          this.currentRouteVector,
-          this.startLayer,
-          this.endLayer,
-          route
-        ]);
-        this.startLayer.setSource(
-          new SourceVector({
-            features: [
-              new Feature({
-                geometry: new Point(fromLonLat(JSON.parse(activity.start_latlng).reverse()))
-              })
-            ]
-          })
-        );
-        this.endLayer.setSource(
-          new SourceVector({
-            features: [
-              new Feature({
-                geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng).reverse()))
-              })
-            ]
-          })
-        );
-        const riddenRoute = new Polyline({
-          factor: 1e5,
-        }).readGeometry(activity.polyline, {
-          dataProjection: 'EPSG:4326',
-          featureProjection: 'EPSG:3857',
-        });
-        this.currentRouteVector.setSource(new VectorSource({
-          features: [
-            new Feature({
-              type: 'route',
-              geometry: riddenRoute,
-            })
-          ]
-        }));
-
-        var extent = riddenRoute.getExtent()
-        activity.media.map((mediaObj) => {
-          if (mediaObj.location === "None") {
-            return;
-          }
-
-          const layerToAdd = new VectorLayer({
-            source: new VectorSource({
-              features: [
-                new Feature({
-                  geometry: new Point(fromLonLat(JSON.parse(mediaObj.location).reverse()))
-                })
-              ]
-            }),
-            style: new Style({
-              image: new Icon({
-                src: mediaObj.small_image_url,
-                scale: 0.5,
-              })
-            }),
-            zIndex: 2
-          })
-
-          this.map.addLayer(
-            layerToAdd
-          );
-
-          extend(extent, layerToAdd.getSource().getExtent());
-        });
-
-
-        this.map.getView().fit(extent);
-        this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
-
-        // window.scrollTo(0, 0);
-        this._carousel.current.moveTo(0);
+          this.changeActivity(activityNum, jsonOutput);
         }
       )
 
