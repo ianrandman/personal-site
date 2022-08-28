@@ -47,13 +47,13 @@ def update_location_using_inner():
 
     try:
         request = requests.get(inner_location_share_url)
-        update_location_given_response(request.content)
+        update_location_given_response(request.content, location_share_url_obj.google_location_share_link)
     except Exception as e:
         print('Could not get location')
         print(e)
 
 
-def update_location_given_response(response, location_share_url=None):
+def update_location_given_response(response, location_share_url):
     response = response.decode('utf-8')[5:]
     response = response.replace('null', '"null"')
     response = ast.literal_eval(response)
