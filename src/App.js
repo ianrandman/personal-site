@@ -20,7 +20,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 const Instagram = lazy(() => import('./pages/Instagram'));
 const Fundraiser = lazy(() => import('./pages/Fundraiser'));
 const Resume = lazy(() => import('./pages/Resume'));
-const Press = lazy(() => import('./pages/Press'));
+// const Press = lazy(() => import('./pages/Press'));
 const Admin = lazy(() => import('./pages/Admin'));
 // const Stats = lazy(() => import('./pages/Stats'));
 
@@ -36,7 +36,7 @@ const App = () => (
         <Route path="/fundraiser" component={Fundraiser} />
         <Route path="/contact" component={Contact} />
         <Route path="/resume" component={Resume} />
-        <Route path="/press" component={Press} />
+        {/*<Route path="/press" component={Press} />*/}
         <Route path="/admin" component={Admin} />
         <Route component={NotFound} status={404} />
       </Switch>
