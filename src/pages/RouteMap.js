@@ -70,6 +70,7 @@ class RouteMap extends React.Component {
     super(props);
     this.state = {
       locationUrl: null,
+      isGoogle: true,
       activities: null,
       isSatellite: false,
       isFullscreen: false
@@ -260,6 +261,7 @@ class RouteMap extends React.Component {
     this.setState(
       {
         "locationUrl": jsonOutput.url,
+        "isGoogle": jsonOutput.is_google,
       });
     const refreshingLocationStr = refreshingLocation ? '\nAttempting to refresh location...' : '';
 
@@ -403,7 +405,7 @@ class RouteMap extends React.Component {
             }
           }/>
 
-          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Location Share</a>}
+          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">{this.state.isGoogle ? "Link to Google Location Share": "Open location in Google"}</a>}
           <a href="https://www.google.com/maps/d/u/0/edit?mid=1CedznJnm9DqhWFhgzZhqAGDnS25jWjE&usp=sharing" style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Maps Route</a>
         </article>
       </Main>

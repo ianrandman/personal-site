@@ -61,8 +61,14 @@ def update_location_given_response(response, location_share_url=None):
     recorded_time = response[0][0][1][2]
 
     current_location_obj = Location.query.limit(1).all()[0]
+
+    if not recorded_time > current_location_obj.recorded_time:
+        return
+
     current_location_obj.lat = lat_lon[0]
     current_location_obj.lon = lat_lon[1]
+    current_location_obj.is_google = True
+
     current_location_obj.recorded_time = recorded_time
     if location_share_url is not None:
         current_location_obj.url = location_share_url

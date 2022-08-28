@@ -3,7 +3,8 @@ from flask_restful import Resource
 import traceback
 
 from util.db_utils import update_location_url, \
-    fetch_new_strava_activities, update_strava_activity, delete_strava_activity, delete_recent_strava_activity
+    fetch_new_strava_activities, update_strava_activity, delete_strava_activity, delete_recent_strava_activity, \
+    update_location_zoleo_db
 from util.strava_utils import load_sensitive_info
 from util.update_instagram import update_instagram_highlight
 from util.update_location import update_location_selenium
@@ -16,6 +17,7 @@ class AdminResource(Resource):
         request_type = content.get('request_type')
         password = content.get('password')
         google_location_share_link = content.get('google_location_share_link')
+        update_location_zoleo = content.get('update_location_zoleo')
         strava_activity_id = content.get('strava_activity_id')
 
         sensitive_info = load_sensitive_info()
@@ -43,6 +45,31 @@ class AdminResource(Resource):
                         'success': False,
                         'reason': reason
                     }
+            elif request_type == 'update_location_zoleo':
+                if update_location_zoleo is None or update_location_zoleo == '':
+                    return {
+                        'success': False,
+                        'reason': 'no zoleo message supplied'
+                    }
+
+                if 'location is ' not in update_location_zoleo:
+                    return {
+                        'success': False,
+                        'reason': 'no location found'
+                    }
+                if 'sms2zoleo.com' not in update_location_zoleo:
+                    return {
+                        'success': False,
+                        'reason': 'no sms2zoleo.com link found'
+                    }
+
+                coordinate_string = update_location_zoleo[
+                                    update_location_zoleo.index('location is ') + 12:
+                                    update_location_zoleo.index(' Map')]
+                lat_lon = [float(num) for num in coordinate_string.split(', ')]
+                url = update_location_zoleo[update_location_zoleo.index('http'):]
+
+                update_location_zoleo_db(lat_lon, url)
             elif request_type == 'fetch_new_strava_activities':
                 fetch_new_strava_activities()
             elif request_type == 'update_strava_activity':

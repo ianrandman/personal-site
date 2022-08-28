@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 import stravalib.exc
 
@@ -54,39 +54,49 @@ def update_location_url(google_location_share_link):
     db.session.commit()
 
 
-def populate_db():
-    db.drop_all()
-    db.create_all()
-    # db.metadata.create_all(db.engine, tables=[
-    #     InstagramHighlight.__table__
-    # ])
+def update_location_zoleo_db(lat_lon, url):
+    location_obj = Location.query.limit(1).all()[0]
+    location_obj.lat, location_obj.lon = lat_lon
+    location_obj.recorded_time = int(datetime.datetime.now().timestamp() * 1000)
+    location_obj.url = url
+    location_obj.is_google = False
+    db.session.commit()
 
-    location_share_obj = LocationURL(
-        google_location_share_link='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9',
-        inner_google_location_share_link='https://www.google.com/maps/rpc/locationsharing/read?authuser=0&hl=en&gl=us&pb=!1e1!2m2!1sjG-2YvCeGMOIptQPv6GEwAo!7e81!3m2!1s109215517752537741597!2sChZsUHFZNU43N1BYT2VFNnhtVTNFWDVnEggHBeI8OzhB5w%3D%3D'
-    )
-    db.session.add(location_share_obj)
+
+def populate_db():
+    # db.drop_all()
+    # db.create_all()
+    db.metadata.create_all(db.engine, tables=[
+        Location.__table__
+    ])
+
+    # location_share_obj = LocationURL(
+    #     google_location_share_link='https://maps.app.goo.gl/AHuw73ei2MEe5vZX9',
+    #     inner_google_location_share_link='https://www.google.com/maps/rpc/locationsharing/read?authuser=0&hl=en&gl=us&pb=!1e1!2m2!1sjG-2YvCeGMOIptQPv6GEwAo!7e81!3m2!1s109215517752537741597!2sChZsUHFZNU43N1BYT2VFNnhtVTNFWDVnEggHBeI8OzhB5w%3D%3D'
+    # )
+    # db.session.add(location_share_obj)
 
     current_location_obj = Location(
         lat=24.546543,
         lon=-81.797505,
         recorded_time=1654041600000,
-        url='https://maps.app.goo.gl/BDqvKB1CVeCFgJ3z9'
+        url='https://maps.app.goo.gl/BDqvKB1CVeCFgJ3z9',
+        is_google=True
     )
     db.session.add(current_location_obj)
 
-    try:
-        load_existing_strava_data()
-    except stravalib.exc.RateLimitExceeded:
-        print('Rate limit exceeded')
+    # try:
+    #     load_existing_strava_data()
+    # except stravalib.exc.RateLimitExceeded:
+    #     print('Rate limit exceeded')
 
     db.session.commit()
 
-    instagram_highlight_obj = InstagramHighlight(json=dict(), time_fetched=datetime.now())
-    db.session.add(instagram_highlight_obj)
-    db.session.commit()
-    url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'
-    update_instagram_highlight([url])
+    # instagram_highlight_obj = InstagramHighlight(json=dict(), time_fetched=datetime.now())
+    # db.session.add(instagram_highlight_obj)
+    # db.session.commit()
+    # url = 'https://instasave.biz/api/search/highlightedStories/highlight:17880159521677171'
+    # update_instagram_highlight([url])
 
 
 def test_db():
