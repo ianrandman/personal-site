@@ -9,7 +9,10 @@ from util.update_instagram import update_instagram_highlight
 
 
 def fetch_new_strava_activities():
-    load_existing_strava_data(only_new=True)
+    try:
+        load_existing_strava_data(only_new=True)
+    except Exception:
+        pass
     db.session.commit()
 
 
