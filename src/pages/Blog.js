@@ -419,7 +419,7 @@ class Blog extends React.Component {
                   dynamicHeight={true}
                   renderThumbs={this.getThumbs}
                   infiniteLoop={true}
-                  showArrows={false}
+                  showArrows={true}
                   showStatus={false}
                   ref={this._carousel}
                   preventMovementUntilSwipeScrollTolerance={true}

@@ -23,7 +23,7 @@ const SideBar = () => (
         I am a recent graduate of Rochester Institute of Technology with
         degrees in Computer Science (M.S.) and Software Engineering (B.S.).
         I am interested in all things AI, computer vision, and autonomous vehicles.
-        I am currently on a bike ride from Key West, FL to Prudhoe Bay, AK.
+        I just finished a bike ride from Key West, FL to Prudhoe Bay, AK.
       </p>
       <ul className="actions">
         <li>

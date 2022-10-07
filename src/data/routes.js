@@ -28,6 +28,10 @@ const routes = [
     label: 'Resume',
     path: '/resume',
   },
+  {
+    label: 'Press',
+    path: '/press',
+  },
   // {
   //   label: 'Projects',
   //   path: '/projects',
