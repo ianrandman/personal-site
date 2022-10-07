@@ -32,7 +32,8 @@ import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/M
 import { iOS } from '../App';
 
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from 'react-image-gallery';
 
 function LinkRenderer(props) {
   console.log(props.href);
@@ -75,6 +76,21 @@ const satelliteSource = new XYZ({
   maxZoom: 20
 });
 
+const ims = [
+  {
+    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+  },
+  {
+    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
+  },
+  {
+    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
+  }
+]
+
 class Blog extends React.Component {
   constructor(props) {
     super(props);
@@ -85,7 +101,10 @@ class Blog extends React.Component {
       activity_count: null,
       isSatellite: false,
       isFullscreen: false,
-      media: null
+      media: null,
+      showVideo: {},
+      showPlayButton: true,
+      showGalleryPlayButton: true,
     };
 
     if (props.location.state) {
@@ -240,10 +259,10 @@ class Blog extends React.Component {
 
     var extent = riddenRoute.getExtent()
     activity.media.map((mediaObj) => {
-      if (mediaObj.location === "None") {
+      if (mediaObj.location === "None" || mediaObj.location === "[0.0, 0.0]") {
         return;
       }
-
+      
       const layerToAdd = new VectorLayer({
         source: new VectorSource({
           features: [
@@ -337,6 +356,78 @@ class Blog extends React.Component {
     );
   }
 
+  _resetVideo() {
+    this.setState({showVideo: {}});
+
+    if (this.state.showPlayButton) {
+      this.setState({showGalleryPlayButton: true});
+    }
+
+    if (this.state.showFullscreenButton) {
+      this.setState({showGalleryFullscreenButton: true});
+    }
+  }
+
+  _toggleShowVideo(url) {
+    console.log("TOGGLESHOWVIDEO")
+    const showVideo = this.state;
+    this.setState({
+      showVideo: {
+        ...showVideo,
+        [url]: !showVideo[url]
+      }
+    });
+
+    if (!showVideo[url]) {
+      if (this.state.showPlayButton) {
+        this.setState({showGalleryPlayButton: false});
+      }
+
+      if (this.state.showFullscreenButton) {
+        this.setState({showGalleryFullscreenButton: false});
+      }
+    }
+  }
+
+  _renderVideo(item) {
+    console.log("RENDERING");
+    return (
+      <div>
+        {
+          this.state.showVideo[item.embedUrl] ?
+            <div className='video-wrapper'>
+              <a
+                className='close-video'
+                onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
+              >
+              </a>
+              <ReactHlsPlayer
+                src={item.embedUrl}
+                autoPlay={false}
+                controls={true}
+                width="100%"
+                height="auto"
+              />
+            </div>
+            :
+            <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
+              <div className='play-button'></div>
+              <img className='image-gallery-image' src={item.original} />
+              {
+                item.description &&
+                <span
+                  className='image-gallery-description'
+                  style={{right: '0', left: 'initial'}}
+                >
+                    {item.description}
+                  </span>
+              }
+            </a>
+        }
+      </div>
+    );
+  }
+
   getMedia(activity) {
     // while (this.state.activities[this.state.activity_num].media === undefined);
 
@@ -347,24 +438,43 @@ class Blog extends React.Component {
     // console.log(this.state.activities[this.state.activity_num].media)
 
 
+    // return activity.media.map((mediaDict) => {
+    //   if (mediaDict.is_video) {
+    //     return (
+    //       <div>
+    //         <ReactHlsPlayer
+    //           src={mediaDict.video_url}
+    //           autoPlay={false}
+    //           controls={true}
+    //           width="100%"
+    //           height="auto"
+    //         />
+    //       </div>
+    //     )
+    //   } else {
+    //     return (
+    //       <div>
+    //         <img alt="" src={mediaDict.large_image_url}/>
+    //       </div>
+    //     )
+    //   }
+    // });
     return activity.media.map((mediaDict) => {
       if (mediaDict.is_video) {
         return (
-          <div>
-            <ReactHlsPlayer
-              src={mediaDict.video_url}
-              autoPlay={false}
-              controls={true}
-              width="100%"
-              height="auto"
-            />
-          </div>
+          {
+            "original": mediaDict.large_image_url,
+            "embedUrl": mediaDict.video_url,
+            "thumbnail": mediaDict.small_image_url,
+            "renderItem": this._renderVideo.bind(this)
+          }
         )
       } else {
         return (
-          <div>
-            <img alt="" src={mediaDict.large_image_url}/>
-          </div>
+          {
+            "original": mediaDict.large_image_url,
+            "thumbnail": mediaDict.small_image_url
+          }
         )
       }
     });
@@ -415,18 +525,24 @@ class Blog extends React.Component {
               </div>
               <hr/>
               <div>
-                <Carousel
-                  dynamicHeight={true}
-                  renderThumbs={this.getThumbs}
-                  infiniteLoop={true}
-                  showArrows={true}
-                  showStatus={false}
-                  ref={this._carousel}
-                  preventMovementUntilSwipeScrollTolerance={true}
-                  swipeScrollTolerance={100}
-                >
-                  {this.state.media}
-                </Carousel>
+                {this.state.media && (
+                  <ImageGallery
+                    items={this.state.media}
+                    showPlayButton={this.state.showPlayButton}
+                    showGalleryPlayButton={this.state.showGalleryPlayButton}
+                  />)}
+                {/*<Carousel*/}
+                {/*  dynamicHeight={true}*/}
+                {/*  renderThumbs={this.getThumbs}*/}
+                {/*  infiniteLoop={true}*/}
+                {/*  showArrows={true}*/}
+                {/*  showStatus={false}*/}
+                {/*  ref={this._carousel}*/}
+                {/*  preventMovementUntilSwipeScrollTolerance={true}*/}
+                {/*  swipeScrollTolerance={100}*/}
+                {/*>*/}
+                {/*  {this.state.media}*/}
+                {/*</Carousel>*/}
               </div>
               <p style={{whiteSpace: "pre-wrap"}} >
                 {<ReactMarkdown children={this.state.activities[this.state.activity_num].description}

@@ -8,9 +8,9 @@
 
 	input[type="submit"],
 	input[type="reset"],
-	input[type="button"]:not(.rhap_button-clear):not(.control-arrow),
-	button:not(.rhap_button-clear):not(.control-arrow),
-	.button:not(.rhap_button-clear):not(.control-arrow) {
+	input[type="button"]:not(.rhap_button-clear, .control-arrow, [class*="image-gallery"]),
+	button:not(.rhap_button-clear, .control-arrow, [class*="image-gallery"]),
+	.button:not(.rhap_button-clear, .control-arrow, [class*="image-gallery"]) {
 		margin: 5px;
 		@include vendor('appearance', 'none');
 		@include vendor('transition', (
