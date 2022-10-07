@@ -93,6 +93,13 @@ const articles = [
     "date": "12/15/2016"
   },
   {
+    "title": "Mepham Student Revitalizes Calhoun Courtyard",
+    "url": "https://www.bellmore-merrick.k12.ny.us/news/article.aspx?id=81336",
+    "image_url": "https://www.bellmore-merrick.k12.ny.us/NewsImages/111416_main(3).jpg",
+    "organization": "Bellmore-Merrick Central High School District",
+    "date": "11/14/2016"
+  },
+  {
     "title": "Mepham Eagle Scout Builds New Gazebo in Memory of Calhoun Student",
     "subtitle": "As part of his eagle project, he renovated the courtyard at Calhoun High School.",
     "url": "https://patch.com/new-york/bellmore/mepham-eagle-scout-builds-new-gazebo-memory-calhoun-student",
