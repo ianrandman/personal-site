@@ -110,7 +110,7 @@ const articles = [
   {
     "title": "News 12 Eagle Scout",
     "url": "https://www.youtube.com/watch?v=F3SBD1D-p2g",
-    "image_url": "https://i9.ytimg.com/vi/F3SBD1D-p2g/mq2.jpg?sqp=CKT4_5kG&rs=AOn4CLA7gnQXJIgdkqj1CqN2n1FYRNTNCg",
+    "image_url": "https://i.ytimg.com/vi/F3SBD1D-p2g/hqdefault.jpg",
     "organization": "News 12",
     "date": "10/04/2016"
   },
