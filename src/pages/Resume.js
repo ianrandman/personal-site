@@ -18,11 +18,11 @@ const Resume = () => (
         <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
       </div>
     </header>
-    <Document file={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/resume.pdf"}>
+    <Document file={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/ian_randman_resume.pdf"}>
       <Page pageNumber={1} width={document.getElementById('main').clientWidth} />
     </Document>
     <p/>
-    <a href={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/resume.pdf"} className="button" download="Ian_Randman_Resume.pdf">Download</a>
+    <a href={process.env.REACT_APP_BACKEND_API_BASE_URL + "/static/ian_randman_resume.pdf"} className="button" download="ian_randman_resume.pdf">Download</a>
     <p/>
   </Main>
 );
