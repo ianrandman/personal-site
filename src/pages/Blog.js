@@ -257,12 +257,12 @@ class Blog extends React.Component {
       ]
     }));
 
-    var extent = riddenRoute.getExtent()
+    var extent = riddenRoute.getExtent();
     activity.media.map((mediaObj) => {
       if (mediaObj.location === "None" || mediaObj.location === "[0.0, 0.0]") {
         return;
       }
-      
+
       const layerToAdd = new VectorLayer({
         source: new VectorSource({
           features: [
@@ -513,7 +513,7 @@ class Blog extends React.Component {
           {!this.state.activities && <h3>Loading blog...</h3>}
           {this.state.activities &&
             <>
-              <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609).toFixed(1)} miles)</h3>
+              <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609.344).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
 
               <div>

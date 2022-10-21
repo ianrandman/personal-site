@@ -26,6 +26,7 @@ import {
   ToggleSatelliteControl
 } from '../components/Map/controls';
 import { iOS } from '../App';
+import { extend } from 'ol/extent';
 
 const route = new VectorLayer({
   source: new VectorSource({
@@ -72,6 +73,9 @@ class RouteMap extends React.Component {
       locationUrl: null,
       isGoogle: true,
       activities: null,
+      total_distance: 0.0,
+      total_elevation_gain: 0.0,
+      total_moving_time: Infinity,
       isSatellite: false,
       isFullscreen: false
     };
@@ -283,12 +287,13 @@ class RouteMap extends React.Component {
       pointFeature
     );
 
-    this.map.setView(
-      new View({
-        center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
-        zoom: 10
-      })
-    )
+    // TODO uncomment if during trip
+    // this.map.setView(
+    //   new View({
+    //     center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
+    //     zoom: 10
+    //   })
+    // );
   }
 
   getLocationFeature() {
@@ -333,6 +338,8 @@ class RouteMap extends React.Component {
     const riddenRouteFeatures = [];
     const endPointFeatures = [];
 
+    var extent = null;
+
     this.state.activities.map((activity, index) => {
       const riddenRoute = new Polyline({
         factor: 1e5,
@@ -347,6 +354,12 @@ class RouteMap extends React.Component {
         activity_num: index
       });
 
+      if (extent) {
+        extend(extent, riddenRoute.getExtent());
+      } else {
+        extent = riddenRoute.getExtent();
+      }
+
       if (activity.name.startsWith("Day ")) {
         const endPoint = new Feature({
           geometry: new Point(fromLonLat(JSON.parse(activity.end_latlng)
@@ -360,6 +373,9 @@ class RouteMap extends React.Component {
 
     this.riddenRouteVector.getSource().addFeatures(riddenRouteFeatures);
     this.endPointVector.getSource().addFeatures(endPointFeatures);
+
+    this.map.getView().fit(extent);
+    this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
   }
 
   getActivities() {
@@ -368,7 +384,34 @@ class RouteMap extends React.Component {
         response => response.json()
       )
       .then(jsonOutput => {
-          this.setState({activities: jsonOutput});
+        console.log(jsonOutput.reduce((acc, activity) => {
+          if (!activity.name.includes("Hike")) {
+            return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
+          }
+          return acc;
+        }, 0))
+          this.setState(
+            {
+              activities: jsonOutput,
+              total_distance: jsonOutput.reduce((acc, activity) => {
+                  if (!activity.name.includes("Hike")) {
+                    return acc + activity.distance;
+                  }
+                  return acc;
+              }, 0),
+              total_elevation_gain: jsonOutput.reduce((acc, activity) => {
+                if (!activity.name.includes("Hike")) {
+                  return acc + activity.total_elevation_gain;
+                }
+                return acc;
+              }, 0),
+              total_moving_time: jsonOutput.reduce((acc, activity) => {
+                if (!activity.name.includes("Hike")) {
+                  return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
+                }
+                return acc;
+              }, 0)
+            });
           this.putRiddenRoute()
         }
       )
@@ -385,6 +428,9 @@ class RouteMap extends React.Component {
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
             </div>
           </header>
+
+          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()} mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(1)).toLocaleString()} ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
+
           <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>fundraiser</div></Link>
           &nbsp;
           <Link to="/blog" className="button">blog</Link>

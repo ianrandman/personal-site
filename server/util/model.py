@@ -6,6 +6,7 @@ class Activity(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(10000), nullable=True)
     distance = db.Column(db.Float, nullable=False)
+    total_elevation_gain = db.Column(db.Float, nullable=False)
     moving_time = db.Column(db.Integer, nullable=False)
     elapsed_time = db.Column(db.Integer, nullable=False)
     start_latlng = db.Column(db.String(100), nullable=False)
@@ -23,6 +24,7 @@ class Activity(db.Model):
             name=self.name,
             description=self.description,
             distance=self.distance,
+            total_elevation_gain=self.total_elevation_gain,
             moving_time=self.moving_time,
             elapsed_time=self.elapsed_time,
             start_latlng=self.start_latlng,

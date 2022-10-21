@@ -45,6 +45,7 @@ def get_activity_and_insert(activity_id, authenticated=True):
         name=activity.name,
         description=activity.description,
         distance=activity.distance.num,
+        total_elevation_gain=activity.total_elevation_gain.num,
         moving_time=str(activity.moving_time),
         elapsed_time=str(activity.elapsed_time),
         start_latlng=str(list(activity.start_latlng)),
