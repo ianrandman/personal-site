@@ -434,8 +434,8 @@ class RouteMap extends React.Component {
           <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>fundraiser</div></Link>
           &nbsp;
           <Link to="/blog" className="button">blog</Link>
-          &nbsp;
-          <Link to="/instagram" className="button">Instagram updates</Link>
+          {/*&nbsp;*/}
+          {/*<Link to="/instagram" className="button">Instagram updates</Link>*/}
 
           <div>
             <div className="planned-line"/> Planned Route<br/>

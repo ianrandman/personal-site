@@ -16,10 +16,10 @@
         <loc>https://www.ianrandman.com/blog</loc>
         <changefreq>daily</changefreq>
     </url>
-    <url>
-        <loc>https://www.ianrandman.com/instagram</loc>
-        <changefreq>daily</changefreq>
-    </url>
+<!--    <url>-->
+<!--        <loc>https://www.ianrandman.com/instagram</loc>-->
+<!--        <changefreq>daily</changefreq>-->
+<!--    </url>-->
     <url>
         <loc>https://www.ianrandman.com/resume</loc>
         <changefreq>monthly</changefreq>

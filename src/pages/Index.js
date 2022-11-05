@@ -25,7 +25,7 @@ const Index = () => (
         this <a href="https://img1.wsimg.com/blobby/go/f6014cc3-949e-4ac6-86db-c77d836bf2b7/Joshua%20New%20Jersey.pdf" target="_blank" rel="noreferrer">other petition</a> (at the bottom).
         <br /><br />
         Please feel free to check out
-        my <Link to="/blog">daily blog</Link> from the trip, <Link to="/instagram">Instagram Story updates</Link>,
+        my <Link to="/blog">daily blog</Link> from the trip, {/* <Link to="/instagram">Instagram Story updates</Link>, */}
         my <Link to="/routeMap">route and current location</Link>,
         or you can check out my {' '}
         <Link to="/resume">resume</Link>, {' '}

@@ -18,7 +18,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // const Projects = lazy(() => import('./pages/Projects'));
 const RouteMap = lazy(() => import('./pages/RouteMap'));
 const Blog = lazy(() => import('./pages/Blog'));
-const Instagram = lazy(() => import('./pages/Instagram'));
+// const Instagram = lazy(() => import('./pages/Instagram'));
 const Fundraiser = lazy(() => import('./pages/Fundraiser'));
 const Resume = lazy(() => import('./pages/Resume'));
 const Press = lazy(() => import('./pages/Press'));
@@ -33,7 +33,7 @@ const App = () => (
         <Route path="/about" component={About} />
         <Route path="/routeMap" component={RouteMap} />
         <Route path="/blog" component={Blog} />
-        <Route path="/instagram" component={Instagram} />
+        {/*<Route path="/instagram" component={Instagram} />*/}
         <Route path="/fundraiser" component={Fundraiser} />
         <Route path="/contact" component={Contact} />
         <Route path="/resume" component={Resume} />
