@@ -76,26 +76,13 @@ const satelliteSource = new XYZ({
   maxZoom: 20
 });
 
-const ims = [
-  {
-    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
-    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
-  },
-  {
-    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
-    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
-  },
-  {
-    original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
-    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
-  }
-]
 
 class Blog extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: null,
       activities: null,
       activity_num: null,
       activity_count: null,
@@ -109,6 +96,10 @@ class Blog extends React.Component {
 
     if (props.location.state) {
       this.state.activity_num = props.location.state.activity_num;
+    } else {
+      if (props.match.params.id !== undefined) {
+        this.state.id = parseInt(props.match.params.id);
+      }
     }
 
     this.startIconStyle = new Style({
@@ -203,15 +194,22 @@ class Blog extends React.Component {
   }
 
   getNextActivity() {
+    // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num + 1].id}`)
     this.getActivity(this.state.activity_num + 1)
   }
 
   getPreviousActivity() {
+    // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num - 1].id}`)
     this.getActivity(this.state.activity_num - 1)
   }
 
   changeActivity(activityNum, activity) {
     this.setState({ activity_num: activityNum });
+    if (!this.state.activities[activityNum].hasOwnProperty('media')) {
+      this.fetchActivity(activityNum);
+    }
+
+    console.log(document.referrer)
     this.setState({media: this.getMedia(activity)})
 
     this.map.removeLayer(this.backgroundLayer);
@@ -292,7 +290,25 @@ class Blog extends React.Component {
     // window.scrollTo(0, 0);
   }
 
-  getActivity(activityNum) {
+  getActivity(activityNum, doReplace) {
+    console.log(activityNum)
+    /////////////////////////////////////
+    if (doReplace) {
+      console.log('here 1')
+      console.log(document.referrer)
+      // window.location.replace(`/blog/${this.state.activities[activityNum].id}`)
+      window.history.replaceState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+    } else {
+      console.log('here 2')
+      console.log(document.referrer)
+      // window.history.push(`/blog/${this.state.activities[activityNum].id}`)
+      window.history.pushState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+    }
+
+    this.fetchActivity(activityNum);
+  }
+
+  fetchActivity(activityNum) {
     if (this.state.activities[activityNum].hasOwnProperty('media')) {
       this.changeActivity(activityNum, this.state.activities[activityNum]);
       return;
@@ -306,17 +322,11 @@ class Blog extends React.Component {
           this.state.activities[activityNum] = jsonOutput;
           console.log(this.state.activities[activityNum] )
 
-
-          /////////////////////////////////////
-
           this.changeActivity(activityNum, jsonOutput);
+          console.log(this.state)
+          return jsonOutput;
         }
       )
-
-    // console.log(this.state.activities[activityNum] )
-    //
-    // const activity = this.state.activities[activityNum];
-
   }
 
   getActivities() {
@@ -325,13 +335,62 @@ class Blog extends React.Component {
         response => response.json()
       )
       .then(jsonOutput => {
+        console.log(this.state)
+        let num = null;
+        if (this.state.id !== null) {
+          num = jsonOutput.findIndex(activity => activity.id === this.state.id);
+        } else {
+          num = this.state.activity_num !== null ? this.state.activity_num : jsonOutput.length - 1
+        }
+
         this.setState({
           activities: jsonOutput,
-          activity_num: this.state.activity_num !== null ? this.state.activity_num : jsonOutput.length - 1});
+          activity_num: num
 
-          this.getActivity(this.state.activity_num);
+          // activity_num:
+        });
+        console.log(jsonOutput)
+        //
+        // if (this.state.id !== null) {
+        //   // this.setState({
+        //   //   activity_num: this.state.activity_num !== null ? this.state.activity_num : jsonOutput.length - 1
+        //   // });
+        // }
+
+        this.getActivity(this.state.activity_num, this.state.id === null);
         }
       )
+  }
+
+  componentWillMount() {
+    console.log('will mount')
+  }
+
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // console.log(prevState)
+
+    console.log(this.props)
+    let id = this.props.match.params.id;
+    console.log(prevProps)
+    console.log(window.location.href)
+    console.log(id)
+    console.log(this.state.activity_num)
+    console.log(this.state.activities[this.state.activity_num])
+    if (id !== undefined) {
+      id = window.location.href.split("/").pop();
+      if (parseInt(id) !== this.state.activities[this.state.activity_num].id) {
+        console.log('gonna change')
+        let activity_num = this.state.activities.findIndex(activity => activity.id === parseInt(id));
+        this.changeActivity(activity_num, this.state.activities[activity_num])
+
+        // this.setState({
+        //   activity_num: )
+        // })
+      }
+    }
+
+    console.log('did update')
   }
 
   componentDidMount() {
@@ -478,10 +537,23 @@ class Blog extends React.Component {
   }
 
   updatePage(e) {
-    this.getActivity(parseInt(e.target.value));
+    this.getActivity(parseInt(e.target.value), false);
   }
 
+  // ensureActivityNum(id) {
+  //   if (id !== undefined) {
+  //     if (parseInt(id) !== this.state.activities[this.state.activity_num].id) {
+  //       this.setState({
+  //         activity_num: this.state.activities.findIndex(activity => activity.id === parseInt(id))
+  //       })
+  //     }
+  //   }
+  // }
+
   render() {
+    console.log(this.props)
+    // this.ensureActivityNum(this.props.match.params.id)
+
     return (
       <Main
         title='Blog'
@@ -572,7 +644,7 @@ class Blog extends React.Component {
             }
           }/>
           <hr/>
-          {this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}
+          {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
 
           <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
           <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>

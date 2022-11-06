@@ -32,6 +32,7 @@ const App = () => (
         <Route exact path="/" component={Index} />
         <Route path="/about" component={About} />
         <Route path="/routeMap" component={RouteMap} />
+        <Route path="/blog/:id" component={Blog} />
         <Route path="/blog" component={Blog} />
         {/*<Route path="/instagram" component={Instagram} />*/}
         <Route path="/fundraiser" component={Fundraiser} />
