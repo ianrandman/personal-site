@@ -35,9 +35,9 @@ const SideBar = () => (
         <li>
           <Link to="/blog" className="button">See the blog</Link>
         </li>
-        <li>
-          <Link to="/instagram" className="button">See my Instagram updates</Link>
-        </li>
+        {/* <li> */}
+        {/*  <Link to="/instagram" className="button">See my Instagram updates</Link> */}
+        {/* </li> */}
       </ul>
     </section>
 
