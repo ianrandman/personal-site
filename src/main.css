@@ -1,3 +1,6 @@
+.image-gallery-thumbnails-container{ max-width: 10px }
+
+
 .play-button {
     cursor: pointer;
     position: absolute;

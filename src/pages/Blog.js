@@ -594,22 +594,11 @@ class Blog extends React.Component {
               <div>
                 {this.state.media && (
                   <ImageGallery
+                    // style={{maxWidth: '100px'}}
                     items={this.state.media}
                     showPlayButton={this.state.showPlayButton}
                     showGalleryPlayButton={this.state.showGalleryPlayButton}
                   />)}
-                {/*<Carousel*/}
-                {/*  dynamicHeight={true}*/}
-                {/*  renderThumbs={this.getThumbs}*/}
-                {/*  infiniteLoop={true}*/}
-                {/*  showArrows={true}*/}
-                {/*  showStatus={false}*/}
-                {/*  ref={this._carousel}*/}
-                {/*  preventMovementUntilSwipeScrollTolerance={true}*/}
-                {/*  swipeScrollTolerance={100}*/}
-                {/*>*/}
-                {/*  {this.state.media}*/}
-                {/*</Carousel>*/}
               </div>
               <p style={{whiteSpace: "pre-wrap"}} >
                 {<ReactMarkdown children={this.state.activities[this.state.activity_num].description}
