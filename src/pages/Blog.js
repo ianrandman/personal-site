@@ -45,7 +45,7 @@ function getStravaCode(activityId) {
   const s = `https://strava-embeds.com/activity/${activityId}`
   return (
     <>
-      <iframe className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
+      <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
   src={s}/>
     </>
   )
@@ -204,11 +204,21 @@ class Blog extends React.Component {
   }
 
   changeActivity(activityNum, activity) {
-    this.setState({ activity_num: activityNum });
+    // let frame = document.getElementById("strava-iframe");
+    // frame.contentWindow.location.replace(`https://strava-embeds.com/activity/${activity.id}`);
+
     if (!this.state.activities[activityNum].hasOwnProperty('media')) {
       this.fetchActivity(activityNum);
+    } else {
+      this.setState({
+        activity_num: activityNum,
+        media: null
+      });
+      this.changeMap(activity);
     }
+  }
 
+  changeMap(activity) {
     console.log(document.referrer)
     this.setState({media: this.getMedia(activity)})
 
@@ -309,6 +319,11 @@ class Blog extends React.Component {
   }
 
   fetchActivity(activityNum) {
+    this.setState({
+      activity_num: activityNum,
+      media: null
+    });
+
     if (this.state.activities[activityNum].hasOwnProperty('media')) {
       this.changeActivity(activityNum, this.state.activities[activityNum]);
       return;
@@ -324,7 +339,7 @@ class Blog extends React.Component {
 
           this.changeActivity(activityNum, jsonOutput);
           console.log(this.state)
-          return jsonOutput;
+          this.changeMap(jsonOutput);
         }
       )
   }
@@ -336,7 +351,7 @@ class Blog extends React.Component {
       )
       .then(jsonOutput => {
         console.log(this.state)
-        let num = null;
+        let num;
         if (this.state.id !== null) {
           num = jsonOutput.findIndex(activity => activity.id === this.state.id);
         } else {
@@ -362,11 +377,6 @@ class Blog extends React.Component {
       )
   }
 
-  componentWillMount() {
-    console.log('will mount')
-  }
-
-
   componentDidUpdate(prevProps, prevState, snapshot) {
     // console.log(prevState)
 
@@ -374,6 +384,16 @@ class Blog extends React.Component {
     let id = this.props.match.params.id;
     console.log(prevProps)
     console.log(window.location.href)
+    if (window.location.href.split("/").pop() === "blog") {
+      if (this.state.activities !== null) {
+        let activityNum = this.state.activities.length - 1;
+        window.history.replaceState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+        this.changeActivity(activityNum, this.state.activities[activityNum]);
+      }
+
+      return;
+    }
+
     console.log(id)
     console.log(this.state.activity_num)
     console.log(this.state.activities[this.state.activity_num])
@@ -592,9 +612,9 @@ class Blog extends React.Component {
 
               <hr/>
               <div>
+                {!this.state.media && <h3>Loading media...</h3>}
                 {this.state.media && (
                   <ImageGallery
-                    // style={{maxWidth: '100px'}}
                     items={this.state.media}
                     showPlayButton={this.state.showPlayButton}
                     showGalleryPlayButton={this.state.showGalleryPlayButton}
@@ -634,6 +654,10 @@ class Blog extends React.Component {
           }/>
           <hr/>
           {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
+          {/*<>*/}
+          {/*  <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"*/}
+          {/*          />*/}
+          {/*</>*/}
 
           <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
           <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>
