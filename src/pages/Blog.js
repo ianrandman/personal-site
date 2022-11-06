@@ -204,8 +204,8 @@ class Blog extends React.Component {
   }
 
   changeActivity(activityNum, activity) {
-    // let frame = document.getElementById("strava-iframe");
-    // frame.contentWindow.location.replace(`https://strava-embeds.com/activity/${activity.id}`);
+    let frame = document.getElementById("strava-iframe");
+    frame.contentWindow.location.replace(`https://strava-embeds.com/activity/${activity.id}`);
 
     if (!this.state.activities[activityNum].hasOwnProperty('media')) {
       this.fetchActivity(activityNum);
@@ -615,6 +615,7 @@ class Blog extends React.Component {
                 {!this.state.media && <h3>Loading media...</h3>}
                 {this.state.media && (
                   <ImageGallery
+                    lazyLoad={true}
                     items={this.state.media}
                     showPlayButton={this.state.showPlayButton}
                     showGalleryPlayButton={this.state.showGalleryPlayButton}
@@ -654,10 +655,10 @@ class Blog extends React.Component {
           }/>
           <hr/>
           {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
-          {/*<>*/}
-          {/*  <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"*/}
-          {/*          />*/}
-          {/*</>*/}
+          <>
+            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
+                    />
+          </>
 
           <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
           <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>
