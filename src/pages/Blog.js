@@ -40,17 +40,6 @@ function LinkRenderer(props) {
   return <a href={props.href} target="_blank" rel="noreferrer" >{props.children}</a>
 }
 
-
-function getStravaCode(activityId) {
-  const s = `https://strava-embeds.com/activity/${activityId}`
-  return (
-    <>
-      <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
-  src={s}/>
-    </>
-  )
-}
-
 const route = new VectorLayer({
   source: new VectorSource({
     url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
@@ -381,6 +370,10 @@ class Blog extends React.Component {
     // console.log(prevState)
 
     console.log(this.props)
+    if (this.props.location.state) {
+      return;
+    }
+
     let id = this.props.match.params.id;
     console.log(prevProps)
     console.log(window.location.href)
