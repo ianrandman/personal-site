@@ -27,7 +27,7 @@ import '../main.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchBackend } from '../FetchConfig';
-import { DragZoom, PinchRotate } from 'ol/interaction';
+import { defaults, PinchRotate } from 'ol/interaction';
 import {
   ToggleBikeOverlayControl,
   ToggleFullscreenControl,
@@ -39,6 +39,7 @@ import ReactMarkdown from 'react-markdown'
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from 'react-image-gallery';
 import VectorImageLayer from 'ol/layer/VectorImage';
+import DblClickDragZoom from '../DblClickDragZoom';
 
 function LinkRenderer(props) {
   console.log(props.href);
@@ -163,10 +164,12 @@ class Blog extends React.Component {
       }),
       controls: [
         new Zoom(),
-        new DragZoom(),
         new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
         new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
       ],
+      interactions: defaults().extend([
+        new DblClickDragZoom()
+      ])
     });
     if (iOS()) {
       this.map.addControl(

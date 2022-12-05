@@ -18,7 +18,7 @@ import { fromLonLat } from 'ol/proj';
 import { Fill, Icon, Stroke, Style, Text } from 'ol/style';
 import { Link } from 'react-router-dom';
 import { fetchBackend } from '../FetchConfig';
-import { DragZoom, PinchRotate } from 'ol/interaction';
+import { defaults, DragRotateAndZoom, PinchRotate } from 'ol/interaction';
 
 import '../main.css';
 import {
@@ -29,6 +29,7 @@ import {
 import { iOS } from '../App';
 import { extend } from 'ol/extent';
 import VectorImageLayer from 'ol/layer/VectorImage';
+import DblClickDragZoom from '../DblClickDragZoom';
 
 const route = new VectorImageLayer({
   source: new VectorSource({
@@ -193,10 +194,13 @@ class RouteMap extends React.Component {
       }),
       controls: [
         new Zoom(),
-        new DragZoom(),
+        // new DragRotateAndZoom(),
         new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
         new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
       ],
+      interactions: defaults().extend([
+        new DblClickDragZoom()
+      ])
     });
     if (iOS()) {
       this.map.addControl(

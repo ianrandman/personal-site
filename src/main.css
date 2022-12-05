@@ -109,6 +109,11 @@
     left: .5em;
 }
 
+.bike-overlay-toggle {
+    top: 125px;
+    left: .5em;
+}
+
 .fullscreen-toggle {
     top: 15px;
     right: 10px;
