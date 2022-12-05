@@ -182,14 +182,18 @@ class Blog extends React.Component {
     this.map.updateSize();
   }
 
-  getNextActivity() {
+  getNextActivity(e) {
     // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num + 1].id}`)
-    this.getActivity(this.state.activity_num + 1)
+    this.getActivity(this.state.activity_num + 1);
+    e.preventDefault();
+    return false;
   }
 
-  getPreviousActivity() {
+  getPreviousActivity(e) {
     // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num - 1].id}`)
-    this.getActivity(this.state.activity_num - 1)
+    this.getActivity(this.state.activity_num - 1);
+    e.preventDefault();
+    return false;
   }
 
   changeActivity(activityNum, activity) {
@@ -563,6 +567,29 @@ class Blog extends React.Component {
   //   }
   // }
 
+  renderPrevNextButtons() {
+    return (
+      <div>
+        <a
+          style={{'all': 'initial'}}
+          {...((this.state.activities && this.state.activity_num > 0) && {href:`/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
+          {...((this.state.activities && this.state.activity_num > 0) && {onClick:this.getPreviousActivity})}
+        >
+          <button
+            type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}}>Previous</button>
+        </a>
+        <a
+          style={{'all': 'initial'}}
+          {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
+          {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {onClick:this.getNextActivity})}
+        >
+          <button
+            type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}}>Next</button>
+        </a>
+      </div>
+    )
+  }
+
   render() {
     console.log(this.props)
     // this.ensureActivityNum(this.props.match.params.id)
@@ -598,10 +625,7 @@ class Blog extends React.Component {
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609.344).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
 
-              <div>
-                <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
-                <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>
-              </div>
+              {this.renderPrevNextButtons()}
 
               <hr/>
               <div>
@@ -623,13 +647,7 @@ class Blog extends React.Component {
             </>
           }
 
-          <div>
-            <div style={{marginRight: "5px", marginBottom: "5px", display: "inline-block"}}>
-              <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
-              <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>
-            </div>
-            {/*<button style={{display: "inline-block"}} onClick={this.toggleSatellite}>{this.state.isSatellite ? "Toggle OSM Map" : "Toggle Satellite Map"}</button>*/}
-          </div>
+          {this.renderPrevNextButtons()}
 
           <p/>
 
@@ -653,8 +671,7 @@ class Blog extends React.Component {
                     />
           </>
 
-          <button type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getPreviousActivity}>Previous</button>
-          <button type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}} onClick={this.getNextActivity}>Next</button>
+          {this.renderPrevNextButtons()}
 
           {this.state.activities &&
             <>
