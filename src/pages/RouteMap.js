@@ -22,13 +22,15 @@ import { PinchRotate } from 'ol/interaction';
 
 import '../main.css';
 import {
+  ToggleBikeOverlayControl,
   ToggleFullscreenControl,
   ToggleSatelliteControl
 } from '../components/Map/controls';
 import { iOS } from '../App';
 import { extend } from 'ol/extent';
+import VectorImageLayer from 'ol/layer/VectorImage';
 
-const route = new VectorLayer({
+const route = new VectorImageLayer({
   source: new VectorSource({
     url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
     format: new KML({
@@ -171,6 +173,7 @@ class RouteMap extends React.Component {
     })
 
     this.toggleSatellite = this.toggleSatellite.bind(this);
+    this.toggleBikeOverlay = this.toggleBikeOverlay.bind(this);
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
 
     this.map = new Map({
@@ -191,6 +194,7 @@ class RouteMap extends React.Component {
       controls: [
         new Zoom(),
         new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
+        new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
       ],
     });
     if (iOS()) {
@@ -254,6 +258,18 @@ class RouteMap extends React.Component {
       this.backgroundLayer.setSource(satelliteSource);
     } else {
       this.backgroundLayer.setSource(OSMSource);
+    }
+  }
+
+  toggleBikeOverlay() {
+    this.setState({bikeOverlay: !this.state.bikeOverlay});
+
+    if (this.state.bikeOverlay) {
+      OSMSource.setUrl('http://mt0.google.com/vt/lyrs=m,bike&hl=en&x={x}&y={y}&z={z}&s=Ga')
+      satelliteSource.setUrl('http://mt0.google.com/vt/lyrs=y,bike&hl=en&x={x}&y={y}&z={z}&s=Ga')
+    } else {
+      OSMSource.setUrl('http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga')
+      satelliteSource.setUrl('http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga')
     }
   }
 

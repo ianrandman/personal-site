@@ -32,6 +32,34 @@ export class ToggleSatelliteControl extends Control {
   }
 }
 
+export class ToggleBikeOverlayControl extends Control {
+  /**
+   * @param {Object} [opt_options] Control options.
+   */
+  constructor(opt_options) {
+    const options = opt_options || {};
+
+    const button = document.createElement('button');
+    button.innerHTML = '&#x1f6b2';
+
+    const element = document.createElement('div');
+    element.className = 'bike-overlay-toggle ol-unselectable ol-control';
+    element.appendChild(button);
+
+    super({
+      element: element,
+      target: options.target,
+    });
+
+    this.parentFn = options.parentFn;
+    button.addEventListener('click', this.handle.bind(this), false);
+  }
+
+  handle() {
+    this.parentFn();
+  }
+}
+
 export class ToggleFullscreenControl extends Control {
   /**
    * @param {Object} [opt_options] Control options.

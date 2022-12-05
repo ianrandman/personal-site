@@ -28,7 +28,11 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchBackend } from '../FetchConfig';
 import { PinchRotate } from 'ol/interaction';
-import { ToggleFullscreenControl, ToggleSatelliteControl } from '../components/Map/controls';
+import {
+  ToggleBikeOverlayControl,
+  ToggleFullscreenControl,
+  ToggleSatelliteControl
+} from '../components/Map/controls';
 import { iOS } from '../App';
 
 import ReactMarkdown from 'react-markdown'
@@ -79,6 +83,7 @@ class Blog extends React.Component {
       activity_num: null,
       activity_count: null,
       isSatellite: false,
+      bikeOverlay: false,
       isFullscreen: false,
       media: null,
       showVideo: {},
@@ -147,6 +152,7 @@ class Blog extends React.Component {
     this.changeActivity = this.changeActivity.bind(this);
     this.getActivity = this.getActivity.bind(this);
     this.toggleSatellite = this.toggleSatellite.bind(this);
+    this.toggleBikeOverlay = this.toggleBikeOverlay.bind(this);
 
     this.map = new Map({
       layers: [],
@@ -157,7 +163,8 @@ class Blog extends React.Component {
       }),
       controls: [
         new Zoom(),
-        new ToggleSatelliteControl({"parentFn": this.toggleSatellite})
+        new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
+        new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
       ],
     });
     if (iOS()) {
@@ -179,6 +186,18 @@ class Blog extends React.Component {
       this.backgroundLayer.setSource(satelliteSource);
     } else {
       this.backgroundLayer.setSource(OSMSource);
+    }
+  }
+
+  toggleBikeOverlay() {
+    this.setState({bikeOverlay: !this.state.bikeOverlay});
+
+    if (this.state.bikeOverlay) {
+      OSMSource.setUrl('http://mt0.google.com/vt/lyrs=m,bike&hl=en&x={x}&y={y}&z={z}&s=Ga')
+      satelliteSource.setUrl('http://mt0.google.com/vt/lyrs=y,bike&hl=en&x={x}&y={y}&z={z}&s=Ga')
+    } else {
+      OSMSource.setUrl('http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga')
+      satelliteSource.setUrl('http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga')
     }
   }
 
