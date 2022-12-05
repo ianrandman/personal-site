@@ -81,6 +81,8 @@ class Blog extends React.Component {
       showVideo: {},
       showPlayButton: true,
       showGalleryPlayButton: true,
+      scrollId: null,
+      scrollOffset: 0
     };
 
     if (props.location.state) {
@@ -182,17 +184,26 @@ class Blog extends React.Component {
     this.map.updateSize();
   }
 
-  getNextActivity(e) {
-    // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num + 1].id}`)
-    this.getActivity(this.state.activity_num + 1);
+  getPrevNextActivityCommon(e) {
+    // do not follow hyperlink; use javascript only
     e.preventDefault();
+
+    // maintain position of button on screen
+    this.setState({
+      scrollId: e.target.id,
+      scrollOffset: document.getElementById(e.target.id).offsetTop - window.scrollY
+    })
+  }
+
+  getNextActivity(e) {
+    this.getActivity(this.state.activity_num + 1);
+    this.getPrevNextActivityCommon(e);
     return false;
   }
 
   getPreviousActivity(e) {
-    // window.history.pushState({}, "", `/blog/${this.state.activities[this.state.activity_num - 1].id}`)
     this.getActivity(this.state.activity_num - 1);
-    e.preventDefault();
+    this.getPrevNextActivityCommon(e);
     return false;
   }
 
@@ -407,6 +418,20 @@ class Blog extends React.Component {
       }
     }
 
+    // maintain position of button on screen
+    if (this.state.scrollId) {
+      console.log('need to scroll')
+      window.scrollTo(0,
+        document.getElementById(this.state.scrollId).offsetTop -
+        this.state.scrollOffset
+      )
+
+      this.setState({
+        scrollId: null,
+        scrollOffset: 0
+      })
+    }
+
     console.log('did update')
   }
 
@@ -567,7 +592,7 @@ class Blog extends React.Component {
   //   }
   // }
 
-  renderPrevNextButtons() {
+  renderPrevNextButtons(id) {
     return (
       <div>
         <a
@@ -575,7 +600,7 @@ class Blog extends React.Component {
           {...((this.state.activities && this.state.activity_num > 0) && {href:`/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
           {...((this.state.activities && this.state.activity_num > 0) && {onClick:this.getPreviousActivity})}
         >
-          <button
+          <button id={id}
             type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}}>Previous</button>
         </a>
         <a
@@ -583,7 +608,7 @@ class Blog extends React.Component {
           {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
           {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {onClick:this.getNextActivity})}
         >
-          <button
+          <button id={id}
             type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}}>Next</button>
         </a>
       </div>
@@ -625,7 +650,7 @@ class Blog extends React.Component {
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609.344).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
 
-              {this.renderPrevNextButtons()}
+              {this.renderPrevNextButtons('0')}
 
               <hr/>
               <div>
@@ -647,7 +672,7 @@ class Blog extends React.Component {
             </>
           }
 
-          {this.renderPrevNextButtons()}
+          {this.renderPrevNextButtons('1')}
 
           <p/>
 
@@ -671,7 +696,7 @@ class Blog extends React.Component {
                     />
           </>
 
-          {this.renderPrevNextButtons()}
+          {this.renderPrevNextButtons('2')}
 
           {this.state.activities &&
             <>
