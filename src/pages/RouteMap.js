@@ -132,7 +132,7 @@ class RouteMap extends React.Component {
         ]
       }),
       style: this.startIconStyle,
-      zIndex: 2
+      zIndex: 3
     })
 
     this.endLayer = new Vector({
@@ -144,7 +144,7 @@ class RouteMap extends React.Component {
         ]
       }),
       style: this.endIconStyle,
-      zIndex: 2
+      zIndex: 3
     })
 
     this.riddenRouteVector = new VectorLayer({
