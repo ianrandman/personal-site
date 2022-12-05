@@ -41,7 +41,7 @@ class DblClickDragZoom extends Interaction {
      * @private
      * @type {number}
      */
-    this.scaleDeltaByPixel_ = options.delta ? options.delta : 0.01;
+    this.scaleDeltaByPixel_ = options.delta ? options.delta : 0.003;
 
     /**
      * @private
@@ -172,10 +172,21 @@ class DblClickDragZoom extends Interaction {
    * @param {import("../MapBrowserEvent.js").default} mapBrowserEvent Event.
    * @return {boolean} If the event was consumed.
    */
-  handleUpEvent(mapBrowserEvent) {
+  async handleUpEvent(mapBrowserEvent) {
     if (this.targetPointers.length == 0) {
       const map = mapBrowserEvent.map;
       const view = map.getView();
+
+      while (Math.abs(this.lastScaleDelta_ - 1) > 0.001) {
+        // scale, bypass the resolution constraint
+        map.render();
+        console.log(this.lastScaleDelta_)
+        console.log(view.getZoom())
+        view.adjustResolutionInternal(this.lastScaleDelta_);
+        await new Promise(r => setTimeout(r, 1));
+        this.lastScaleDelta_ = (0.95 * (this.lastScaleDelta_ - 1)) + 1
+      }
+
       const direction = this.lastScaleDelta_ > 1 ? 1 : -1;
       view.endInteraction(this.duration_, direction);
       this.handlingDownUpSequence_ = false;

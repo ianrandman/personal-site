@@ -194,7 +194,6 @@ class RouteMap extends React.Component {
       }),
       controls: [
         new Zoom(),
-        // new DragRotateAndZoom(),
         new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
         new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
       ],
