@@ -45,12 +45,13 @@ const route = new VectorLayer({
 });
 
 const OSMSource = new XYZ({
-  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga',
+  maxZoom: 22
 });
 
 const satelliteSource = new XYZ({
-  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  maxZoom: 20
+  url: 'http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga',
+  maxZoom: 19
 });
 
 function getTimedelta(recordedTime) {

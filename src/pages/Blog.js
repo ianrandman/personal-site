@@ -34,13 +34,14 @@ import { iOS } from '../App';
 import ReactMarkdown from 'react-markdown'
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from 'react-image-gallery';
+import VectorImageLayer from 'ol/layer/VectorImage';
 
 function LinkRenderer(props) {
   console.log(props.href);
   return <a href={props.href} target="_blank" rel="noreferrer" >{props.children}</a>
 }
 
-const route = new VectorLayer({
+const route = new VectorImageLayer({
   source: new VectorSource({
     url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
     format: new KML({
@@ -54,15 +55,17 @@ const route = new VectorLayer({
       lineDash: [5, 5]
     })
   }),
+  imageRatio: 10
 });
 
 const OSMSource = new XYZ({
-  url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga',
+  maxZoom: 22
 });
 
 const satelliteSource = new XYZ({
-  url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  maxZoom: 20
+  url: 'http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}&s=Ga',
+  maxZoom: 19
 });
 
 
