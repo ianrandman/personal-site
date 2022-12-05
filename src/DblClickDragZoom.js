@@ -72,6 +72,9 @@ class DblClickDragZoom extends Interaction {
      * @protected
      */
     this.targetPointers = [];
+
+    this.newEvent = false;
+    this.animating = false;
   }
 
   /**
@@ -91,6 +94,8 @@ class DblClickDragZoom extends Interaction {
     this.updateTrackedPointers_(mapBrowserEvent);
     if (this.handlingDownUpSequence_) {
       if (mapBrowserEvent.type == MapBrowserEventType.POINTERDRAG) {
+        // console.log('dragging')
+        this.newEvent = true;
         // console.log('icPOINTERDRAGi');
         this.handleDragEvent(mapBrowserEvent);
         // prevent page scrolling during dragging
@@ -101,6 +106,8 @@ class DblClickDragZoom extends Interaction {
       }
     } else {
       if (mapBrowserEvent.type == MapBrowserEventType.POINTERDOWN) {
+        // console.log('downing')
+        this.newEvent = true;
         if (this.handlingDoubleDownSequence_) {
           this.handlingDoubleDownSequence_ = false;
           const handled = this.handleDownEvent(mapBrowserEvent);
@@ -122,7 +129,11 @@ class DblClickDragZoom extends Interaction {
    * @param {import("../MapBrowserEvent.js").default} mapBrowserEvent Event.
    */
   handleDragEvent(mapBrowserEvent) {
-    console.log('handling')
+    // console.log('handling')
+    if (this.animating) {
+      return
+    }
+
     let scaleDelta = 1.0;
 
     const touch0 = this.targetPointers[0];
@@ -152,6 +163,8 @@ class DblClickDragZoom extends Interaction {
    * @return {boolean} If the event was consumed.
    */
   handleDownEvent(mapBrowserEvent) {
+    // console.log('down')
+
     if (this.targetPointers.length == 1) {
       const map = mapBrowserEvent.map;
       this.anchor_ = null;
@@ -176,16 +189,29 @@ class DblClickDragZoom extends Interaction {
     if (this.targetPointers.length == 0) {
       const map = mapBrowserEvent.map;
       const view = map.getView();
+      this.newEvent = false;
+      // let center = view.getCenter();
 
+      this.animating = true;
       while (Math.abs(this.lastScaleDelta_ - 1) > 0.001) {
+        // console.log('animating')
         // scale, bypass the resolution constraint
+        if (this.newEvent) {
+          // console.log('breaking')
+          map.render();
+          this.newEvent = false;
+          this.animating = false;
+          break;
+        }
+
         map.render();
-        console.log(this.lastScaleDelta_)
-        console.log(view.getZoom())
+        // console.log(this.lastScaleDelta_)
+        // console.log(view.getZoom())
         view.adjustResolutionInternal(this.lastScaleDelta_);
         await new Promise(r => setTimeout(r, 1));
         this.lastScaleDelta_ = (0.95 * (this.lastScaleDelta_ - 1)) + 1
       }
+      this.animating = false;
 
       const direction = this.lastScaleDelta_ > 1 ? 1 : -1;
       view.endInteraction(this.duration_, direction);
