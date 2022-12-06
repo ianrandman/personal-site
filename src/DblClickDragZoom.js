@@ -102,7 +102,7 @@ class DblClickDragZoom extends Interaction {
         mapBrowserEvent.originalEvent.preventDefault();
       } else if (mapBrowserEvent.type == MapBrowserEventType.POINTERUP) {
         const handledUp = this.handleUpEvent(mapBrowserEvent);
-        this.handlingDownUpSequence_ = handledUp;
+        this.handlingDownUpSequence_ = false;
       }
     } else {
       if (mapBrowserEvent.type == MapBrowserEventType.POINTERDOWN) {
