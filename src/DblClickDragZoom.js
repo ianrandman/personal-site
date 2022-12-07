@@ -193,17 +193,17 @@ class DblClickDragZoom extends Interaction {
       // let center = view.getCenter();
 
       this.animating = true;
-      let lastZoom = view.getZoom();
+      let lastZoom = -1;
       while (Math.abs(this.lastScaleDelta_ - 1) > 0.001) {
         // console.log('animating')
         // scale, bypass the resolution constraint
         if (this.newEvent || lastZoom === view.getZoom()) {
-          // console.log('breaking')
           map.render();
           this.newEvent = false;
           this.animating = false;
           break;
         }
+        lastZoom = view.getZoom();
 
         map.render();
         // console.log(this.lastScaleDelta_)
@@ -211,7 +211,6 @@ class DblClickDragZoom extends Interaction {
         view.adjustResolutionInternal(this.lastScaleDelta_);
         await new Promise(r => setTimeout(r, 1));
         this.lastScaleDelta_ = (0.95 * (this.lastScaleDelta_ - 1)) + 1;
-        lastZoom = view.getZoom();
       }
       this.animating = false;
 
