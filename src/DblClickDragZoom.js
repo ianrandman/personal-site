@@ -118,6 +118,7 @@ class DblClickDragZoom extends Interaction {
           this.waitForDblTap();
         }
       } else if (mapBrowserEvent.type == MapBrowserEventType.POINTERMOVE) {
+        this.endInteraction();
         // this.handleMoveEvent(mapBrowserEvent);
       }
     }
