@@ -191,6 +191,7 @@ class RouteMap extends React.Component {
         center: [0, 0],
         zoom: 2,
         enableRotation: false,
+        smoothResolutionConstraint: false
       }),
       controls: [
         new Zoom(),
@@ -249,7 +250,7 @@ class RouteMap extends React.Component {
       });
     });
 
-    this.map.addEventListener("moveend", function () {
+    this.map.addEventListener("postrender", function () {
       const zoom = this.getView().getZoom();
       campingIconStyleReference.getImage().setScale(Math.min(0.1, (zoom / 20) ** 2.5));
     });

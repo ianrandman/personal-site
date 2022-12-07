@@ -60,7 +60,6 @@ const route = new VectorImageLayer({
       lineDash: [5, 5]
     })
   }),
-  imageRatio: 10
 });
 
 const OSMSource = new XYZ({
@@ -160,7 +159,8 @@ class Blog extends React.Component {
       view: new View({
         center: [0, 0],
         zoom: 2,
-        enableRotation: false
+        enableRotation: false,
+        smoothResolutionConstraint: false
       }),
       controls: [
         new Zoom(),
