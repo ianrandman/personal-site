@@ -515,39 +515,28 @@ class Blog extends React.Component {
 
   _renderVideo(item) {
     console.log("RENDERING");
+    let gallery = document.getElementsByClassName('image-gallery-slides')[0];
+    let width = -1;
+    while (!gallery) {
+
+    }
+    width = gallery.offsetWidth;
     return (
       <div>
-        {
-          this.state.showVideo[item.embedUrl] ?
-            <div className='video-wrapper'>
-              <a
-                className='close-video'
-                onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
-              >
-              </a>
-              <ReactHlsPlayer
-                src={item.embedUrl}
-                autoPlay={false}
-                controls={true}
-                width="100%"
-                height="auto"
-              />
-            </div>
-            :
-            <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
-              <div className='play-button'></div>
-              <img className='image-gallery-image' src={item.original} />
-              {
-                item.description &&
-                <span
-                  className='image-gallery-description'
-                  style={{right: '0', left: 'initial'}}
-                >
-                    {item.description}
-                  </span>
-              }
-            </a>
-        }
+        <div className='video-wrapper' style={{height: 0.75 * width}}>
+          <a
+            className='close-video'
+            onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
+          >
+          </a>
+          <ReactHlsPlayer
+            src={item.embedUrl}
+            autoPlay={false}
+            controls={true}
+            style={{height: 0.75 * width}}
+            // height="auto"
+          />
+        </div>
       </div>
     );
   }
@@ -583,20 +572,30 @@ class Blog extends React.Component {
     //     )
     //   }
     // });
+    let gallery = document.getElementsByClassName('image-gallery-slides')[0];
+    let width = -1;
+    if (gallery) {
+      width = gallery.offsetWidth;
+    }
+
     return activity.media.map((mediaDict) => {
       if (mediaDict.is_video) {
         return (
           {
             "original": mediaDict.large_image_url,
+            "originalHeight": width === -1 ? '' : 0.75 * width,
+            // "originalWidth": 2000,
             "embedUrl": mediaDict.video_url,
             "thumbnail": mediaDict.small_image_url,
-            "renderItem": this._renderVideo.bind(this)
+            "renderItem": this._renderVideo.bind(this),
           }
         )
       } else {
         return (
           {
             "original": mediaDict.large_image_url,
+            "originalHeight": width === -1 ? '' : 0.75 * width,
+            // "originalWidth": '2048',
             "thumbnail": mediaDict.small_image_url
           }
         )
