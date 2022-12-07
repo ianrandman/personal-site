@@ -395,6 +395,7 @@ class Blog extends React.Component {
           // activity_num:
         });
         console.log(jsonOutput)
+        window.scrollTo(0, 0);
         //
         // if (this.state.id !== null) {
         //   // this.setState({
@@ -524,11 +525,11 @@ class Blog extends React.Component {
     return (
       <div>
         <div className='video-wrapper' style={{height: 0.75 * width}}>
-          <a
-            className='close-video'
-            onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
-          >
-          </a>
+          {/*<a*/}
+          {/*  className='close-video'*/}
+          {/*  onClick={this._toggleShowVideo.bind(this, item.embedUrl)}*/}
+          {/*>*/}
+          {/*</a>*/}
           <ReactHlsPlayer
             src={item.embedUrl}
             autoPlay={false}

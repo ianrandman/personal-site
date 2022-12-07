@@ -1,3 +1,30 @@
+.image-gallery-fullscreen-button, .image-gallery-play-button {
+    top: 0;
+    bottom: unset!important;
+    padding: 20px;
+}
+
+.image-gallery-thumbnail {
+    width: unset!important;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+    width: unset!important;
+}
+
+@media (max-width: 768px) {
+    .image-gallery-thumbnail {
+         width: unset!important;
+    }
+}
+
+[class*="image-gallery-thumbnail-"] {
+    height: 69px;
+    width: unset;
+
+    /*object-fit: contain;*/
+}
+
 .hamburger-link {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;

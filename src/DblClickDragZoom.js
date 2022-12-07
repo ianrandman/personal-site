@@ -267,7 +267,7 @@ class DblClickDragZoom extends Interaction {
       this.handlingDoubleDownSequence_ = true;
       this.doubleTapTimeoutId_ = setTimeout(
         this.endInteraction.bind(this),
-        250
+        400
       );
     }
   }
