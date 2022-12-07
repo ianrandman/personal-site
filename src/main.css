@@ -1,5 +1,15 @@
-.image-gallery-thumbnails-container{ max-width: 10px }
+.hamburger-link {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
+.image-gallery-thumbnails-container{
+    max-width: 10px
+}
 
 .play-button {
     cursor: pointer;
