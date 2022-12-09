@@ -516,12 +516,11 @@ class Blog extends React.Component {
 
   _renderVideo(item) {
     console.log("RENDERING");
-    let gallery = document.getElementsByClassName('image-gallery-slides')[0];
     let width = -1;
-    while (!gallery) {
-
+    let gallery = document.getElementsByClassName('image-gallery-slides')[0];
+    if (gallery) {
+      width = gallery.offsetWidth;
     }
-    width = gallery.offsetWidth;
     return (
       <div>
         <div className='video-wrapper' style={{height: 0.75 * width}}>
