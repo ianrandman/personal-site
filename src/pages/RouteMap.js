@@ -149,6 +149,7 @@ class RouteMap extends React.Component {
     })
 
     this.riddenRouteVector = new VectorLayer({
+      name: "riddenRouteVector",
       source: new VectorSource({
         features: [],
       }),
@@ -227,19 +228,22 @@ class RouteMap extends React.Component {
       });
     });
 
-    let selected = null;
+    let map = this.map;
     this.map.addEventListener("pointermove", function(e) {
-      if (selected !== null) {
-        selected.setStyle(undefined);
-        selected = null;
-      }
+      map.getLayers().forEach(layer => {
+        if (layer.get("name") === "riddenRouteVector") {
+          console.log(layer)
+          layer.getSource().getFeatures().forEach(feature => feature.setStyle())
+        }
+      });
 
+      let foundOne = false;
       this.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-        if (feature.get("activity") === undefined) {
+        if (feature.get("activity") === undefined || foundOne) {
           return;
         }
 
-        selected = feature;
+        foundOne = true;
         const style = new Style({
           stroke: new Stroke({
             width: 8,
