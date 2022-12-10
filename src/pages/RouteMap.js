@@ -232,7 +232,6 @@ class RouteMap extends React.Component {
     this.map.addEventListener("pointermove", function(e) {
       map.getLayers().forEach(layer => {
         if (layer.get("name") === "riddenRouteVector") {
-          console.log(layer)
           layer.getSource().getFeatures().forEach(feature => feature.setStyle())
         }
       });

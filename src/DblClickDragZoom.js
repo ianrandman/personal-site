@@ -94,19 +94,20 @@ class DblClickDragZoom extends Interaction {
     this.updateTrackedPointers_(mapBrowserEvent);
     if (this.handlingDownUpSequence_) {
       if (mapBrowserEvent.type == MapBrowserEventType.POINTERDRAG) {
-        // console.log('dragging')
+        console.log('dragging')
         this.newEvent = true;
         // console.log('icPOINTERDRAGi');
         this.handleDragEvent(mapBrowserEvent);
         // prevent page scrolling during dragging
         mapBrowserEvent.originalEvent.preventDefault();
       } else if (mapBrowserEvent.type == MapBrowserEventType.POINTERUP) {
+        console.log('up')
         const handledUp = this.handleUpEvent(mapBrowserEvent);
         this.handlingDownUpSequence_ = false;
       }
     } else {
       if (mapBrowserEvent.type == MapBrowserEventType.POINTERDOWN) {
-        // console.log('downing')
+        console.log('downing')
         this.newEvent = true;
         if (this.handlingDoubleDownSequence_) {
           this.handlingDoubleDownSequence_ = false;
@@ -117,7 +118,9 @@ class DblClickDragZoom extends Interaction {
           stopEvent = this.stopDown(false);
           this.waitForDblTap();
         }
-      } else if (mapBrowserEvent.type == MapBrowserEventType.POINTERMOVE) {
+      } else if (mapBrowserEvent.type == MapBrowserEventType.POINTERDRAG) {
+        console.log('pointermove')
+        console.log(this.handlingDoubleDownSequence_)
         this.endInteraction();
         // this.handleMoveEvent(mapBrowserEvent);
       }
@@ -130,7 +133,7 @@ class DblClickDragZoom extends Interaction {
    * @param {import("../MapBrowserEvent.js").default} mapBrowserEvent Event.
    */
   handleDragEvent(mapBrowserEvent) {
-    // console.log('handling')
+    console.log('handling drag')
     if (this.animating) {
       return
     }
@@ -166,6 +169,7 @@ class DblClickDragZoom extends Interaction {
   handleDownEvent(mapBrowserEvent) {
     // console.log('down')
 
+    console.log(this.targetPointers)
     if (this.targetPointers.length == 1) {
       const map = mapBrowserEvent.map;
       this.anchor_ = null;
@@ -261,10 +265,12 @@ class DblClickDragZoom extends Interaction {
    */
   waitForDblTap() {
     if (this.doubleTapTimeoutId_ !== undefined) {
+      console.log('double')
       // double-click
       clearTimeout(this.doubleTapTimeoutId_);
       this.doubleTapTimeoutId_ = undefined;
     } else {
+      console.log('else')
       this.handlingDoubleDownSequence_ = true;
       this.doubleTapTimeoutId_ = setTimeout(
         this.endInteraction.bind(this),
