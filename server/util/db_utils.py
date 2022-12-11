@@ -17,6 +17,8 @@ def fetch_new_strava_activities():
 
 
 def update_strava_activity(activity_id):
+    if 'blog' in activity_id:
+        activity_id = activity_id.split('/')[-1]
     activity_obj = Activity.query.filter_by(id=activity_id).first()
     db.session.delete(activity_obj)
     get_activity_and_insert(activity_id, authenticated=False)
@@ -24,6 +26,8 @@ def update_strava_activity(activity_id):
 
 
 def delete_strava_activity(activity_id):
+    if 'blog' in activity_id:
+        activity_id = activity_id.split('/')[-1]
     activity_obj = Activity.query.filter_by(id=activity_id).first()
     db.session.delete(activity_obj)
     db.session.commit()
@@ -70,7 +74,8 @@ def populate_db():
     # db.drop_all()
     # db.create_all()
     db.metadata.create_all(db.engine, tables=[
-        Location.__table__
+        Activity.__table__,
+        Media.__table__,
     ])
 
     # location_share_obj = LocationURL(
@@ -79,19 +84,19 @@ def populate_db():
     # )
     # db.session.add(location_share_obj)
 
-    current_location_obj = Location(
-        lat=24.546543,
-        lon=-81.797505,
-        recorded_time=1654041600000,
-        url='https://maps.app.goo.gl/BDqvKB1CVeCFgJ3z9',
-        is_google=True
-    )
-    db.session.add(current_location_obj)
+    # current_location_obj = Location(
+    #     lat=24.546543,
+    #     lon=-81.797505,
+    #     recorded_time=1654041600000,
+    #     url='https://maps.app.goo.gl/BDqvKB1CVeCFgJ3z9',
+    #     is_google=True
+    # )
+    # db.session.add(current_location_obj)
 
-    # try:
-    #     load_existing_strava_data()
-    # except stravalib.exc.RateLimitExceeded:
-    #     print('Rate limit exceeded')
+    try:
+        load_existing_strava_data()
+    except stravalib.exc.RateLimitExceeded:
+        print('Rate limit exceeded')
 
     db.session.commit()
 
