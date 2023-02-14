@@ -4,9 +4,6 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Main from './layouts/Main'; // fallback for lazy pages
 import './static/css/main.scss'; // All of our styles
-import SitemapBuilder from './components/Sitemap/sitemap';
-import Routes from './data/routes';
-import { fetchBackend } from './FetchConfig';
 
 const { PUBLIC_URL } = process.env;
 
@@ -17,7 +14,6 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-// const Projects = lazy(() => import('./pages/Projects'));
 const RouteMap = lazy(() => import('./pages/RouteMap'));
 const Blog = lazy(() => import('./pages/Blog'));
 // const Instagram = lazy(() => import('./pages/Instagram'));
@@ -25,7 +21,6 @@ const Fundraiser = lazy(() => import('./pages/Fundraiser'));
 const Resume = lazy(() => import('./pages/Resume'));
 const Press = lazy(() => import('./pages/Press'));
 const Admin = lazy(() => import('./pages/Admin'));
-// const Stats = lazy(() => import('./pages/Stats'));
 
 const routes = () => {
   return (
@@ -47,19 +42,10 @@ const routes = () => {
   )
 }
 
-
-function Sitemap(props) {
-  return (
-    <SitemapBuilder routes={routes} prettify={true} {...props}/>
-  );
-}
-
 const App = () => (
   <BrowserRouter basename={PUBLIC_URL}>
     <Suspense fallback={<Main />}>
-      {/*<Switch>*/}
-        {routes()}
-      {/*</Switch>*/}
+      {routes()}
     </Suspense>
   </BrowserRouter>
 );
