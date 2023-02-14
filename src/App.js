@@ -36,7 +36,6 @@ const routes = () => {
       <Route path="/resume" component={Resume} sitemapIndex={true} />
       <Route path="/press" component={Press} sitemapIndex={true} />
       <Route path="/admin" component={Admin} />
-      <Route path="/sitemap" component={Sitemap} sitemapIndex={true} />
       <Route component={NotFound} status={404} />
     </Switch>
   )
