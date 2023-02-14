@@ -3,6 +3,8 @@
 const { fetchBackend } = require('./FetchConfig');
 const SitemapBuilder = require('./components/Sitemap/sitemap').SitemapBuilder;
 
+process.env.REACT_APP_BACKEND_API_BASE_URL = 'https://ianrandman.pythonanywhere.com';
+
 let routes = [
   {
     path: '/',

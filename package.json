@@ -11,6 +11,7 @@
     "node": ">=14.x"
   },
   "scripts": {
+    "sitemap": "node ./src/sitemap-builder.js",
     "build": "rimraf ./build && react-scripts build",
     "predeploy": "npm run build && react-snap",
     "deploy": "gh-pages -d build",
@@ -18,8 +19,8 @@
     "lint": "eslint $(git ls-files '*.js')",
     "test": "react-scripts test --watchAll=false",
     "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js",
-    "start:development": "env-cmd -f .env.development react-scripts && node ./src/sitemap-builder.js && start",
-    "start:production": "env-cmd -f .env.production react-scripts && node ./src/sitemap-builder.js && start",
+    "start:development": "env-cmd -f .env.development react-scripts start",
+    "start:production": "env-cmd -f .env.production react-scripts start",
     "build:production": "env-cmd -f .env.production rimraf ./build && react-scripts build"
   },
   "dependencies": {
