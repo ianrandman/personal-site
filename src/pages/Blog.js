@@ -40,6 +40,8 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from 'react-image-gallery';
 import VectorImageLayer from 'ol/layer/VectorImage';
 import DblClickDragZoom from '../DblClickDragZoom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStrava } from '@fortawesome/free-brands-svg-icons/faStrava';
 
 function LinkRenderer(props) {
   console.log(props.href);
@@ -646,7 +648,7 @@ class Blog extends React.Component {
 
     return (
       <Main
-        title='Blog'
+        title={this.state.activities ? `Blog | ${this.state.activities[this.state.activity_num].name}` : 'Blog'}
 
       >
         <article className="post" id="blog">
@@ -717,8 +719,14 @@ class Blog extends React.Component {
           <hr/>
           {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
           <>
-            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no"
-                    />
+            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no" />
+            {this.state.activities &&
+              <a target="_blank" rel="noopener noreferrer" class="button strava"
+                 href={`https://www.strava.com/activities/${this.state.activities[this.state.activity_num].id}`}
+              >
+                <FontAwesomeIcon icon={faStrava} />
+              </a>
+            }
           </>
 
           {this.renderPrevNextButtons('2')}

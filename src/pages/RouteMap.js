@@ -201,7 +201,8 @@ class RouteMap extends React.Component {
       ],
       interactions: defaults().extend([
         new DblClickDragZoom()
-      ])
+      ]),
+      // moveTolerance: 10
     });
     if (iOS()) {
       this.map.addControl(
