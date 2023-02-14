@@ -27,50 +27,6 @@ const Press = lazy(() => import('./pages/Press'));
 const Admin = lazy(() => import('./pages/Admin'));
 // const Stats = lazy(() => import('./pages/Stats'));
 
-function getActivities() {
-  let response = fetchBackend(`/strava?get_all=True`);
-  console.log(response);
-  return [{id: 0}];
-
-  // fetchBackend(`/strava?get_all=True`)
-  //   .then(
-  //     response => response.json()
-  //   )
-  //   .then(jsonOutput => {
-  //       console.log(jsonOutput.reduce((acc, activity) => {
-  //         if (!activity.name.includes("Hike")) {
-  //           return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
-  //         }
-  //         return acc;
-  //       }, 0))
-  //       this.setState(
-  //         {
-  //           activities: jsonOutput,
-  //           total_distance: jsonOutput.reduce((acc, activity) => {
-  //             if (!activity.name.includes("Hike")) {
-  //               return acc + activity.distance;
-  //             }
-  //             return acc;
-  //           }, 0),
-  //           total_elevation_gain: jsonOutput.reduce((acc, activity) => {
-  //             if (!activity.name.includes("Hike")) {
-  //               return acc + activity.total_elevation_gain;
-  //             }
-  //             return acc;
-  //           }, 0),
-  //           total_moving_time: jsonOutput.reduce((acc, activity) => {
-  //             if (!activity.name.includes("Hike")) {
-  //               return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
-  //             }
-  //             return acc;
-  //           }, 0)
-  //         });
-  //       this.putRiddenRoute()
-  //     }
-  //   )
-}
-
-
 const routes = () => {
   return (
     <Switch>

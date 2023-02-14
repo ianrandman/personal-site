@@ -1,22 +1,19 @@
 /* eslint-disable */
 
-import React from "react";
 const builder = require("xmlbuilder");
-import PropTypes from "prop-types";
 
-export default function SitemapBuilder(props) {
+function SitemapBuilder(routes, base, prettify=true) {
 
-  const hostname = window.location.protocol + "//" + window.location.hostname;
-  const Routes = props.routes;
+  const hostname = base;
+  const Routes = routes;
 
   const sitemap = () => {
-    let paths = Routes(props).props.children;
+    let paths = Routes;
     let xml = builder.create("urlset", {encoding: "utf-8"}).att("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
     paths.forEach(function (path) {
-      console.log(path.props.slugs)
-      const slugs = path.props.slugs || [{}];
+      const slugs = path.slugs || [{}];
       slugs.forEach(slug => {
-        let uri = path.props.path;
+        let uri = path.path;
         Object.keys(slug).forEach(key => {
           const value = slug[key];
           let midStringRegex = new RegExp(`/:${key}/`, "g");
@@ -26,31 +23,32 @@ export default function SitemapBuilder(props) {
           else
             uri = uri.replace(endStringRegex, `/${value}`);
         });
-        if (path.props.sitemapIndex) {
-          var item = xml.ele("url");
-          item.ele("loc", hostname + uri);
-          item.ele("priority", path.props.priority || 0);
-          item.ele("changefreq", path.props.changefreq || "never");
+        // if (path.sitemapIndex) {
+        var item = xml.ele("url");
+        item.ele("loc", hostname + uri);
+        item.ele("priority", path.priority || 0);
+        item.ele("changefreq", path.changefreq || "never");
+
+        if (path.publicationDate) {
+          item.ele("publication_date", path.publicationDate);
         }
+
+        // }
       });
     });
-    return xml.end({ pretty: props.prettify });
+
+    // console.log(xml.end({ pretty: prettify }));
+    return xml.end({ pretty: prettify });
   };
-  return (
-    <React.Fragment>
-      <div
-        style={{whiteSpace: "pre-wrap"}}
-      >
-        {sitemap()}
-      </div>
-    </React.Fragment>
-  );
+  return sitemap();
 }
 
-SitemapBuilder.propTypes = {
-  prettify: PropTypes.bool,
-  routes: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func
-  ])
-};
+// SitemapBuilder.propTypes = {
+//   prettify: PropTypes.bool,
+//   routes: PropTypes.oneOfType([
+//     PropTypes.object,
+//     PropTypes.func
+//   ])
+// };
+
+module.exports = { SitemapBuilder }
