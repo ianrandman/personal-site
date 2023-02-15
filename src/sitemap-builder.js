@@ -1,9 +1,14 @@
 /* eslint-disable */
 
-const { fetchBackend } = require('./FetchConfig');
 const SitemapBuilder = require('./components/Sitemap/sitemap').SitemapBuilder;
+const fetch = require('node-fetch');
 
 process.env.REACT_APP_BACKEND_API_BASE_URL = 'https://ianrandman.pythonanywhere.com';
+
+const fetchBackend = (url, options) => {
+  const finalUrl = process.env.REACT_APP_BACKEND_API_BASE_URL + url;
+  return fetch(finalUrl, options);
+};
 
 let routes = [
   {
