@@ -57,7 +57,7 @@ function Sitemap(base) {
       routes = [...routes, ...jsonOutput.map(activity => (
         {
           path: `/blog/${activity.id}`,
-          publicationDate: activity.start_date,
+          lastmod: activity.start_date,
           changefreq: 'weekly',
           priority: 0.5
         }
@@ -66,7 +66,7 @@ function Sitemap(base) {
       routes = [...routes,
         {
           path: `/blog`,
-          publicationDate: activity.start_date,
+          lastmod: activity.start_date,
           changefreq: 'daily',
           priority: 0.75
         }]

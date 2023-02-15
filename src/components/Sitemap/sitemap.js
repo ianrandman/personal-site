@@ -29,8 +29,8 @@ function SitemapBuilder(routes, base, prettify=true) {
         item.ele("priority", path.priority || 0);
         item.ele("changefreq", path.changefreq || "never");
 
-        if (path.publicationDate) {
-          item.ele("publication_date", path.publicationDate);
+        if (path.lastmod) {
+          item.ele("lastmod", path.lastmod);
         }
 
         // }

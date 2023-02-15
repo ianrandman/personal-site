@@ -1,4 +1,5 @@
 .idea/
+sitemap_generation/
 server/sensitive_info.yml
 
 # prefer npm over yarn
