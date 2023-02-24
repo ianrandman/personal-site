@@ -88,4 +88,4 @@ function Sitemap(base) {
     });
 }
 
-Sitemap('http://www.ianrandman.com');
+Sitemap('https://www.ianrandman.com');
