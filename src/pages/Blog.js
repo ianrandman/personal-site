@@ -648,7 +648,7 @@ class Blog extends React.Component {
 
     return (
       <Main
-        title={this.state.activities ? `Blog | ${this.state.activities[this.state.activity_num].name}` : 'Blog'}
+        title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog` : 'Blog'}
 
       >
         <article className="post" id="blog">
