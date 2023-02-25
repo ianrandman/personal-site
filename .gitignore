@@ -2,6 +2,8 @@
 sitemap_generation/
 server/sensitive_info.yml
 
+public/sitemap.xml
+
 # prefer npm over yarn
 yarn.lock
 
