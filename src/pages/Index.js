@@ -13,8 +13,8 @@ const Index = () => (
           <h2 data-testid="heading"><Link to="/">About this site</Link></h2>
         </div>
       </header>
-      <p> Welcome to my website. I finished riding my bicycle last October from the southernmost point in
-        the continental
+      <p> Welcome to my website. I finished riding my bicycle last October
+        from the southernmost point in the continental
         US <a href="https://goo.gl/maps/UCVC9NjKZU4DaEcv7" target="_blank" rel="noreferrer">(Key West, FL)</a> to
         the northernmost point in North America accessible by
         road <a href="https://goo.gl/maps/qmWmRrfzJz28bWv97" target="_blank" rel="noreferrer">(Prudhoe Bay, AK)</a>.
