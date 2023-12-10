@@ -74,10 +74,20 @@ async function getKMLStartCoordinates(kmlFilename) {
   }
 
   const coordinatesString = coordinatesElement.textContent;
-  const coordinatesArray = coordinatesString.split('\n');
+  // console.log(coordinatesString)
+  let coordinatesArray = coordinatesString.split('\n');
+  if (coordinatesArray.length === 1) {
+    coordinatesArray = coordinatesString.split(' ');
+  }
+  coordinatesArray = coordinatesArray.map(e => e.trim());
   const start_coordinates = coordinatesArray[1].split(',').slice(0, 2);
-  const end_coordinates = coordinatesArray[coordinatesArray.length - 2].split(',').slice(0, 2);
-  console.log([start_coordinates, end_coordinates])
+  let end_coordinates = coordinatesArray[coordinatesArray.length - 2].split(',').slice(0, 2);
+  if (start_coordinates[0] === end_coordinates[0] && start_coordinates[1] === end_coordinates[1]) {
+    console.log('same')
+    end_coordinates = coordinatesArray[coordinatesArray.length - 10].split(',').slice(0, 2);
+  }
+
+  // console.log([start_coordinates, end_coordinates])
 
   return [start_coordinates, end_coordinates];
 }
