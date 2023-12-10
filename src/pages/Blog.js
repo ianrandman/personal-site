@@ -701,14 +701,16 @@ class Blog extends React.Component {
 
     return (
       <Main
-        title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog` : 'Blog'}
+        title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog | ${this.props.ride.title}` : `Blog | ${this.props.ride.title}`}
 
       >
         <article className="post" id="blog">
           <header>
             <div className="title" style={{paddingBottom: 0}}>
-              <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
-              <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+              <Link to={`/rides/${this.props.ride.codename}/blog`}>
+                <h2 data-testid="heading">Blog</h2>
+                <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+              </Link>
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}

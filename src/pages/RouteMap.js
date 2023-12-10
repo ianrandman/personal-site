@@ -494,13 +494,15 @@ class RouteMap extends React.Component {
   render() {
     return (
       <Main
-        title="RouteMap"
+        title={`Route Map | ${this.props.ride.title}`}
       >
         <article className="post" id="routeMap">
           <header>
             <div className="title" style={{paddingBottom: 0}}>
-              <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
-              <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+              <Link to={`/rides/${this.props.ride.codename}/route-map`}>
+                <h2 data-testid="heading">Route Map</h2>
+                <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+              </Link>
             </div>
           </header>
 
