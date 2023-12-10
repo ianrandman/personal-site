@@ -7,7 +7,7 @@ import TileLayer from 'ol/layer/Tile';
 import { FullScreen, Zoom } from 'ol/control';
 import {extend} from 'ol/extent';
 
-import { OSM, Vector as SourceVector, XYZ } from 'ol/source';
+import { Vector as SourceVector, XYZ } from 'ol/source';
 import { KML, Polyline } from 'ol/format';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -24,13 +24,12 @@ import ReactHlsPlayer from 'react-hls-player';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 import '../main.css';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { fetchBackend } from '../FetchConfig';
 import { defaults, PinchRotate } from 'ol/interaction';
 import {
   ToggleBikeOverlayControl,
-  ToggleFullscreenControl,
+  ToggleFullscreenControl, TogglePhotosControl,
   ToggleSatelliteControl
 } from '../components/Map/controls';
 import { iOS } from '../App';
@@ -42,27 +41,15 @@ import VectorImageLayer from 'ol/layer/VectorImage';
 import DblClickDragZoom from '../DblClickDragZoom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStrava } from '@fortawesome/free-brands-svg-icons/faStrava';
+import { faMap } from '@fortawesome/free-regular-svg-icons/faMap';
+import NotFound from './NotFound';
+
+const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
 
 function LinkRenderer(props) {
-  console.log(props.href);
+  // console.log(props.href);
   return <a href={props.href} target="_blank" rel="noreferrer" >{props.children}</a>
 }
-
-const route = new VectorImageLayer({
-  source: new VectorSource({
-    url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
-    format: new KML({
-      extractStyles: false
-    }),
-  }),
-  style: new Style({
-    stroke: new Stroke({
-      width: 3,
-      color: 'red',
-      lineDash: [5, 5]
-    })
-  }),
-});
 
 const OSMSource = new XYZ({
   url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga',
@@ -79,6 +66,10 @@ class Blog extends React.Component {
   constructor(props) {
     super(props);
 
+    if (!this.props.ride) {
+      window.location.replace(`${PUBLIC_URL}/rides/florida-to-alaska/blog/${props.match.params.id ? props.match.params.id: ''}`);
+    }
+
     this.state = {
       id: null,
       activities: null,
@@ -87,6 +78,7 @@ class Blog extends React.Component {
       isSatellite: false,
       bikeOverlay: false,
       isFullscreen: false,
+      displayPhotos: true,
       media: null,
       showVideo: {},
       showPlayButton: true,
@@ -94,6 +86,11 @@ class Blog extends React.Component {
       scrollId: null,
       scrollOffset: 0
     };
+    this.notFound = false;
+    this.refImg = React.createRef();
+    console.log(this.props.ride)
+    console.log('helloooooooo')
+
 
     if (props.location.state) {
       this.state.activity_num = props.location.state.activity_num;
@@ -102,6 +99,22 @@ class Blog extends React.Component {
         this.state.id = parseInt(props.match.params.id);
       }
     }
+
+    this.route = new VectorImageLayer({
+      source: new VectorSource({
+        url: process.env.REACT_APP_BACKEND_API_BASE_URL + `/static/kmls/${this.props.ride.codename}.kml`,
+        format: new KML({
+          extractStyles: false
+        }),
+      }),
+      style: new Style({
+        stroke: new Stroke({
+          width: 3,
+          color: 'red',
+          lineDash: [5, 5]
+        })
+      }),
+    });
 
     this.startIconStyle = new Style({
       image: new Icon({
@@ -155,6 +168,7 @@ class Blog extends React.Component {
     this.getActivity = this.getActivity.bind(this);
     this.toggleSatellite = this.toggleSatellite.bind(this);
     this.toggleBikeOverlay = this.toggleBikeOverlay.bind(this);
+    this.togglePhotos = this.togglePhotos.bind(this);
 
     this.map = new Map({
       layers: [],
@@ -167,7 +181,8 @@ class Blog extends React.Component {
       controls: [
         new Zoom(),
         new ToggleSatelliteControl({"parentFn": this.toggleSatellite}),
-        new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay})
+        new ToggleBikeOverlayControl({"parentFn": this.toggleBikeOverlay}),
+        new TogglePhotosControl({"parentFn": this.togglePhotos})
       ],
       interactions: defaults().extend([
         new DblClickDragZoom()
@@ -212,11 +227,25 @@ class Blog extends React.Component {
     this.map.updateSize();
   }
 
+  togglePhotos() {
+    this.setState({displayPhotos: !this.state.displayPhotos});
+
+    this.photoLayers.map((photoLayer) => (
+      photoLayer.setVisible(this.state.displayPhotos)
+    ))
+    // this.map.updateSize();
+  }
+
   getPrevNextActivityCommon(e) {
     // do not follow hyperlink; use javascript only
     e.preventDefault();
 
     // maintain position of button on screen
+    console.log(e.target.id)
+    console.log(document.getElementById(e.target.id).offsetTop)
+    console.log(window.scrollY)
+    console.log(document.getElementById(e.target.id).offsetTop - window.scrollY)
+
     this.setState({
       scrollId: e.target.id,
       scrollOffset: document.getElementById(e.target.id).offsetTop - window.scrollY
@@ -251,7 +280,7 @@ class Blog extends React.Component {
   }
 
   changeMap(activity) {
-    console.log(document.referrer)
+    // console.log(document.referrer)
     this.setState({media: this.getMedia(activity)})
 
     this.map.removeLayer(this.backgroundLayer);
@@ -260,7 +289,7 @@ class Blog extends React.Component {
       this.currentRouteVector,
       this.startLayer,
       this.endLayer,
-      route
+      this.route
     ]);
     this.startLayer.setSource(
       new SourceVector({
@@ -296,6 +325,8 @@ class Blog extends React.Component {
     }));
 
     var extent = riddenRoute.getExtent();
+    this.photoLayers = [];
+    let pLayers = this.photoLayers
     activity.media.map((mediaObj) => {
       if (mediaObj.location === "None" || mediaObj.location === "[0.0, 0.0]") {
         return;
@@ -315,7 +346,8 @@ class Blog extends React.Component {
             scale: 0.5,
           })
         }),
-        zIndex: 2
+        zIndex: 2,
+        visible: this.state.displayPhotos
       })
 
       this.map.addLayer(
@@ -323,6 +355,7 @@ class Blog extends React.Component {
       );
 
       extend(extent, layerToAdd.getSource().getExtent());
+      pLayers.push(layerToAdd)
     });
 
 
@@ -333,18 +366,19 @@ class Blog extends React.Component {
   }
 
   getActivity(activityNum, doReplace) {
-    console.log(activityNum)
+    if (this.notFound) return;
+    // console.log(activityNum)
     /////////////////////////////////////
     if (doReplace) {
-      console.log('here 1')
-      console.log(document.referrer)
+      // console.log('here 1')
+      // console.log(document.referrer)
       // window.location.replace(`/blog/${this.state.activities[activityNum].id}`)
-      window.history.replaceState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+      window.history.replaceState({}, "", `/rides/${this.props.ride.codename}/blog/${this.state.activities[activityNum].id}`)
     } else {
-      console.log('here 2')
-      console.log(document.referrer)
+      // console.log('here 2')
+      // console.log(document.referrer)
       // window.history.push(`/blog/${this.state.activities[activityNum].id}`)
-      window.history.pushState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+      window.history.pushState({}, "", `/rides/${this.props.ride.codename}/blog/${this.state.activities[activityNum].id}`)
     }
 
     this.fetchActivity(activityNum);
@@ -367,25 +401,28 @@ class Blog extends React.Component {
       )
       .then(jsonOutput => {
           this.state.activities[activityNum] = jsonOutput;
-          console.log(this.state.activities[activityNum] )
+          // console.log(this.state.activities[activityNum] )
 
           this.changeActivity(activityNum, jsonOutput);
-          console.log(this.state)
+          // console.log(this.state)
           this.changeMap(jsonOutput);
         }
       )
   }
 
   getActivities() {
-    fetchBackend(`/strava?get_all=True`)
+    fetchBackend(`/strava?get_all=True&ride_codename=${this.props.ride.codename}`)
       .then(
         response => response.json()
       )
       .then(jsonOutput => {
-        console.log(this.state)
+        // console.log(this.state)
         let num;
         if (this.state.id !== null) {
           num = jsonOutput.findIndex(activity => activity.id === this.state.id);
+          if (num === -1) {
+            this.notFound = true;
+          }
         } else {
           num = this.state.activity_num !== null ? this.state.activity_num : jsonOutput.length - 1
         }
@@ -396,7 +433,7 @@ class Blog extends React.Component {
 
           // activity_num:
         });
-        console.log(jsonOutput)
+        // console.log(jsonOutput)
         window.scrollTo(0, 0);
         //
         // if (this.state.id !== null) {
@@ -413,31 +450,31 @@ class Blog extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     // console.log(prevState)
 
-    console.log(this.props)
+    // console.log(this.props)
     if (this.props.location.state) {
       return;
     }
 
     let id = this.props.match.params.id;
-    console.log(prevProps)
-    console.log(window.location.href)
-    if (window.location.href.split("/").pop() === "blog") {
+    // console.log(prevProps)
+    // console.log(window.location.href)
+    if (window.location.href.split("/").pop() === "blog") {  // todo
       if (this.state.activities !== null) {
         let activityNum = this.state.activities.length - 1;
-        window.history.replaceState({}, "", `/blog/${this.state.activities[activityNum].id}`)
+        window.history.replaceState({}, "", `/rides/${this.props.ride.codename}/blog/${this.state.activities[activityNum].id}`)
         this.changeActivity(activityNum, this.state.activities[activityNum]);
       }
 
       return;
     }
 
-    console.log(id)
-    console.log(this.state.activity_num)
-    console.log(this.state.activities[this.state.activity_num])
-    if (id !== undefined) {
+    // console.log(id)
+    // console.log(this.state.activity_num)
+    // console.log(this.state.activities[this.state.activity_num])
+    if (id !== undefined && !this.notFound) {
       id = window.location.href.split("/").pop();
       if (parseInt(id) !== this.state.activities[this.state.activity_num].id) {
-        console.log('gonna change')
+        // console.log('gonna change')
         let activity_num = this.state.activities.findIndex(activity => activity.id === parseInt(id));
         this.changeActivity(activity_num, this.state.activities[activity_num])
 
@@ -455,13 +492,23 @@ class Blog extends React.Component {
         this.state.scrollOffset
       )
 
+      // console.log(document.getElementById(this.state.scrollId).offsetTop)
+      // console.log(this.state.scrollOffset)
+      // window.scrollTo(0,
+      //   document.getElementById(this.state.scrollId).offsetTop -
+      //   this.state.scrollOffset
+      // )
+      // window.scrollTo({
+      //   top: document.body.scrollHeight - window.innerHeight - 1000,
+      //   // behavior: 'smooth'
+      // })
+      // document.documentElement.scrollTop = document.body.scrollHeight - window.innerHeight - 1000;
+
       this.setState({
         scrollId: null,
         scrollOffset: 0
       })
     }
-
-    console.log('did update')
   }
 
   componentDidMount() {
@@ -496,7 +543,7 @@ class Blog extends React.Component {
   }
 
   _toggleShowVideo(url) {
-    console.log("TOGGLESHOWVIDEO")
+    // console.log("TOGGLESHOWVIDEO")
     const showVideo = this.state;
     this.setState({
       showVideo: {
@@ -517,7 +564,7 @@ class Blog extends React.Component {
   }
 
   _renderVideo(item) {
-    console.log("RENDERING");
+    // console.log("RENDERING");
     let width = -1;
     let gallery = document.getElementsByClassName('image-gallery-slides')[0];
     if (gallery) {
@@ -624,27 +671,33 @@ class Blog extends React.Component {
       <div>
         <a
           style={{'all': 'initial'}}
-          {...((this.state.activities && this.state.activity_num > 0) && {href:`/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
+          {...((this.state.activities && this.state.activity_num > 0) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
           {...((this.state.activities && this.state.activity_num > 0) && {onClick:this.getPreviousActivity})}
         >
-          <button id={id}
-            type="button" disabled={!(this.state.activities && this.state.activity_num > 0)} style={{width: "auto", alignSelf: "inherit"}}>Previous</button>
+          <button id={id} style={{width: "auto", alignSelf: "inherit", marginLeft: 0, marginBottom: 0}}
+            type="button" disabled={!(this.state.activities && this.state.activity_num > 0)}>Previous</button>
         </a>
         <a
           style={{'all': 'initial'}}
-          {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
+          {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
           {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {onClick:this.getNextActivity})}
         >
-          <button id={id}
-            type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)} style={{width: "auto", alignSelf: "inherit"}}>Next</button>
+          <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}}
+            type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)}>Next</button>
         </a>
+        <Link to={`/rides/${this.props.ride.codename}/route-map`} style={{'borderBottom': null, 'all': 'initial'}}>
+          <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}} type='button'>
+            <FontAwesomeIcon className='maps-icon' icon={faMap} />
+          </button>
+        </Link>
       </div>
     )
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     // this.ensureActivityNum(this.props.match.params.id)
+    if (this.notFound) return <NotFound />
 
     return (
       <Main
@@ -653,22 +706,9 @@ class Blog extends React.Component {
       >
         <article className="post" id="blog">
           <header>
-            <div className="title">
+            <div className="title" style={{paddingBottom: 0}}>
               <h2 data-testid="heading"><Link to="/blog">Blog</Link></h2>
-              {this.state.activities &&
-              <>
-                {/*<h3>Select a day to view:</h3>*/}
-                <div className="dropdown">
-                  <select id="mySelect" onChange={this.updatePage}
-                          value={this.state.activity_num}>
-                    {Array.from(Array(this.state.activities.length).keys()).reverse().map(
-                      (value => <option value={value}>{this.state.activities[value].name}</option>)
-                    )}
-                  </select>
-                </div>
-                <p/>
-              </>
-              }
+              <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}
@@ -677,6 +717,23 @@ class Blog extends React.Component {
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609.344).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
 
+              {this.state.activities &&
+                <>
+                  {/*<h3>Select a day to view:</h3>*/}
+                  <div className="dropdown">
+                    <select id="mySelect" onChange={this.updatePage}
+                            value={this.state.activity_num}>
+                      {Array.from(Array(this.state.activities.length).keys()).reverse().map(
+                        (value => <option value={value}>{this.state.activities[value].name}</option>)
+                      )}
+                    </select>
+                  </div>
+                  {/* &nbsp; */}
+                  {/* <Link to={`/rides/${this.props.ride.codename}/route-map`} className="button" style={{marginLeft: 0}}>Route Map</Link> */}
+
+                  <p/>
+                </>
+              }
               {this.renderPrevNextButtons('0')}
 
               <hr/>
@@ -684,6 +741,8 @@ class Blog extends React.Component {
                 {!this.state.media && <h3>Loading media...</h3>}
                 {this.state.media && (
                   <ImageGallery
+                    slideDuration={0}
+                    ref={this.refImg}
                     lazyLoad={true}
                     items={this.state.media}
                     showPlayButton={this.state.showPlayButton}
@@ -719,17 +778,16 @@ class Blog extends React.Component {
           <hr/>
           {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
           <>
-            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowTransparency="true" scrolling="no" />
+            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowtransparency="true" scrolling="no" />
             {this.state.activities &&
-              <a target="_blank" rel="noopener noreferrer" class="button strava"
+              <a target="_blank" rel="noopener noreferrer" className="button strava"
                  href={`https://www.strava.com/activities/${this.state.activities[this.state.activity_num].id}`}
+                 style={{marginLeft: 0}}
               >
                 <FontAwesomeIcon icon={faStrava} />
               </a>
             }
           </>
-
-          {this.renderPrevNextButtons('2')}
 
           {this.state.activities &&
             <>
@@ -746,6 +804,7 @@ class Blog extends React.Component {
               <p/>
             </>
           }
+          {this.renderPrevNextButtons('2')}
         </article>
       </Main>
     );

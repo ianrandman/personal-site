@@ -24,13 +24,13 @@ const articles = [
     "title": "Bellmore Man Bikes More Than 6,000 Miles Raising Money For Cancer",
     "subtitle": "Ian Randman, as a tribute to his late cousin, traveled for several weeks from Florida to Alaska.",
     "url": "https://patch.com/new-york/bellmore/bellmore-man-bikes-more-6-000-miles-raising-money-cancer",
-    "image_url": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA12phyW.img?w=768&h=576&m=6&x=220&y=295&s=634&d=131",
+    "image_url": "https://patch.com/img/cdn20/users/24966732/20220929/024936/styles/patch_image/public/patch-am-randman___29144112298.png",
     "organization": "Bellmore Patch",
     "date": "09/29/2022"
   },
   {
     "title": "From Key West, Fla. to Prudhoe Bay, Alaska",
-    "subtitle": "North Bellmore bicyclist makes daring, once-in-a-lifetime journey for a good cause",
+    "subtitle": "North Bellmore bicyclist makes daring, once-in-a-lifetime journey for a good cause.",
     "url": "https://liherald.com/bellmore/stories/from-key-west-fla-to-prudhoe-bay-alaska,144327",
     "image_url": "https://gamma.creativecirclecdn.com/liherald/original/20220922-105543-95071%20A%20BelMer%20Alaska%209_22.JPG",
     "organization": "LI Herald",
@@ -54,7 +54,7 @@ const articles = [
     "date": "09/07/2022"
   },
   {
-    "title": "Coffee Time: Cyclist traveling from Florida to Alaska to raise funds for ‘Tackle Kids Cancer’ stops in Lander, shares story",
+    "title": "Coffee Time: Cyclist traveling from Florida to Alaska to raise funds for ‘Tackle Kids Cancer’ stops in Lander, shares story.",
     "url": "https://county10.com/coffee-time-cyclist-traveling-from-florida-to-alaska-to-raise-funds-for-tackle-kids-cancer-stops-in-lander-shares-story",
     "image_url": "https://cdn.county10.com/wp-content/uploads/2022/08/298546527_10110747291049504_8047213773787257116_n-768x576.jpg",
     "mp3_url": "https://content.blubrry.com/10cast/Ian_Randman.mp3",
@@ -63,7 +63,7 @@ const articles = [
   },
   {
     "title": "Cyclist stops in Longmont on his way across country",
-    "subtitle": "Ian Randman is riding from Florida to Alaska as a fundraiser in memory of his cousin",
+    "subtitle": "Ian Randman is riding from Florida to Alaska as a fundraiser in memory of his cousin.",
     "url": "https://www.longmontleader.com/local-news/cyclist-stops-in-longmont-on-his-way-across-country-5661137",
     "image_url": "https://www.vmcdn.ca/f/files/longmontleader/_mg_1704.JPG;w=960",
     "organization": "Longmont Leader",
@@ -186,7 +186,6 @@ class Press extends React.Component {
                 <hr />
               </div>
             );
-
           })}
         </article>
       </Main>

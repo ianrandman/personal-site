@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import ReactMarkdown from 'react-markdown';
 // import raw from 'raw.macro';
+import PhotoAlbum from "react-photo-album";
+
 
 import Main from '../layouts/Main';
 import '../main.css'
@@ -35,6 +37,7 @@ import '../main.css'
 //   "https://lh3.googleusercontent.com/Yz5qxLVS9aGhB04DxcrizEti-1JRsTLGJJL9E1bdZVHTkXaRcE5wBYezVwfpnWHOcquOKjS_oMz9rghPf-oi4Zzpkbl7_UMKy0s_zkAozkGJ9IdivvcmUlw9Y9UkX5d32CyqOjpJpNU"
 // ];
 const images = [
+  'https://lh3.googleusercontent.com/pw/ADCreHfSNndSm-FiXtOq7r70k276XR74K9KHOik4OCKKzfT7r_rcYPDB6MwzSvyuYFDT1WFu2plETQZL-HSNuoOwe3D9ns4YXlq3YztRVc6Xgzc8s38S6aLgpSMPmaLCsgzVg29x_2jgw-IyelgLkWh5HYIYPpPe9Y1sR-vdivbvrLpi72qI3xlJdqtgT3OqRll-bj34J5K72ij7TqEA3WEq8i8zFuErxmKLlwZY1nYbVODWHa4rPRYfTGFvF5R0axiB148V-oxXq0rhWrHtEh5Tk4SkmTwZeGNFnx7VHffv9KX43Nd04SDO33ppw2f3_7seFOnn78ufJdmoyJ3Vd5UBS6V4ww5xRyAGsDdfrlX6zJFEiheFSEU1on2aRczIrXUtIzzcONSDf64zvj2DQTjZcreyZ0RScFM7aMPtVPUHmaTS37LYwlRBo9M8VPWF6q6mozlUN2kj5KhbAYhogD-UOKz0F3mGtKYcw6wtgmt9H63JL8pPn5MY0itQmbT-whfmcGBxuF8e87nQdTALgLkkF2txk2p5LvY5GFvKm5zUeBCJ4ctSWCicCeq9mrDBIwisuhAbnDyzilVYL4fc9kf8Z7veskUzSUc6yx4bUB4Hn3zZ26mBApLw4AYsG2_LlKcZLqpml4VmZxyyrP8qbkbeIpl2KghzbN6T_1gA16tGvPxfX57XmW638OTouyVzImjg8dXXRwRspOZI57iNcstO8Pa2NUKomblb-MHWKTWMggso7Lu7LF-zThQ1XKPJmq_ez5zIXJrACq1OaSAlTEnhxrz6LEDebF0CoOvp_Crd7O1CObQS-RVaoEEo-WBzd1jwVj7oxoCbSlO8kFMwdhPGk84GbCurOkzDEqgljCIeJ82VMgEiIZqnms4CGDQaMfXxwDlckU9p1_7NaYXNA9bUKmyxU5vt8g13e2aE2U1dlRk=w659-h879-s-no-gm',
   'https://lh3.googleusercontent.com/pw/AM-JKLWEPrk22dVj_aV6__iiEIHwjUP3CMiW-0uFuk2ZEHnXOBNNHdAYP5jC0Oe4GKsp5YvyDl7suCvzinX-91RDvoJCgvZk1bgnZgXkzJeUetBFVhKlNY2IiKAUbMOO4oFyO9G1-KcvwMV5rvToRxGlmntCLg=w993-h745-no',
   'https://lh3.googleusercontent.com/pw/AM-JKLVS2OVh9ecgLCn7fhIs7EOPjAYxna9ZTCenn3NHLw4G67F-Tic-FDHcAuHBqDMJjWqKPuroxWE7537fKoEKD5dGzvA28m_U4-3t-6RzTy6OuMeST7sx2KMQMt7iv4WPEH7YuGyKcTG69WFLLt8quLzRCw=w418-h903-no',
   'https://lh3.googleusercontent.com/pw/AM-JKLXjTOUEFRiQ7_NqNtlFJ9LDb6M2suyk1iQt1_KPwnGT_KYVEm8PQOylnM5pPyQ59U5aA6mXy3rbP4mt63UgkNtTF317tqyi6bN3i9gh0DrEy2HdAN39syXOE_oXjtqLGIcBt-QeKauQzyzEJlUx0_mPJg=w993-h745-no',
@@ -52,6 +55,22 @@ const images = [
   'https://lh3.googleusercontent.com/pw/AM-JKLUXeUZk6Zk2NTKpxgbxACinZLxxsYZ3N0PeAiZQ0Ons1XaYwmn_qtWOpJteOzAj7YhWJxpiS20ivHLoXiWvNh4XG6tma-_MFdwHHWUrfpZ8sSlvzTVPO1P_u3voFnQ_oN37Tse86KJW6k-uqGV4Ldp1KA=s903-no',
 ];
 
+function extractWidthHeight(url) {
+  const match = url.match(/=w(\d+)-h(\d+)/); // Regex to match '=w' followed by numbers '-h' followed by numbers
+  if (match) {
+    const width = parseInt(match[1], 10); // Extract width and convert to integer
+    const height = parseInt(match[2], 10); // Extract height and convert to integer
+    return { width: width, height: height };
+  }
+  return { width: 500, height: 500 }; // Return null if pattern not found
+}
+
+const photos = images.map((image) => (
+  {src: image, ...extractWidthHeight(image)}
+));
+
+console.log(photos)
+
 const About = () => (
   <Main
     title="About"
@@ -67,15 +86,16 @@ const About = () => (
       <br /><br />
       My skills include knowledge of the practical application of software, theoretical  aspects of computing, as well as computer hardware. My software engineering projects have taught me many of the processes used to create software for consumer use. Through computer science classes and projects, I have learned some of the limits of computing, including artificial intelligence, and have gained experience using the tools necessary to bring any software project to life. Finally, my courses and projects in computer engineering have given me a deeper understanding and appreciation of modern computing.
       <br /><br />
-      Outside of school, I have taken a great interest in the outdoors. Growing up, my father introduced me to scouting. At the end of high school, I finished a large community service project, earning me the rank of Eagle Scout. Cycling has always been a passion of mine from a young age. During my time in Boy Scouts, I started going on longer rides to complete the requirements for the cycling merit badge. I chose to combine my love of camping and cycling, leading to me taking overnight trips on the bike. Always wanting to push myself in the spirit of exploring the world, I decided to embark on my bike trip from Key West, FL to Prudhoe Bay, AK. Beyond cycling, I like to hike (but that's often too slow for me) and go snowboarding (often too expensive).      <br /><br />
+      Outside of school, I have taken a great interest in the outdoors. Growing up, my father introduced me to scouting. At the end of high school, I finished a large community service project, earning me the rank of Eagle Scout. Cycling has always been a passion of mine from a young age. During my time in Boy Scouts, I started going on longer rides to complete the requirements for the cycling merit badge. I chose to combine my love of camping and cycling, leading to me taking overnight trips on the bike. Always wanting to push myself in the spirit of exploring the world, I decided to embark on my bike trip from Key West, FL to Prudhoe Bay, AK, among other trips. Beyond cycling, I like to hike (but that's often too slow for me) and go snowboarding (often too expensive).
       <hr />
       <div className="title">
         <h3 data-testid="heading">Please enjoy some photos of my dog...</h3>
       </div>
       {/*<ReactHlsPlayer src={'https://embed.storiesig.net/aHR0cHM6Ly9zY29udGVudC1pYWQzLTEuY2RuaW5zdGFncmFtLmNvbS92L3Q1MC4xMjQ0MS0xNi8yODY4ODYwODhfNTE0MjQ4ODUyNTg3MTk5N180Nzg4NjM3MzQ5MTUxNjQyNDc3X24ubXA0P2VmZz1leUp4WlY5bmNtOTFjSE1pT2lKYlhDSnBaMTl3Y205bmNtVnpjMmwyWlY5MWNteG5aVzR1Y0hKdlpIVmpkRjkwZVhCbExuTjBiM0o1WENKZEluMCZfbmNfaHQ9c2NvbnRlbnQtaWFkMy0xLmNkbmluc3RhZ3JhbS5jb20mX25jX2NhdD0xMDEmX25jX29oYz1YQ0NzS3doX19OVUFYX19TWG5sJmVkbT1BTm1QN0dRQkFBQUEmY2NiPTctNSZvZT02MkI0QjRCNyZvaD0wMF9BVC1UdjFYdkdBTnRMRjZNNVpMNnZNcnFLcjhkUi1Cbkk1aUw4YmJuTnpVVmtBJl9uY19zaWQ9Mjc2MzYz'} playerRef={''}/>*/}
-      {images.map((url) => (
-        <img className={"dog-image"} src={url} alt="" />
-      ))}
+      <PhotoAlbum layout="columns" photos={photos} />
+      {/* {images.map((url) => ( */}
+      {/*   <img className={"dog-image"} src={url} alt="" /> */}
+      {/* ))} */}
       Feel free to <Link to="/contact">contact</Link> me for more photos.
     </article>
   </Main>

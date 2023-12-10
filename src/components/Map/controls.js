@@ -87,3 +87,31 @@ export class ToggleFullscreenControl extends Control {
     this.parentFn();
   }
 }
+
+export class TogglePhotosControl extends Control {
+  /**
+   * @param {Object} [opt_options] Control options.
+   */
+  constructor(opt_options) {
+    const options = opt_options || {};
+
+    const button = document.createElement('button');
+    button.innerHTML = '&#x1F4F7';
+
+    const element = document.createElement('div');
+    element.className = 'photos-toggle ol-unselectable ol-control';
+    element.appendChild(button);
+
+    super({
+      element: element,
+      target: options.target,
+    });
+
+    this.parentFn = options.parentFn;
+    button.addEventListener('click', this.handle.bind(this), false);
+  }
+
+  handle() {
+    this.parentFn();
+  }
+}

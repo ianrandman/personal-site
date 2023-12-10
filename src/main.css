@@ -1,3 +1,89 @@
+::-webkit-scrollbar{
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track-piece{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #CBCBCB;
+    /*outline: 2px solid #FFF;*/
+    outline-offset: -2px;
+    /*border: .1px solid #B7B7B7;*/
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: #909090;
+}
+
+@media screen and (min-width: 767px) {
+    .image-gallery-thumbnails {
+        overflow: auto!important;
+    }
+}
+
+.home-image {
+    width: calc(100% + 6em);
+    height: 300px;
+    object-fit: cover;
+    margin-left: -3em;
+    margin-right: -3em;
+    margin-top: -3em;
+    /*margin-right: 10em;*/
+    position: relative;
+    /*offset-before: -3em;*/
+}
+
+.ride-star {
+    color: #ffff00;
+    transform: scale(1.25);
+}
+
+.maps-icon {
+    transform: scale(1.5);
+}
+
+.maps-button {
+    background-color: white;
+    height: auto!important;
+    position: absolute;
+    right: var(--bs-card-img-overlay-padding);
+    top: var(--bs-card-img-overlay-padding);
+}
+
+.ride-card-image-container {
+    position: relative;
+    overflow: hidden; /* Ensure the gradient doesn't overflow */
+}
+
+.ride-card-image-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%; /* Adjust the height of the overlay as per your preference */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    pointer-events: none; /* Allows clicking through the overlay */
+}
+
+.card-img-overlay {
+    position: relative;
+}
+
+.ride-card-body {
+    bottom: 0;
+    position: absolute;
+    padding-right: var(--bs-card-img-overlay-padding);
+}
+
+.ride-card-body p {
+    color: #e7e7e7;
+}
+
 .image-gallery-fullscreen-button, .image-gallery-play-button {
     top: 0;
     bottom: unset!important;
@@ -142,12 +228,17 @@
 }
 
 .satellite-toggle {
-    top: 95px;
+    top: 70px;
     left: .5em;
 }
 
 .bike-overlay-toggle {
-    top: 130px;
+    top: 95px;
+    left: .5em;
+}
+
+.photos-toggle {
+    top: 120px;
     left: .5em;
 }
 

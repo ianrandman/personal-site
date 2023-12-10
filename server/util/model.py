@@ -16,6 +16,8 @@ class Activity(db.Model):
     polyline = db.Column(db.String(20000), nullable=False)
     summary_polyline = db.Column(db.String(20000), nullable=False)
 
+    ride_codename = db.Column(db.String(100), nullable=False)
+
     media = db.relationship('Media', backref='media', lazy=False, cascade="all, delete-orphan")
 
     def json(self, polyline=False, summary_polyline=False, media=False):
@@ -30,6 +32,7 @@ class Activity(db.Model):
             start_latlng=self.start_latlng,
             end_latlng=self.end_latlng,
             start_date=self.start_date,
+            ride_codename=self.ride_codename
             # polyline=self.polyline,
             # summary_polyline=self.summary_polyline,
             # media=[m.json for m in self.media]

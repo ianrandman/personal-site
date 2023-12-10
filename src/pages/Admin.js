@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
 import { fetchBackend } from '../FetchConfig';
-
-const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
+const rides = require('../rides').rides;
 
 // add course
 function submitAdmin(e) {
@@ -50,6 +49,13 @@ const Admin = () => (
           <option value="delete_recent_strava_activity">Delete Recent Strava Activity</option>
           <option value="update_strava_activity">Update Strava Activity (requires Strava activity ID)</option>
           <option value="delete_strava_activity">Delete Strava Activity (requires Strava activity ID)</option>
+        </select>
+
+        <label htmlFor="request_type">Choose a ride:</label>
+        <select id="ride_codename" name="ride_codename">
+          {rides.sort((a, b) => new Date(`${b.startDate}-01`) - new Date(`${a.startDate}-01`)).map((ride) => (
+            <option value={ride.codename}>{ride.title}</option>
+          ))}
         </select>
 
         <label htmlFor="google_location_share_link"><b>Google Share Link</b></label>

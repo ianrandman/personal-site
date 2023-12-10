@@ -9,17 +9,17 @@ const routes = [
     path: '/about',
   },
   {
-    label: 'Fundraiser',
-    path: '/fundraiser',
+    label: 'Rides',
+    path: '/rides',
   },
-  {
-    label: 'Route Map',
-    path: '/routeMap',
-  },
-  {
-    label: 'Blog',
-    path: '/blog',
-  },
+  // {
+  //   label: 'Route Map',
+  //   path: '/route-map',
+  // },
+  // {
+  //   label: 'Blog',
+  //   path: '/blog',
+  // },
   // {
   //   label: 'Instagram',
   //   path: '/instagram',
@@ -43,6 +43,10 @@ const routes = [
   {
     label: 'Contact',
     path: '/contact',
+  },
+  {
+    label: 'Fundraiser',
+    path: '/fundraiser',
   },
 ];
 

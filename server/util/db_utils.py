@@ -8,11 +8,11 @@ from util.model import LocationURL, Activity, Location, Media, InstagramHighligh
 from util.update_instagram import update_instagram_highlight
 
 
-def fetch_new_strava_activities():
+def fetch_new_strava_activities(ride_codename):
     try:
-        load_existing_strava_data(only_new=True)
-    except Exception:
-        pass
+        load_existing_strava_data(ride_codename, only_new=True)
+    except Exception as e:
+        raise e
     db.session.commit()
 
 
@@ -20,8 +20,9 @@ def update_strava_activity(activity_id):
     if 'blog' in activity_id:
         activity_id = activity_id.split('/')[-1]
     activity_obj = Activity.query.filter_by(id=activity_id).first()
+    ride_codename = activity_obj.ride_codename
     db.session.delete(activity_obj)
-    get_activity_and_insert(activity_id, authenticated=False)
+    get_activity_and_insert(activity_id, ride_codename=ride_codename, authenticated=False)
     db.session.commit()
 
 
@@ -33,8 +34,11 @@ def delete_strava_activity(activity_id):
     db.session.commit()
 
 
-def delete_recent_strava_activity():
-    activity_obj = Activity.query.order_by(Activity.start_date.desc()).first()
+def delete_recent_strava_activity(ride_codename=None):
+    if ride_codename is None:
+        activity_obj = Activity.query.order_by(Activity.start_date.desc()).first()
+    else:
+        activity_obj = Activity.query.filter_by(ride_codename=ride_codename).order_by(Activity.start_date.desc()).first()
     db.session.delete(activity_obj)
     db.session.commit()
 
@@ -47,8 +51,8 @@ def get_instagram_highlight():
     return InstagramHighlight.query.limit(1).all()[0]
 
 
-def get_activities():
-    return Activity.query.order_by(Activity.start_date.asc()).all()
+def get_activities(ride_codename):
+    return Activity.query.filter_by(ride_codename=ride_codename).order_by(Activity.start_date.asc()).all()
 
 
 def get_activity(id):

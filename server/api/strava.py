@@ -8,6 +8,7 @@ class StravaResource(Resource):
 
     def get(self):
         args = request.args
+        ride_codename = args.get('ride_codename', default=None)
         get_all = args.get('get_all', default=False)
         get_polyline = bool(args.get('get_polyline', default=False))
         get_summary_polyline = bool(args.get('get_summary_polyline', default=False))
@@ -18,7 +19,7 @@ class StravaResource(Resource):
 
         try:
             if get_all:
-                activities = get_activities()
+                activities = get_activities(ride_codename)
                 return [activity.json(get_polyline, get_summary_polyline, get_media) for activity in activities]
             elif id is not None:
                 activity = get_activity(id)

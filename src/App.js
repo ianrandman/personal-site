@@ -1,9 +1,12 @@
 /* eslint-disable */
 
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Main from './layouts/Main'; // fallback for lazy pages
 import './static/css/main.scss'; // All of our styles
+const rides = require('./rides').rides;
 
 const { PUBLIC_URL } = process.env;
 
@@ -11,6 +14,7 @@ const { PUBLIC_URL } = process.env;
 // NOTE that some of these chunks are very small. We should optimize
 // which pages are lazy loaded in the future.
 const About = lazy(() => import('./pages/About'));
+const Rides = lazy(() => import('./pages/Rides'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -26,16 +30,29 @@ const routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Index} sitemapIndex={true} />
-      <Route path="/about" component={About} sitemapIndex={true} />
-      <Route path="/routeMap" component={RouteMap} sitemapIndex={true} />
+      <Route exact path="/about" component={About} sitemapIndex={true} />
+      <Route exact path="/rides" render={(props) => <Rides {...props} rides={rides} />} sitemapIndex={true} />
+      {rides.map((ride) => (
+        <Route key={`route-map-${ride.codename}`} exact path={`/rides/${ride.codename}/route-map`}
+               render={(props) => <RouteMap {...props} ride={ride} />} sitemapIndex={true} />
+      ))}
+      {rides.map((ride) => (
+        <Route key={`blog-${ride.codename}`} exact path={`/rides/${ride.codename}/blog/:id`}
+               render={(props) => <Blog {...props} ride={ride} />} sitemapIndex={false} />
+      ))}
+      {rides.map((ride) => (
+        <Route key={`generic-blog-${ride.codename}`} exact path={`/rides/${ride.codename}/blog`}
+               render={(props) => <Blog {...props} ride={ride} />} sitemapIndex={false} />
+      ))}
+      <Route path="/routeMap" render={() => <Redirect to={'/rides/florida-to-alaska/route-map'} />} sitemapIndex={true} /> ? todo
       <Route path="/blog/:id" component={Blog} sitemapIndex={false} />
       <Route path="/blog" component={Blog} sitemapIndex={true} />
       {/*<Route path="/instagram" component={Instagram} />*/}
-      <Route path="/fundraiser" component={Fundraiser} sitemapIndex={true} />
-      <Route path="/contact" component={Contact} sitemapIndex={true} />
-      <Route path="/resume" component={Resume} sitemapIndex={true} />
-      <Route path="/press" component={Press} sitemapIndex={true} />
-      <Route path="/admin" component={Admin} />
+      <Route exact path="/fundraiser" component={Fundraiser} sitemapIndex={true} />
+      <Route exact path="/contact" component={Contact} sitemapIndex={true} />
+      <Route exact path="/resume" component={Resume} sitemapIndex={true} />
+      <Route exact path="/press" component={Press} sitemapIndex={true} />
+      <Route exact path="/admin" component={Admin} />
       <Route component={NotFound} status={404} />
     </Switch>
   )

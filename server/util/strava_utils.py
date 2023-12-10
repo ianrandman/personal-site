@@ -1,6 +1,6 @@
 import pickle
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 import json
@@ -9,7 +9,7 @@ import yaml
 from stravalib import Client
 
 from init_db import db
-from util import SENSITIVE_INFO_YAML_NAME
+from util import SENSITIVE_INFO_YAML_NAME, rides
 from util.model import Activity, Media
 
 
@@ -23,19 +23,22 @@ def load_sensitive_info():
 client = Client()
 
 
-def load_existing_strava_data(only_new=False):
+def load_existing_strava_data(ride_codename, only_new=False):
     authenticate()
-    activities = client.get_activities(after=datetime(year=2022, month=6, day=1))  # June 1, 2022
+    activities = client.get_activities(
+        after=rides[ride_codename]['start_date'],
+        before=rides[ride_codename]['end_date'] + timedelta(days=1)
+    )
     if only_new:
-        db_activities = Activity.query.all()
+        db_activities = Activity.query.filter_by(ride_codename=ride_codename).all()
         db_activity_ids = [activity.id for activity in db_activities]
         activities = [activity for activity in activities if activity.id not in db_activity_ids]
 
     for activity_summary in activities:
-        get_activity_and_insert(activity_summary.id)
+        get_activity_and_insert(activity_summary.id, ride_codename)
 
 
-def get_activity_and_insert(activity_id, authenticated=True):
+def get_activity_and_insert(activity_id, ride_codename, authenticated=True):
     if not authenticated:
         authenticate()
     activity = client.get_activity(activity_id=activity_id)
@@ -52,7 +55,8 @@ def get_activity_and_insert(activity_id, authenticated=True):
         end_latlng=str(list(activity.end_latlng)),
         start_date=int(activity.start_date.timestamp()),
         polyline=activity.map.polyline,
-        summary_polyline=activity.map.summary_polyline
+        summary_polyline=activity.map.summary_polyline,
+        ride_codename=ride_codename
     )
 
     media = get_activity_media(activity_id=activity.id)

@@ -31,21 +31,6 @@ import { extend } from 'ol/extent';
 import VectorImageLayer from 'ol/layer/VectorImage';
 import DblClickDragZoom from '../DblClickDragZoom';
 
-const route = new VectorImageLayer({
-  source: new VectorSource({
-    url: process.env.REACT_APP_BACKEND_API_BASE_URL + '/static/Florida_to_Alaska.kml',
-    format: new KML({
-      extractStyles: false
-    }),
-  }),
-  style: new Style({
-    stroke: new Stroke({
-      width: 3,
-      color: 'red',
-      lineDash: [5, 5]
-    })
-  }),
-});
 
 const OSMSource = new XYZ({
   url: 'http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga',
@@ -69,10 +54,40 @@ function getTimedelta(recordedTime) {
   return [hh, mm, ss, msec]
 }
 
+async function getKMLStartCoordinates(kmlFilename) {
+  const response = await fetchBackend(`/static/kmls/${kmlFilename}`);
+  const kmlData = await response.text();
+
+  const parser = new DOMParser();
+  const kmlDocument = parser.parseFromString(kmlData, 'text/xml');
+
+  const placemarkElement = kmlDocument.querySelector('Placemark');
+  if (!placemarkElement) {
+    console.log('Returning 1')
+    return null;
+  }
+
+  const coordinatesElement = placemarkElement.querySelector('coordinates');
+  if (!coordinatesElement) {
+    console.log('Returning 3')
+    return null;
+  }
+
+  const coordinatesString = coordinatesElement.textContent;
+  const coordinatesArray = coordinatesString.split('\n');
+  const start_coordinates = coordinatesArray[1].split(',').slice(0, 2);
+  const end_coordinates = coordinatesArray[coordinatesArray.length - 2].split(',').slice(0, 2);
+  console.log([start_coordinates, end_coordinates])
+
+  return [start_coordinates, end_coordinates];
+}
+
 
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
+    // console.log(props.match.params.ride_name)
     this.state = {
       locationUrl: null,
       isGoogle: true,
@@ -83,6 +98,22 @@ class RouteMap extends React.Component {
       isSatellite: false,
       isFullscreen: false
     };
+
+    this.route = new VectorImageLayer({
+      source: new VectorSource({
+        url: process.env.REACT_APP_BACKEND_API_BASE_URL + `/static/kmls/${this.props.ride.codename}.kml`,
+        format: new KML({
+          extractStyles: false
+        }),
+      }),
+      style: new Style({
+        stroke: new Stroke({
+          width: 3,
+          color: 'red',
+          lineDash: [5, 5]
+        })
+      }),
+    });
 
     this.currentLocation = new Vector({
       source: new SourceVector({
@@ -124,29 +155,43 @@ class RouteMap extends React.Component {
       }),
     });
 
-    this.startLayer = new Vector({
+    this.startLayer =  new Vector({
       source: new SourceVector({
         features: [
           new Feature({
-            geometry: new Point(fromLonLat([-81.75524527287685, 24.553091926438324]))
+            geometry: new Point(fromLonLat([0., 0.]))
           })
         ]
       }),
       style: this.startIconStyle,
-      zIndex: 3
-    })
-
-    this.endLayer = new Vector({
+      zIndex: 3,
+      opacity: 0
+    });
+    this.endLayer =  new Vector({
       source: new SourceVector({
         features: [
           new Feature({
-            geometry: new Point(fromLonLat([-148.392288, 70.242893]))
+            geometry: new Point(fromLonLat([0., 0.]))
           })
         ]
       }),
       style: this.endIconStyle,
-      zIndex: 3
-    })
+      zIndex: 3,
+      opacity: 0
+    });
+
+    const p = this.props
+    const startLayer = this.startLayer;
+    const endLayer = this.endLayer;
+    async function addStartEnd() {
+      const start_end = await getKMLStartCoordinates(`${p.ride.codename}.kml`);
+      console.log(startLayer.getSource().getFeatures()[0])
+      startLayer.getSource().getFeatures()[0].setGeometry(new Point(fromLonLat(start_end[0])));
+      startLayer.setOpacity(1);
+      endLayer.getSource().getFeatures()[0].setGeometry(new Point(fromLonLat(start_end[1])));
+      endLayer.setOpacity(1);
+    }
+    addStartEnd();
 
     this.riddenRouteVector = new VectorLayer({
       name: "riddenRouteVector",
@@ -181,7 +226,7 @@ class RouteMap extends React.Component {
     this.map = new Map({
       layers: [
         this.backgroundLayer,
-        route,
+        this.route,
         this.currentLocation,
         this.startLayer,
         this.endLayer,
@@ -215,7 +260,7 @@ class RouteMap extends React.Component {
       interaction instanceof PinchRotate
     ))[0].setActive(false);
 
-    const p = this.props;
+    // console.log(p)
     this.map.addEventListener("click", function(e) {
       this.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         if (feature.get("activity") === undefined) {
@@ -223,7 +268,7 @@ class RouteMap extends React.Component {
         }
 
         p.history.push({
-          pathname: '/blog',
+          pathname: `blog`,
           state: {activity_num: feature.get("activity_num")}
         });
       });
@@ -333,7 +378,6 @@ class RouteMap extends React.Component {
         fetchBackend('/location?do_refresh=True')
           .then(
             response => {
-              console.log(response.status)
               if (response.status !== 200) {
                 return null;
               }
@@ -405,39 +449,33 @@ class RouteMap extends React.Component {
   }
 
   getActivities() {
-    fetchBackend(`/strava?get_all=True&get_summary_polyline=True`)
+    fetchBackend(`/strava?get_all=True&get_summary_polyline=True&ride_codename=${this.props.ride.codename}`)
       .then(
         response => response.json()
       )
       .then(jsonOutput => {
-        console.log(jsonOutput.reduce((acc, activity) => {
-          if (!activity.name.includes("Hike")) {
-            return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
-          }
-          return acc;
-        }, 0))
-          this.setState(
-            {
-              activities: jsonOutput,
-              total_distance: jsonOutput.reduce((acc, activity) => {
-                  if (!activity.name.includes("Hike")) {
-                    return acc + activity.distance;
-                  }
-                  return acc;
-              }, 0),
-              total_elevation_gain: jsonOutput.reduce((acc, activity) => {
+        this.setState(
+          {
+            activities: jsonOutput,
+            total_distance: jsonOutput.reduce((acc, activity) => {
                 if (!activity.name.includes("Hike")) {
-                  return acc + activity.total_elevation_gain;
+                  return acc + activity.distance;
                 }
                 return acc;
-              }, 0),
-              total_moving_time: jsonOutput.reduce((acc, activity) => {
-                if (!activity.name.includes("Hike")) {
-                  return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
-                }
-                return acc;
-              }, 0)
-            });
+            }, 0),
+            total_elevation_gain: jsonOutput.reduce((acc, activity) => {
+              if (!activity.name.includes("Hike")) {
+                return acc + activity.total_elevation_gain;
+              }
+              return acc;
+            }, 0),
+            total_moving_time: jsonOutput.reduce((acc, activity) => {
+              if (!activity.name.includes("Hike")) {
+                return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
+              }
+              return acc;
+            }, 0)
+          });
           this.putRiddenRoute()
         }
       )
@@ -450,16 +488,23 @@ class RouteMap extends React.Component {
       >
         <article className="post" id="routeMap">
           <header>
-            <div className="title">
+            <div className="title" style={{paddingBottom: 0}}>
               <h2 data-testid="heading"><Link to="/routeMap">Route Map</Link></h2>
+              <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
             </div>
           </header>
 
-          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()} mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(1)).toLocaleString()} ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
+          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()} mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()} ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
 
-          <Link to="/fundraiser" className="button"><div style={{ color: '#FF0000' }}>fundraiser</div></Link>
-          &nbsp;
-          <Link to="/blog" className="button">blog</Link>
+          {this.props.ride.codename === 'florida-to-alaska' &&
+            <Link to="/fundraiser" className="button" style={{marginLeft: 0}}>
+            <div style={{ color: '#FF0000'}}>fundraiser</div>
+          </Link>}
+          {this.props.ride.codename === 'florida-to-alaska' && '\u00A0'}
+          <Link to={`/rides/${this.props.ride.codename}/blog`} className="button"
+                style={{marginLeft: this.props.ride.codename !== 'florida-to-alaska'? 0: 'inherit'}}>
+            blog
+          </Link>
           {/*&nbsp;*/}
           {/*<Link to="/instagram" className="button">Instagram updates</Link>*/}
 
@@ -477,8 +522,8 @@ class RouteMap extends React.Component {
             }
           }/>
 
-          {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">{this.state.isGoogle ? "Link to Google Location Share": "Open location in Google"}</a>}
-          <a href="https://www.google.com/maps/d/u/0/edit?mid=1CedznJnm9DqhWFhgzZhqAGDnS25jWjE&usp=sharing" style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Maps Route</a>
+          {/* {this.state.locationUrl && <a href={this.state.locationUrl} style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">{this.state.isGoogle ? "Link to Google Location Share": "Open location in Google"}</a>} */}
+          {/* <a href="https://www.google.com/maps/d/u/0/edit?mid=1CedznJnm9DqhWFhgzZhqAGDnS25jWjE&usp=sharing" style={{marginRight: "5px", marginBottom: "5px"}} className="button" target="_blank">Link to Google Maps Route</a> */}
         </article>
       </Main>
     )

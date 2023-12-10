@@ -15,6 +15,7 @@ class AdminResource(Resource):
     def post(self):
         content = request.get_json()
         request_type = content.get('request_type')
+        ride_codename = content.get('ride_codename')
         password = content.get('password')
         google_location_share_link = content.get('google_location_share_link')
         update_location_zoleo = content.get('update_location_zoleo')
@@ -71,7 +72,7 @@ class AdminResource(Resource):
 
                 update_location_zoleo_db(lat_lon, url)
             elif request_type == 'fetch_new_strava_activities':
-                fetch_new_strava_activities()
+                fetch_new_strava_activities(ride_codename=ride_codename)
             elif request_type == 'update_strava_activity':
                 if strava_activity_id is None or strava_activity_id == '':
                     return {
@@ -90,7 +91,7 @@ class AdminResource(Resource):
                 delete_strava_activity(strava_activity_id)
 
             elif request_type == 'delete_recent_strava_activity':
-                delete_recent_strava_activity()
+                delete_recent_strava_activity(ride_codename=ride_codename)
 
             elif request_type == 'refresh_instagram_highlight':
                 url = 'https://instastories.watch/api/profile/highlight_items?highlightId=highlight%3A17880159521677171'
