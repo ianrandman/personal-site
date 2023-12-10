@@ -506,7 +506,7 @@ class RouteMap extends React.Component {
             </div>
           </header>
 
-          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()} mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()} ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
+          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()}mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()}ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
 
           {this.props.ride.codename === 'florida-to-alaska' &&
             <Link to="/fundraiser" className="button" style={{marginLeft: 0}}>
