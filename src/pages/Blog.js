@@ -88,9 +88,6 @@ class Blog extends React.Component {
     };
     this.notFound = false;
     this.refImg = React.createRef();
-    console.log(this.props.ride)
-    console.log('helloooooooo')
-
 
     if (props.location.state) {
       this.state.activity_num = props.location.state.activity_num;
@@ -667,6 +664,34 @@ class Blog extends React.Component {
   // }
 
   renderPrevNextButtons(id) {
+    if (id !== '2') {
+      return (
+        <div>
+          <a
+            style={{'all': 'initial'}}
+            {...((this.state.activities && this.state.activity_num > 0) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
+            {...((this.state.activities && this.state.activity_num > 0) && {onClick:this.getPreviousActivity})}
+          >
+            <button id={id} style={{width: "auto", alignSelf: "inherit", marginLeft: 0, marginBottom: 0}}
+                    type="button" disabled={!(this.state.activities && this.state.activity_num > 0)}>Previous</button>
+          </a>
+          <a
+            style={{'all': 'initial'}}
+            {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
+            {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {onClick:this.getNextActivity})}
+          >
+            <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}}
+                    type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)}>Next</button>
+          </a>
+          <Link to={`/rides/${this.props.ride.codename}/route-map`} style={{'borderBottom': null, 'all': 'initial'}}>
+            <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}} type='button'>
+              <FontAwesomeIcon className='maps-icon' icon={faMap} />
+            </button>
+          </Link>
+        </div>
+      )
+    }
+
     return (
       <div>
         <a
@@ -674,7 +699,7 @@ class Blog extends React.Component {
           {...((this.state.activities && this.state.activity_num > 0) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num - 1].id}`})}
           {...((this.state.activities && this.state.activity_num > 0) && {onClick:this.getPreviousActivity})}
         >
-          <button id={id} style={{width: "auto", alignSelf: "inherit", marginLeft: 0, marginBottom: 0}}
+          <button id={id} style={{width: "auto", alignSelf: "inherit", marginLeft: 0}}
             type="button" disabled={!(this.state.activities && this.state.activity_num > 0)}>Previous</button>
         </a>
         <a
@@ -682,11 +707,11 @@ class Blog extends React.Component {
           {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {href:`/rides/${this.props.ride.codename}/blog/${this.state.activities[this.state.activity_num + 1].id}`})}
           {...((this.state.activities && this.state.activity_num < this.state.activities.length - 1) && {onClick:this.getNextActivity})}
         >
-          <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}}
+          <button id={id} style={{width: "auto", alignSelf: "inherit"}}
             type="button" disabled={!(this.state.activities && this.state.activity_num < this.state.activities.length - 1)}>Next</button>
         </a>
         <Link to={`/rides/${this.props.ride.codename}/route-map`} style={{'borderBottom': null, 'all': 'initial'}}>
-          <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}} type='button'>
+          <button id={id} style={{width: "auto", alignSelf: "inherit"}} type='button'>
             <FontAwesomeIcon className='maps-icon' icon={faMap} />
           </button>
         </Link>

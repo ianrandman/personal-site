@@ -18,7 +18,7 @@ const Index = () => (
       {/*   </div> */}
       {/* </header> */}
       <img className="home-image" src={`${PUBLIC_URL}/images/fireworks.jpg`} alt="bicycle with fireworks" />
-      <p>Welcome to my website. I use this space to document my life adventures, like
+      <p>Welcome to my website. I use this space to document my life adventures, like {' '}
         <Link to="/rides/florida-to-alaska/blog">riding my bicycle from Florida to Alaska</Link>.
         Please feel free to check out
         my <Link to="/rides">other trips</Link>,
