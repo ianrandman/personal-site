@@ -19,11 +19,11 @@
     background-color: #909090;
 }
 
-@media screen and (min-width: 767px) {
-    .image-gallery-thumbnails {
-        overflow: auto!important;
-    }
+/*@media screen and (min-width: 767px) {*/
+.image-gallery-thumbnails {
+    overflow: auto!important;
 }
+/*}*/
 
 .home-image {
     width: calc(100% + 6em);

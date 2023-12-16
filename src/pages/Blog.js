@@ -727,7 +727,6 @@ class Blog extends React.Component {
     return (
       <Main
         title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog | ${this.props.ride.title}` : `Blog | ${this.props.ride.title}`}
-
       >
         <article className="post" id="blog">
           <header>
@@ -768,6 +767,21 @@ class Blog extends React.Component {
                 {!this.state.media && <h3>Loading media...</h3>}
                 {this.state.media && (
                   <ImageGallery
+                    onSlide={(index) => {
+                      let navElement = document.querySelector('.image-gallery-thumbnails-container');
+                      const transformStyle = window.getComputedStyle(navElement).getPropertyValue('transform');
+
+                      const matrix = new DOMMatrixReadOnly(transformStyle);
+                      const currentX = matrix.m41; // X translation value
+                      console.log(currentX)
+
+                      navElement.style.transform = 'translate(0px, 0px)';
+                      navElement = document.querySelector('.image-gallery-thumbnails')
+                      navElement.scrollLeft = -currentX;
+                    }}
+                    stopPropagation={true}
+                    useTranslate3D={false}
+                    disableThumbnailSwipe={true}
                     slideDuration={0}
                     ref={this.refImg}
                     lazyLoad={true}
