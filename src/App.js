@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Main from './layouts/Main'; // fallback for lazy pages
@@ -29,24 +29,28 @@ const Admin = lazy(() => import('./pages/Admin'));
 const routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Index} sitemapIndex={true} />
-      <Route exact path="/about" component={About} sitemapIndex={true} />
-      <Route exact path="/rides" render={(props) => <Rides {...props} rides={rides} />} sitemapIndex={true} />
+      <Route exact path="/" component={Index} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/rides" render={(props) => <Rides {...props} rides={rides} />} />
       {rides.map((ride) => (
         <Route key={`route-map-${ride.codename}`} exact path={`/rides/${ride.codename}/route-map`}
-               render={(props) => <RouteMap {...props} ride={ride} />} sitemapIndex={true} />
+               render={(props) => <RouteMap {...props} ride={ride} />} />
       ))}
       {rides.map((ride) => (
         <Route key={`blog-${ride.codename}`} exact path={`/rides/${ride.codename}/blog/:id`}
-               render={(props) => <Blog {...props} ride={ride} />} sitemapIndex={false} />
+               render={(props) => <Blog {...props} ride={ride} />} />
       ))}
       {rides.map((ride) => (
         <Route key={`generic-blog-${ride.codename}`} exact path={`/rides/${ride.codename}/blog`}
-               render={(props) => <Blog {...props} ride={ride} />} sitemapIndex={false} />
+               render={(props) => <Blog {...props} ride={ride} />} />
       ))}
-      <Route path="/routeMap" render={() => <Redirect to={'/rides/florida-to-alaska/route-map'} />} sitemapIndex={true} /> ? todo
-      <Route path="/blog/:id" component={Blog} sitemapIndex={false} />
-      <Route path="/blog" component={Blog} sitemapIndex={true} />
+      <Route path="/routeMap" render={() => <Redirect to={'/rides/florida-to-alaska/route-map'} />} />
+      {rides.map((ride) =>
+        <Route key={`ride-${ride.codename}`} exact path={`/rides/${ride.codename}`}
+               render={() => <Redirect to={`/rides/${ride.codename}/blog`} />} />
+      )}
+      <Route path="/blog/:id" component={Blog} />
+      <Route path="/blog" component={Blog} />
       {/*<Route path="/instagram" component={Instagram} />*/}
       <Route exact path="/fundraiser" component={Fundraiser} sitemapIndex={true} />
       <Route exact path="/contact" component={Contact} sitemapIndex={true} />

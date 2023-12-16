@@ -22,32 +22,32 @@ let routes = [
   {
     path: '/about',
     changefreq: "weekly",
-    priority: 0.5
+    priority: 0.3
   },
   {
     path: '/rides',
     changefreq: "weekly",
-    priority: 0.5,
+    priority: 0.3,
   },
   {
     path: '/fundraiser',
     changefreq: "weekly",
-    priority: 0.5
+    priority: 0.3
   },
   {
     path: '/contact',
     changefreq: "weekly",
-    priority: 0.5
+    priority: 0.3
   },
   {
     path: '/resume',
     changefreq: "weekly",
-    priority: 0.5
+    priority: 0.3
   },
   {
     path: '/press',
     changefreq: "weekly",
-    priority: 0.5
+    priority: 0.3
   }
 ]
 
@@ -61,7 +61,7 @@ async function Sitemap(base) {
           path: `/rides/${ride.codename}/blog/${activity.id}`,
           lastmod: new Date(activity.start_date * 1000).toISOString(),
           changefreq: 'weekly',
-          priority: 0.5
+          priority: 0.45
         }
       )));
 
@@ -69,17 +69,24 @@ async function Sitemap(base) {
       const activity = jsonOutput[jsonOutput.length - 1];
 
       routes = routes.concat({
-        path: `/rides/${ride.codename}/blog`,
+        path: `/rides/${ride.codename}`,
         lastmod: activity ? new Date(activity.start_date * 1000).toISOString(): new Date(`${ride.startDate}-01`).toISOString(),
         changefreq: 'daily',
         priority: 0.75
       })
 
       routes = routes.concat({
+        path: `/rides/${ride.codename}/blog`,
+        lastmod: activity ? new Date(activity.start_date * 1000).toISOString(): new Date(`${ride.startDate}-01`).toISOString(),
+        changefreq: 'daily',
+        priority: 0.55
+      })
+
+      routes = routes.concat({
         path: `/rides/${ride.codename}/route-map`,
         lastmod: activity ? new Date(activity.start_date * 1000).toISOString(): new Date(`${ride.startDate}-01`).toISOString(),
         changefreq: 'weekly',
-        priority: 0.6
+        priority: 0.5
       })
 
       // routes = [...routes, ...jsonOutput.map(activity => (

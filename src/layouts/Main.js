@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Analytics from '../components/Template/Analytics';
 import Navigation from '../components/Template/Navigation';
 import SideBar from '../components/Template/SideBar';
-// import ScrollToTop from '../components/Template/ScrollToTop';
+import ScrollToTop from '../components/Template/ScrollToTop';
 
 const Main = (props) => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const Main = (props) => {
     // <></>
     <HelmetProvider>
       <Analytics />
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <Helmet titleTemplate="%s | Ian Randman" defaultTitle="Ian Randman" defer={false}>
         {props.title && <title>{props.title}</title>}
         <meta name="description" content={props.description} />
