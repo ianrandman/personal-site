@@ -500,8 +500,8 @@ class RouteMap extends React.Component {
           <header>
             <div className="title" style={{paddingBottom: 0}}>
               <Link to={`/rides/${this.props.ride.codename}/route-map`}>
-                <h2 data-testid="heading">Route Map</h2>
-                <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+                <p data-testid="heading">Route Map</p>
+                <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
               </Link>
             </div>
           </header>
@@ -515,7 +515,7 @@ class RouteMap extends React.Component {
           {this.props.ride.codename === 'florida-to-alaska' && '\u00A0'}
           <Link to={`/rides/${this.props.ride.codename}/blog`} className="button"
                 style={{marginLeft: this.props.ride.codename !== 'florida-to-alaska'? 0: 'inherit'}}>
-            blog
+            Trip Blog
           </Link>
           {/*&nbsp;*/}
           {/*<Link to="/instagram" className="button">Instagram updates</Link>*/}

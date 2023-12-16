@@ -685,7 +685,7 @@ class Blog extends React.Component {
           </a>
           <Link to={`/rides/${this.props.ride.codename}/route-map`} style={{'borderBottom': null, 'all': 'initial'}}>
             <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0}} type='button'>
-              <FontAwesomeIcon className='maps-icon' icon={faMap} />
+              <FontAwesomeIcon className='maps-icon' icon={faMap} style={{paddingRight: '5px'}} /> Route
             </button>
           </Link>
         </div>
@@ -732,8 +732,8 @@ class Blog extends React.Component {
           <header>
             <div className="title" style={{paddingBottom: 0}}>
               <Link to={`/rides/${this.props.ride.codename}/blog`}>
-                <h2 data-testid="heading">Blog</h2>
-                <p style={{textTransform: 'unset'}}>{this.props.ride.title}</p>
+                <p data-testid="heading">Trip Blog</p>
+                <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
               </Link>
             </div>
           </header>
@@ -773,13 +773,11 @@ class Blog extends React.Component {
 
                       const matrix = new DOMMatrixReadOnly(transformStyle);
                       const currentX = matrix.m41; // X translation value
-                      console.log(currentX)
 
                       navElement.style.transform = 'translate(0px, 0px)';
                       navElement = document.querySelector('.image-gallery-thumbnails')
                       navElement.scrollLeft = -currentX;
                     }}
-                    stopPropagation={true}
                     useTranslate3D={false}
                     disableThumbnailSwipe={true}
                     slideDuration={0}

@@ -63,9 +63,11 @@ class Rides extends React.Component {
                         <Card.ImgOverlay>
                           {ride.starred && <FontAwesomeIcon className="ride-star fa-solid" icon={faStar}/>}
                           <Link to={`/rides/${ride.codename}/route-map`} style={{'borderBottom': null}}>
-                            <Button variant='secondary' className='maps-button' style={{backgroundColor: 'white'}}>
-                              <FontAwesomeIcon icon={faMap} />
-                            </Button>
+                            {/* <button type='button' className='maps-button'> */}
+                              <Button variant='secondary' className='maps-button'>
+                                <FontAwesomeIcon icon={faMap} /> Route
+                              </Button>
+                            {/* </button> */}
                           </Link>
                           <div className='ride-card-body'>
                             <p style={{fontWeight: 'bold'}} className="card-title h5">{ride.title}</p>

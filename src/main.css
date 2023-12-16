@@ -61,11 +61,26 @@
 }
 
 .maps-button {
-    background-color: white;
+    background-color: #f6f6f6 !important;
     height: auto!important;
     position: absolute;
     right: var(--bs-card-img-overlay-padding);
     top: var(--bs-card-img-overlay-padding);
+    /*padding: 0!important;*/
+    /*padding-left: 1em!important;*/
+    /*padding-right: 1em!important;*/
+    /*border-radius: 10px!important;*/
+    font-family: "Raleway", Helvetica, sans-serif!important;
+    font-size: 0.65em!important;
+    font-weight: 800!important;
+    /* height: 4.8125em; */
+    letter-spacing: 0.25em!important;
+    line-height: 3em!important;
+    padding: 0 1em!important;
+    text-align: center!important;
+    text-decoration: none!important;
+    text-transform: uppercase!important;
+    white-space: nowrap!important;
 }
 
 .ride-card-image-container {
