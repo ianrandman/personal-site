@@ -729,12 +729,21 @@ class Blog extends React.Component {
         title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog | ${this.props.ride.title}` : `Blog | ${this.props.ride.title}`}
       >
         <article className="post" id="blog">
-          <header>
+          <header style={{flexDirection: 'column', paddingTop: '0.75em'}}>
+            <div className='rides-back-link'>
+              <a
+                href={'/rides'}
+              >
+                <div>&#x25C0; Rides</div>
+              </a>
+            </div>
             <div className="title" style={{paddingBottom: 0}}>
-              <Link to={`/rides/${this.props.ride.codename}/blog`}>
-                <p data-testid="heading">Trip Blog</p>
-                <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
-              </Link>
+              <div>
+                <Link to={`/rides/${this.props.ride.codename}/blog`}>
+                  <p data-testid="heading">Trip Blog</p>
+                  <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
+                </Link>
+              </div>
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}

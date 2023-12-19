@@ -497,14 +497,32 @@ class RouteMap extends React.Component {
         title={`Route Map | ${this.props.ride.title}`}
       >
         <article className="post" id="routeMap">
-          <header>
+          <header style={{flexDirection: 'column', paddingTop: '0.75em'}}>
+            <div className='rides-back-link'>
+              <a
+                href={'/rides'}
+              >
+                <div>&#x25C0; Rides</div>
+              </a>
+            </div>
             <div className="title" style={{paddingBottom: 0}}>
-              <Link to={`/rides/${this.props.ride.codename}/route-map`}>
-                <p data-testid="heading">Route Map</p>
-                <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
-              </Link>
+              <div>
+                <Link to={`/rides/${this.props.ride.codename}/route-map`}>
+                  <p data-testid="heading">Route Map</p>
+                  <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2>
+                </Link>
+              </div>
             </div>
           </header>
+
+          {/* <header> */}
+          {/*   <div className="title" style={{paddingBottom: 0}}> */}
+          {/*     <Link to={`/rides/${this.props.ride.codename}/route-map`}> */}
+          {/*       <p data-testid="heading">Route Map</p> */}
+          {/*       <h2 style={{textTransform: 'unset'}}>{this.props.ride.title}</h2> */}
+          {/*     </Link> */}
+          {/*   </div> */}
+          {/* </header> */}
 
           <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()}mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()}ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
 

@@ -1,3 +1,26 @@
+@media screen and (min-width: 981px) {
+    .post>header .title {
+        padding: 0 3em 3.3em 3em !important;
+    }
+}
+
+.rides-back-link {
+    height: 3.75em;
+    margin-left: 1em;
+    padding-top: 1.5em;
+    text-decoration: none!important;
+    font-family: "Raleway", Helvetica, sans-serif!important;
+    font-size: 0.75em!important;
+    font-weight: 400!important;
+}
+
+@media screen and (min-width: 981px) {
+    .rides-back-link {
+        height: 5em;
+        margin-left: 2em;
+    }
+}
+
 .image-gallery-thumbnails::-webkit-scrollbar{
     width: 10px;
     height: 8px;
@@ -52,7 +75,7 @@
 }
 
 .ride-star {
-    color: #ffff00;
+    color: #fff200;
     transform: scale(1.25);
 }
 
