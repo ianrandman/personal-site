@@ -737,7 +737,7 @@ class Blog extends React.Component {
                 <div>&#x25C0; Rides</div>
               </a>
             </div>
-            <div className="title" style={{paddingBottom: 0}}>
+            <div className="title rides-back-title" style={{paddingBottom: 0}}>
               <div>
                 <Link to={`/rides/${this.props.ride.codename}/blog`}>
                   <p data-testid="heading">Trip Blog</p>
