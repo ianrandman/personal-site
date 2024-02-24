@@ -6,6 +6,26 @@ from init_db import db
 from util.strava_utils import load_existing_strava_data, get_activity_and_insert
 from util.model import LocationURL, Activity, Location, Media, InstagramHighlight
 from util.update_instagram import update_instagram_highlight
+import requests
+
+
+def trigger_sitemap_webhook():
+    url = "https://webhooks.amplify.us-east-1.amazonaws.com/prod/webhooks"
+    headers = {
+        "Content-Type": "application/json"
+    }
+    payload = {}
+    params = {
+        "id": "ad6d421b-3bfd-419b-9bbd-39b9b93c36f6",
+        "token": "JzAYnfr7EIlEqLgThCX5gXEhQCRIGuga3eHIbadOww",
+        "operation": "startbuild"
+    }
+
+    response = requests.post(url, json=payload, headers=headers, params=params)
+
+    if not response.status_code == 202:
+        print(f"Webhook request failed with status code: {response.status_code}")
+        print(response.text)
 
 
 def fetch_new_strava_activities(ride_codename):
@@ -14,6 +34,7 @@ def fetch_new_strava_activities(ride_codename):
     except Exception as e:
         raise e
     db.session.commit()
+    trigger_sitemap_webhook()
 
 
 def update_strava_activity(activity_id):
@@ -32,6 +53,7 @@ def delete_strava_activity(activity_id):
     activity_obj = Activity.query.filter_by(id=activity_id).first()
     db.session.delete(activity_obj)
     db.session.commit()
+    trigger_sitemap_webhook()
 
 
 def delete_recent_strava_activity(ride_codename=None):
@@ -41,6 +63,7 @@ def delete_recent_strava_activity(ride_codename=None):
         activity_obj = Activity.query.filter_by(ride_codename=ride_codename).order_by(Activity.start_date.desc()).first()
     db.session.delete(activity_obj)
     db.session.commit()
+    trigger_sitemap_webhook()
 
 
 def get_current_location():

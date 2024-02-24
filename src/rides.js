@@ -7,6 +7,12 @@ const rides = [
     description: 'A four month trek across the US and Canada raising money for childhood cancer in memory of my cousin.',
   },
   {
+    codename: 'santa-cruz-big-basin',
+    title: 'Santa Cruz Mountains Loop through Big Basin',
+    startDate: '2024-02',
+    description: 'A weekend trip through the redwoods.',
+  },
+  {
     codename: 'san-jose-to-los-angeles',
     title: 'San Jose to Los Angeles',
     startDate: '2023-11',

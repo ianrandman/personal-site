@@ -10,8 +10,6 @@ import Card from 'react-bootstrap/Card';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 import '../main.css'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { fetchBackend } from '../FetchConfig';
 
 import { Button, Col, Row } from 'react-bootstrap';
 import { faMap } from '@fortawesome/free-regular-svg-icons/faMap';

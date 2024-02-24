@@ -415,10 +415,19 @@ class RouteMap extends React.Component {
   }
 
   putRiddenRoute() {
+    var extent = null;
+
+    if (this.state.activities.length === 0) {
+      console.log(this.route)
+      extent = this.route.getSource().getExtent();
+      // console.log(extent)
+      this.map.getView().fit(extent);
+      this.map.getView().setZoom(this.map.getView().getZoom() - 0.5);
+      return;
+    }
+
     const riddenRouteFeatures = [];
     const endPointFeatures = [];
-
-    var extent = null;
 
     this.state.activities.map((activity, index) => {
       const riddenRoute = new Polyline({
@@ -485,10 +494,10 @@ class RouteMap extends React.Component {
               }
               return acc;
             }, 0)
-          });
-          this.putRiddenRoute()
-        }
-      )
+          }
+          );
+        this.putRiddenRoute()
+      })
   }
 
   render() {
@@ -524,7 +533,7 @@ class RouteMap extends React.Component {
           {/*   </div> */}
           {/* </header> */}
 
-          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()}mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()}ft | Average Speed: {parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString()}mph</p>
+          <p>Rode {parseFloat((this.state.total_distance / 1609.344).toFixed(1)).toLocaleString()}mi | Total Elevation Gain: {parseFloat((this.state.total_elevation_gain * 3.28084).toFixed(0)).toLocaleString()}ft | Average Speed: {this.state.total_distance ? parseFloat((this.state.total_distance / 1609.344 * 3600 / this.state.total_moving_time).toFixed(1)).toLocaleString() : '0.0'}mph</p>
 
           {this.props.ride.codename === 'florida-to-alaska' &&
             <Link to="/fundraiser" className="button" style={{marginLeft: 0}}>

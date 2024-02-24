@@ -456,7 +456,7 @@ class Blog extends React.Component {
     // console.log(prevProps)
     // console.log(window.location.href)
     if (window.location.href.split("/").pop() === "blog") {  // todo
-      if (this.state.activities !== null) {
+      if (this.state.activities !== null && this.state.activities.length > 0) {
         let activityNum = this.state.activities.length - 1;
         window.history.replaceState({}, "", `/rides/${this.props.ride.codename}/blog/${this.state.activities[activityNum].id}`)
         this.changeActivity(activityNum, this.state.activities[activityNum]);
@@ -664,6 +664,18 @@ class Blog extends React.Component {
   // }
 
   renderPrevNextButtons(id) {
+    if (!(!this.state.activities || this.state.activities.length > 0)) {
+      if (id != 1) return <></>
+      return (
+        <Link to={`/rides/${this.props.ride.codename}/route-map`} style={{'borderBottom': null, 'all': 'initial'}}>
+          <button id={id} style={{width: "auto", alignSelf: "inherit", marginBottom: 0, marginLeft: 0}} type='button'>
+            <FontAwesomeIcon className='maps-icon' icon={faMap} style={{marginLeft: 0}} /> Route
+          </button>
+        </Link>
+      )
+    }
+
+
     if (id !== '2') {
       return (
         <div>
@@ -726,7 +738,7 @@ class Blog extends React.Component {
 
     return (
       <Main
-        title={this.state.activities ? `${this.state.activities[this.state.activity_num].name} | Blog | ${this.props.ride.title}` : `Blog | ${this.props.ride.title}`}
+        title={(this.state.activities && this.state.activities.length > 0) ? `${this.state.activities[this.state.activity_num].name} | Blog | ${this.props.ride.title}` : `Blog | ${this.props.ride.title}`}
       >
         <article className="post" id="blog">
           <header style={{flexDirection: 'column', paddingTop: '0.75em'}}>
@@ -747,7 +759,8 @@ class Blog extends React.Component {
             </div>
           </header>
           {!this.state.activities && <h3>Loading blog...</h3>}
-          {this.state.activities &&
+          {this.state.activities && this.state.activities.length === 0 && <h3>No blogs yet for this activity. Please come back later.</h3>}
+          {this.state.activities && this.state.activities.length > 0 &&
             <>
               <h3 data-testid="heading">{this.state.activities[this.state.activity_num].name} ({(this.state.activities[this.state.activity_num].distance / 1609.344).toFixed(1)} miles)</h3>
               <h4>{new Date(this.state.activities[this.state.activity_num].start_date * 1000).toDateString()}</h4>
@@ -810,34 +823,40 @@ class Blog extends React.Component {
 
           <p/>
 
-          <div>
-            <div className="planned-line"/> Planned Route<br/>
-            <div className="ridden-line"/> Current Activity Route<br/>
-          </div>
+          {(!this.state.activities || this.state.activities.length > 0) &&
+            <div>
+            <div className="planned-line"/>
+            Planned Route<br/>
+            <div className="ridden-line"/>
+            Current Activity Route<br/>
+          </div>}
 
           <link href="https://openlayers.org/en/v6.14.1/css/ol.css" rel="stylesheet"/>
           <p/>
-          <div id="map" className={this.state.isFullscreen ? "divFixedClass" : ""} style={
+          {(!this.state.activities || this.state.activities.length > 0) &&
+            <div id="map" className={this.state.isFullscreen ? 'divFixedClass' : ''} style={
             {
-              width: "100%",
-              height: this.state.isFullscreen? "100vh" : "70vh"
+              width: '100%',
+              height: this.state.isFullscreen ? '100vh' : '70vh'
             }
-          }/>
+          }/>}
           <hr/>
           {/*{this.state.activities && getStravaCode(this.state.activities[this.state.activity_num].id)}*/}
-          <>
-            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0" allowtransparency="true" scrolling="no" />
-            {this.state.activities &&
+          {(!this.state.activities || this.state.activities.length > 0) &&
+            <>
+            <iframe id="strava-iframe" className="strava-iframe" frameBorder="0"
+                    allowtransparency="true" scrolling="no"/>
+            {this.state.activities && this.state.activities.length > 0 &&
               <a target="_blank" rel="noopener noreferrer" className="button strava"
                  href={`https://www.strava.com/activities/${this.state.activities[this.state.activity_num].id}`}
-                 style={{marginLeft: 0}}
+                 style={{ marginLeft: 0 }}
               >
-                <FontAwesomeIcon icon={faStrava} />
+                <FontAwesomeIcon icon={faStrava}/>
               </a>
             }
-          </>
+          </>}
 
-          {this.state.activities &&
+          {this.state.activities && this.state.activities.length > 0 &&
             <>
               <hr/>
               <h3>Select a day to view:</h3>
