@@ -124,6 +124,9 @@ class RouteMap extends React.Component {
         })
       }),
     });
+    this.route.getSource().on('addfeature', (e) => {
+      this.putRiddenRoute()
+    });
 
     this.currentLocation = new Vector({
       source: new SourceVector({
@@ -411,7 +414,6 @@ class RouteMap extends React.Component {
     this.map.setTarget("map");
     this.getLocationFeature();
     this.getActivities();
-
   }
 
   putRiddenRoute() {
