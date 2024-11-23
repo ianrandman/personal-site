@@ -7,6 +7,12 @@ const rides = [
     description: 'A four month trek across the US and Canada raising money for childhood cancer in memory of my cousin.',
   },
   {
+    codename: 'san-francisco-portland',
+    title: 'San Francisco to Portland',
+    startDate: '2024-11',
+    description: 'Thanksgiving week riding up the remote coast of Northern California and Oregon.',
+  },
+  {
     codename: 'santa-cruz-big-basin',
     title: 'Santa Cruz Mountains Loop through Big Basin',
     startDate: '2024-02',
