@@ -80,7 +80,8 @@ class Media(db.Model):
 class LocationURL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     google_location_share_link = db.Column(db.String(100), nullable=False)
-    inner_google_location_share_link = db.Column(db.String(400), nullable=False)
+    inner_google_location_share_link = db.Column(db.String(400), nullable=True)
+    ride_codename = db.Column(db.String(100), nullable=False)
 
     @property
     def json(self):
@@ -102,6 +103,7 @@ class Location(db.Model):
     recorded_time = db.Column(db.Integer, nullable=False)
     url = db.Column(db.String(100), nullable=False)
     is_google = db.Column(db.Boolean, nullable=False)
+    ride_codename = db.Column(db.String(100), nullable=False)
 
     @property
     def json(self):
@@ -110,5 +112,6 @@ class Location(db.Model):
             lon=self.lon,
             recorded_time=self.recorded_time,
             url=self.url,
-            is_google=self.is_google
+            is_google=self.is_google,
+            ride_codename = self.ride_codename
         )

@@ -39,8 +39,8 @@ class AdminResource(Resource):
                 if not google_location_share_link.startswith('https'):
                     google_location_share_link = google_location_share_link[google_location_share_link.index('http'):]
 
-                update_location_url(google_location_share_link)
-                success, reason = update_location_selenium()
+                update_location_url(google_location_share_link, ride_codename)
+                success, reason = update_location_selenium(ride_codename)
                 if not success:
                     return {
                         'success': False,

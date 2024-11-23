@@ -15,12 +15,13 @@ class LocationResource(Resource):
     def get(self):
         args = request.args
         do_refresh = eval(args.get('do_refresh'))
+        ride_codename = args.get('ride_codename')
 
         try:
             if do_refresh:
-                update_location_using_inner()
+                update_location_using_inner(ride_codename)
 
-            current_location_obj = get_current_location()
+            current_location_obj = get_current_location(ride_codename)
             lat_lon_time = current_location_obj.json
         except Exception:
             print(traceback.print_exc())

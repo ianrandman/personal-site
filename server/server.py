@@ -2,7 +2,9 @@ import os
 
 from flask import Flask, send_from_directory
 from flask_restful import Api
+
 from api.admin import AdminResource
+from api.rides import RidesResource
 
 app = Flask(__name__)  # create Flask instance
 
@@ -36,6 +38,7 @@ def config_db():
 
 api.add_resource(LocationResource, '/location')
 api.add_resource(StravaResource, '/strava')
+api.add_resource(RidesResource, '/rides')
 api.add_resource(InstagramResource, '/instagram')
 api.add_resource(AdminResource, '/admin')
 

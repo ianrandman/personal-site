@@ -66,8 +66,8 @@ def delete_recent_strava_activity(ride_codename=None):
     trigger_sitemap_webhook()
 
 
-def get_current_location():
-    return Location.query.limit(1)[0]
+def get_current_location(ride_codename):
+    return Location.query.filter_by(ride_codename=ride_codename).first()
 
 
 def get_instagram_highlight():
@@ -82,9 +82,12 @@ def get_activity(id):
     return Activity.query.filter_by(id=id).first()
 
 
-def update_location_url(google_location_share_link):
-    location_url_obj = LocationURL.query.limit(1).all()[0]
-    location_url_obj.google_location_share_link = google_location_share_link
+def update_location_url(google_location_share_link, ride_codename):
+    location_share_url_obj = LocationURL.query.filter_by(ride_codename=ride_codename).first()
+    if location_share_url_obj is None:
+        location_share_url_obj = LocationURL(ride_codename=ride_codename)
+        db.session.add(location_share_url_obj)
+    location_share_url_obj.google_location_share_link = google_location_share_link
     db.session.commit()
 
 

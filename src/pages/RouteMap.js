@@ -346,11 +346,42 @@ class RouteMap extends React.Component {
   }
 
   updateLocation(jsonOutput, refreshingLocation) {
-    this.setState(
-      {
-        "locationUrl": jsonOutput.url,
-        "isGoogle": jsonOutput.is_google,
-      });
+    if (jsonOutput === null) {
+      if (this.currentLocation.getSource().getFeatures()[0].getStyle() !== null)
+        return
+
+      if (this.state.activities && this.state.activities.length > 0) {
+        const endActivity = this.state.activities[this.state.activities.length - 1];
+        const [hours, minutes, seconds] = endActivity.elapsed_time.split(':')
+          .map(Number);
+        const elapsedSeconds = (hours * 3600) + (minutes * 60) + seconds;
+        const endDate = endActivity.start_date + elapsedSeconds;
+
+        jsonOutput = {
+          "recorded_time": endDate * 1000,
+          "lon": JSON.parse(endActivity.end_latlng)[1],
+          "lat": JSON.parse(endActivity.end_latlng)[0]
+        }
+      } else {
+        async function addLocationAtStart(t) {
+          const start_end = await getKMLStartCoordinates(`${t.props.ride.codename}.kml`);
+          jsonOutput = {
+            "recorded_time": new Date().getTime(),
+            "lon": start_end[0][0],
+            "lat": start_end[0][1]
+          }
+          t.updateLocation(jsonOutput, false);
+        }
+        addLocationAtStart(this);
+        return
+      }
+    } else if (jsonOutput.url && jsonOutput.is_google !== null) {
+      this.setState(
+        {
+          "locationUrl": jsonOutput.url,
+          "isGoogle": jsonOutput.is_google,
+        });
+    }
     const refreshingLocationStr = refreshingLocation ? '\nAttempting to refresh location...' : '';
 
     var timedelta = getTimedelta(jsonOutput.recorded_time);
@@ -371,24 +402,33 @@ class RouteMap extends React.Component {
       pointFeature
     );
 
-    // TODO uncomment if during trip
-    // this.map.setView(
-    //   new View({
-    //     center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
-    //     zoom: 10
-    //   })
-    // );
+    fetchBackend(`/rides?ride_codename=${this.props.ride.codename}`)
+      .then(
+        response => response.json()
+      )
+      .then(rideJsonOutput => {
+          if (rideJsonOutput.is_current) {
+            this.map.setView(
+              new View({
+                center: fromLonLat([jsonOutput.lon, jsonOutput.lat]),
+                zoom: 10
+              })
+            );
+          }
+        }
+      );
+
   }
 
   getLocationFeature() {
-    fetchBackend('/location?do_refresh=False')
+    fetchBackend(`/location?do_refresh=False&ride_codename=${this.props.ride.codename}`)
       .then(
         response => response.json()
       )
       .then(jsonOutput => {
         this.updateLocation(jsonOutput, true);
         console.log('Location got');
-        fetchBackend('/location?do_refresh=True')
+        fetchBackend(`/location?do_refresh=True&ride_codename=${this.props.ride.codename}`)
           .then(
             response => {
               if (response.status !== 200) {
@@ -498,6 +538,7 @@ class RouteMap extends React.Component {
             }, 0)
           }
           );
+        this.updateLocation(null, false)
         this.putRiddenRoute()
       })
   }
