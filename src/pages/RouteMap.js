@@ -345,12 +345,14 @@ class RouteMap extends React.Component {
     this.map.updateSize();
   }
 
-  updateLocation(jsonOutput, refreshingLocation) {
+  updateLocation(jsonOutput, refreshingLocation, activities) {
+    // fetched nothing from DB
     if (jsonOutput === null) {
-      if (this.currentLocation.getSource().getFeatures()[0].getStyle() !== null)
-        return
-
-      if (this.state.activities && this.state.activities.length > 0) {
+      // are there any activities?
+      console.log(activities)
+      console.log(this.state.activities)
+      if ((this.state.activities && this.state.activities.length > 0) || (activities && activities.length > 0)) {
+        // use the end time from the last activity
         const endActivity = this.state.activities[this.state.activities.length - 1];
         const [hours, minutes, seconds] = endActivity.elapsed_time.split(':')
           .map(Number);
@@ -363,6 +365,11 @@ class RouteMap extends React.Component {
           "lat": JSON.parse(endActivity.end_latlng)[0]
         }
       } else {
+        // map has already been updated -> return
+        if (this.currentLocation.getSource().getFeatures()[0].getStyle() !== null)
+          return
+
+        // no activities -> use current time at start of route
         async function addLocationAtStart(t) {
           const start_end = await getKMLStartCoordinates(`${t.props.ride.codename}.kml`);
           jsonOutput = {
@@ -426,6 +433,8 @@ class RouteMap extends React.Component {
         response => response.json()
       )
       .then(jsonOutput => {
+        console.log(jsonOutput)
+        if (!jsonOutput) return
         this.updateLocation(jsonOutput, true);
         console.log('Location got');
         fetchBackend(`/location?do_refresh=True&ride_codename=${this.props.ride.codename}`)
@@ -514,23 +523,23 @@ class RouteMap extends React.Component {
       .then(
         response => response.json()
       )
-      .then(jsonOutput => {
+      .then(activities => {
         this.setState(
           {
-            activities: jsonOutput,
-            total_distance: jsonOutput.reduce((acc, activity) => {
+            activities: activities,
+            total_distance: activities.reduce((acc, activity) => {
                 if (!activity.name.includes("Hike")) {
                   return acc + activity.distance;
                 }
                 return acc;
             }, 0),
-            total_elevation_gain: jsonOutput.reduce((acc, activity) => {
+            total_elevation_gain: activities.reduce((acc, activity) => {
               if (!activity.name.includes("Hike")) {
                 return acc + activity.total_elevation_gain;
               }
               return acc;
             }, 0),
-            total_moving_time: jsonOutput.reduce((acc, activity) => {
+            total_moving_time: activities.reduce((acc, activity) => {
               if (!activity.name.includes("Hike")) {
                 return acc + activity.moving_time.split(':').reduce((acc,time) => (60 * acc) + +time);
               }
@@ -538,7 +547,7 @@ class RouteMap extends React.Component {
             }, 0)
           }
           );
-        this.updateLocation(null, false)
+        this.updateLocation(null, false, activities)
         this.putRiddenRoute()
       })
   }

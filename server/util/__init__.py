@@ -11,7 +11,7 @@ rides = {
         'end_date': datetime(year=2022, month=10, day=3, tzinfo=pytz.timezone('US/Eastern'))
     },
     'san-francisco-portland': {
-        'start_date': datetime(year=2024, month=11, day=21, tzinfo=pytz.timezone('US/Pacific')),
+        'start_date': datetime(year=2024, month=11, day=23, tzinfo=pytz.timezone('US/Pacific')),
         'end_date': datetime(year=2024, month=12, day=25, tzinfo=pytz.timezone('US/Pacific'))
     },
     'santa-cruz-big-basin': {
