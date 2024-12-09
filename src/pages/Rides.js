@@ -44,13 +44,14 @@ class Rides extends React.Component {
               <h2 data-testid="heading"><Link to="/rides">Rides</Link></h2>
             </div>
           </header>
-          {/* <div className='testImgContainer'> */}
-          {/*   <img className='testImg' width='600px' src={`${PUBLIC_URL}/images/ride_images/${this.props.rides[0].codename}.jpg`}/> */}
-          {/* </div> */}
+
           <Row xs={1} sm={1} md={2} lg={2} xl={2} className="g-4">
-            {this.props.rides.map(ride => {
+            {this.props.rides.map((ride, index) => {
               return (
-                <Col key={ride.codename}>
+                <Col
+                  key={ride.codename}
+                  style={{ order: index }}
+                >
                   <Link to={`/rides/${ride.codename}/blog`} style={{'borderBottom': null}}>
                     <div className="local-bootstrap">
                       <Card
@@ -61,40 +62,15 @@ class Rides extends React.Component {
                         <Card.ImgOverlay>
                           {ride.starred && <FontAwesomeIcon className="ride-star fa-solid" icon={faStar}/>}
                           <Link to={`/rides/${ride.codename}/route-map`} style={{'borderBottom': null}}>
-                            {/* <button type='button' className='maps-button'> */}
                               <Button variant='secondary' className='maps-button'>
                                 <FontAwesomeIcon icon={faMap} /> Route
                               </Button>
-                            {/* </button> */}
                           </Link>
                           <div className='ride-card-body'>
                             <p style={{fontWeight: 'bold'}} className="card-title h5">{ride.title}</p>
                             <p className="card-subtitle h6">{ride.description}</p>
                           </div>
                         </Card.ImgOverlay>
-
-
-                        {/* <Card.Body style={{backgroundColor: "#f4f4f4"}}> */}
-                        {/*   <p style={{fontWeight: 'bold'}} className="card-title h5">{ride.title}</p> */}
-                        {/*   /!* <Card.Title className="mb-2 text-muted">{ride.title}</Card.Title> *!/ */}
-                        {/*   <p className="card-subtitle h6">{ride.description}</p> */}
-                        {/*   /!* {article.subtitle && (<p className="card-subtitle h6">{article.subtitle}</p>)} *!/ */}
-                        {/*   /!* <Card.Text> *!/ */}
-                        {/*   /!*   {article.organization} *!/ */}
-                        {/*   /!*   <br /> *!/ */}
-                        {/*   /!*   {new Date(article.date).toDateString()} *!/ */}
-                        {/*   /!* </Card.Text> *!/ */}
-                        {/*   /!* {article.mp3_url && ( *!/ */}
-                        {/*   /!*   <div onClick={e => e.stopPropagation()}> *!/ */}
-                        {/*   /!*     <AudioPlayer *!/ */}
-                        {/*   /!*       src={article.mp3_url} *!/ */}
-                        {/*   /!*       onPlay={e => console.log("onPlay")} *!/ */}
-                        {/*   /!*       showJumpControls={false} *!/ */}
-                        {/*   /!*     /> *!/ */}
-                        {/*   /!*   </div> *!/ */}
-                        {/*   /!* )} *!/ */}
-                        {/*   /!* <a href={article.url} target="_blank" rel="noreferrer" className="button">See the news</a> *!/ */}
-                        {/* </Card.Body> */}
                       </Card>
                     </div>
                   </Link>
