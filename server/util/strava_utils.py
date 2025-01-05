@@ -27,6 +27,8 @@ def load_existing_strava_data(ride_codename, only_new=False):
     authenticate()
     activities = client.get_activities(
         after=rides[ride_codename]['start_date'],
+        # TODO what if non-ride activity starts on same day as last activity?
+        #  should just generally have end_date as next day
         before=rides[ride_codename]['end_date'] + timedelta(days=1)
     )
     if only_new:
